@@ -1,0 +1,40 @@
+{
+  "name": "ani_project-2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:api": "node backend/src/server.js",
+    "start": "node backend/src/server.js",
+    "start:api": "node backend/src/server.js",
+    "dev:full": "concurrently -n api,web -c cyan,magenta \"npm run dev:api\" \"npm run dev\"",
+    "validate:images": "node scripts/validate-image-names.mjs",
+    "generate:sitemap": "node scripts/generate-sitemap.mjs",
+    "inject:meta": "node scripts/inject-dist-metadata.mjs",
+    "build": "npm run validate:images && npm run generate:sitemap && vite-ssg build && npm run inject:meta",
+    "build:neocities": "npm run build && node scripts/prepare-neocities.mjs",
+    "preview": "vite-ssg preview"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "sqlite3": "^5.1.7",
+    "vue": "^3.5.25",
+    "vue-router": "^5.0.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.2",
+    "concurrently": "^9.2.1",
+    "image-size": "^1.1.1",
+    "vite": "^7.3.1",
+    "vite-ssg": "^28.1.0"
+  }
+}

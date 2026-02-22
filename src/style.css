@@ -1,0 +1,130 @@
+:root {
+  /* ╔════════════════════════════════════════════════════════════╗ */
+  /* ║           PALETA TROPICAL - VIBRANTE Y ALEGRE              ║ */
+  /* ╚════════════════════════════════════════════════════════════╝ */
+  
+  /* PRIMARIOS - Colores tropicales vibrantes */
+  --primary-dark: #1A3A3A;     /* Verde oscuro tropical */
+  --primary-black: #0D2B2B;    /* Negro azulado profundo */
+  --primary-white: #FFFFFF;    /* Blanco puro */
+  
+  /* SECUNDARIOS - Acentos tropicales brillantes */
+  --secondary-terracotta: #FF6B35;  /* Naranja coral vibrante - para CTA */
+  --secondary-terracotta-dark: #E55A28;  /* Naranja coral oscuro para hover */
+  --secondary-natural: #FF1493;     /* Magenta tropical - títulos */
+  --secondary-cream: #E0F7FA;       /* Cian claro - fondos frescos */
+  
+  /* ACENTOS - Colores tropicales alegres */
+  --accent-warm: #FFD700;      /* Amarillo dorado vibrante */
+  --accent-earth: #00BCD4;     /* Cian turquesa brillante */
+  --accent-green: #00E676;     /* Verde lima tropical */
+  
+  /* FONDOS - Escala tropical fresca */
+  --bg-light: #F0FFFE;         /* Blanco azulado muy claro */
+  --bg-lighter: #FFFFFF;       /* Blanco puro - cards */
+  --bg-light-2: #E1F5FE;       /* Cian muy claro - notas */
+  --bg-light-3: #F0F4C3;       /* Amarillo claro tropical - secciones */
+  --bg-light-4: #FCE4EC;       /* Rosa claro tropical - procesos */
+  
+  /* GRADIENTES - Basados en la paleta tropical */
+  --gradient-header: linear-gradient(135deg, #00BCD4 0%, #00E676 100%);
+  --gradient-placeholder: linear-gradient(135deg, #FFD700 0%, #FF6B35 100%);
+  --gradient-warm: linear-gradient(135deg, #E1F5FE 0%, #FF1493 100%);
+  
+  /* TEXTO */
+  --text-dark: #1A3A3A;        /* Texto principal - verde oscuro */
+  --text-light: #FFFFFF;       /* Texto sobre fondos oscuros */
+  --text-secondary: #00695C;   /* Texto secundario - verde teal */
+  --text-muted: #80DEEA;       /* Texto tenue - cian suave */
+  
+  /* BORDES Y DETALLES */
+  --border-color: #B2DFDB;     /* Divisiones tropicales */
+  --border-light: #E0F2F1;     /* Bordes muy claros */
+  --scrollbar-bg: #F0FFFE;     /* Fondo de scrollbar */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+  line-height: 1.6;
+  margin: 0;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Georgia', serif;
+}
+
+a {
+  color: var(--secondary-terracotta);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #FF1493;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-dark);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-terracotta-dark);
+}
+
+/* Utilidades */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Forms */
+input, textarea, select {
+  font-family: inherit;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

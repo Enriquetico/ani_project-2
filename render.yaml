@@ -1,0 +1,56 @@
+services:
+  - type: web
+    name: artesaniasani-api
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install --omit=dev && python3 -m pip install --user Pillow
+    startCommand: npm run start:api
+    healthCheckPath: /api/health
+    disk:
+      name: artesaniasani-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_PATH
+        value: /var/data/ani.sqlite
+      - key: FRONTEND_ORIGIN
+        value: https://artesaniasani.neocities.org
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 8h
+      - key: COOKIE_SAME_SITE
+        value: none
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: AUTH_LOGIN_WINDOW_MINUTES
+        value: "15"
+      - key: AUTH_LOGIN_MAX_ATTEMPTS
+        value: "8"
+      - key: AUTH_LOCK_WINDOW_MINUTES
+        value: "30"
+      - key: AUTH_LOCK_MAX_FAILURES
+        value: "5"
+      - key: AUTH_LOCK_DURATION_MINUTES
+        value: "30"
+      - key: PYTHON_BIN
+        value: python3
+      - key: PRODUCT_IMAGES_DIR
+        value: public/images
+      - key: IMAGE_TARGET_SIZE
+        value: "300"
+      - key: IMAGE_MAX_SIZE
+        value: "1024"
+      - key: IMAGE_QUALITY
+        value: "82"
+      - key: IMAGE_SOFT_BLOCK_MB
+        value: "5"
+      - key: IMAGE_UPLOAD_MAX_MB
+        value: "12"

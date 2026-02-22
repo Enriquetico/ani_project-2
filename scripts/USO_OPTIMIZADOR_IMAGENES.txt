@@ -1,0 +1,59 @@
+USO DEL OPTIMIZADOR DE IMÁGENES
+================================
+
+Script:
+- scripts/optimizador_imagenes.py
+
+Qué hace:
+- Recorre imágenes de una carpeta origen (incluye subcarpetas)
+- Convierte a formato WebP
+- Redimensiona (máximo configurable)
+- Aplica nombre SEO (kebab-case)
+- Genera un mapa JSON con trazabilidad original -> optimizada
+
+
+1) Requisito (solo una vez)
+---------------------------
+Instalar Pillow:
+
+python3 -m pip install --user Pillow
+
+
+2) Simulación (recomendado primero)
+-----------------------------------
+No escribe imágenes; solo muestra plan y genera mapa JSON.
+
+python3 scripts/optimizador_imagenes.py --source "/home/enriquito/Pictures/imagenes formatos varios/" --output "/home/enriquito/Pictures/optimizadas/" --max-size 1024 --quality 80 --map-file "scripts/mapa-nombres.json" --dry-run
+
+
+3) Ejecución real
+-----------------
+Quita --dry-run para escribir los archivos optimizados.
+
+python3 scripts/optimizador_imagenes.py --source "/home/enriquito/Pictures/imagenes formatos varios/" --output "/home/enriquito/Pictures/optimizadas/" --max-size 1024 --quality 80 --map-file "scripts/mapa-nombres.json"
+
+
+4) Opciones útiles
+------------------
+- Incluir imágenes .webp existentes:
+  --process-webp
+
+- Sobrescribir archivos ya existentes en destino:
+  --overwrite
+
+- Cambiar tamaño máximo:
+  --max-size 1200
+
+- Cambiar calidad WebP (1-100):
+  --quality 85
+
+
+5) Salidas
+----------
+- Imágenes optimizadas en la carpeta definida con --output
+- Mapa de trazabilidad en la ruta indicada con --map-file
+
+
+6) Ver ayuda rápida
+-------------------
+python3 scripts/optimizador_imagenes.py --help
