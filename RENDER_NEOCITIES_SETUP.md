@@ -57,6 +57,7 @@ Abre:
 ## 5) Notas importantes
 
 - Render free puede dormir la API tras inactividad; el primer login puede tardar.
-- La base SQLite queda persistente en `/var/data/ani.sqlite` por el disco de Render.
+- En plan free, SQLite queda en `/tmp/ani.sqlite` y no es persistente entre redeploy/restart.
+- Si necesitas persistencia real de datos, cambia a plan con disk persistente o usa una base externa.
 - Si cambias el dominio de Neocities, actualiza `FRONTEND_ORIGIN` en Render.
 - En esquema Neocities + Render la cookie debe ser cross-site (`SameSite=None; Secure`) para que `/admin` mantenga sesión.

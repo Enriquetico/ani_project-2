@@ -7,15 +7,11 @@ services:
     buildCommand: npm install --omit=dev && python3 -m pip install --user Pillow
     startCommand: npm run start:api
     healthCheckPath: /api/health
-    disk:
-      name: artesaniasani-data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: NODE_ENV
         value: production
       - key: DB_PATH
-        value: /var/data/ani.sqlite
+        value: /tmp/ani.sqlite
       - key: FRONTEND_ORIGIN
         value: https://artesaniasani.neocities.org
       - key: ADMIN_USERNAME
