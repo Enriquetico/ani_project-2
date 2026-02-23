@@ -4,7 +4,7 @@ services:
     runtime: node
     plan: free
     region: oregon
-    buildCommand: npm install --omit=dev && python3 -m pip install --user Pillow
+    buildCommand: npm install --omit=dev && python3 -m pip install Pillow
     startCommand: npm run start:api
     healthCheckPath: /api/health
     envVars:
