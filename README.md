@@ -48,6 +48,7 @@ Abre: `http://localhost:5173/`
 npm run dev              # Desarrollo local
 npm run dev:api          # Backend API local (auth + datos)
 npm run dev:full         # Backend + frontend en paralelo
+npm run admin:unlock     # Limpia bloqueos por intentos fallidos de login
 npm run validate:images  # Valida nombres SEO-friendly en public/images
 npm run build            # Compilación de producción
 npm run preview          # Vista local de la compilación
@@ -65,6 +66,19 @@ npm run dev:full
 ```
 
 Documentación detallada: `backend/README.md`.
+
+### Perfil local recomendado (`.env.backend`)
+
+```dotenv
+API_PORT=8787
+NODE_ENV=development
+FRONTEND_ORIGIN=http://localhost:5173
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=TU_PASSWORD_LOCAL
+JWT_SECRET=TU_SECRETO_LOCAL
+COOKIE_SAME_SITE=lax
+COOKIE_SECURE=false
+```
 
 ## Frontend: URL de API por entorno
 
@@ -107,10 +121,6 @@ npm run build
 
 2. Sube a Neocities el contenido interno de `dist/` (no la carpeta `dist` completa).
 3. Reemplaza al menos: `index.html`, `404.html`, `assets/`, `images/` (si hubo cambios de imágenes).
-
-## Despliegue en Hostinger (frontend + backend seguro)
-
-Guía paso a paso: `HOSTINGER_DEPLOY.md`.
 
 ## SEO y dominio oficial
 

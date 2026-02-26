@@ -87,6 +87,7 @@ Requisitos del servidor:
 Variables opcionales:
 
 - `PRODUCT_IMAGES_DIR` (default: `public/images`)
+- `PRODUCT_IMAGES_PUBLIC_BASE_URL` (ej: `https://artesaniasani-api.onrender.com`)
 - `IMAGE_MAX_SIZE` (default: `1024`)
 - `IMAGE_QUALITY` (default: `80`)
 - `IMAGE_SOFT_BLOCK_MB` (default: `8`, límite recomendado en UI)

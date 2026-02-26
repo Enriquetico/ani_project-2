@@ -8,6 +8,7 @@
     "dev:api": "node backend/src/server.js",
     "start": "node backend/src/server.js",
     "start:api": "node backend/src/server.js",
+    "admin:unlock": "node scripts/admin-unlock.mjs",
     "dev:full": "concurrently -n api,web -c cyan,magenta \"npm run dev:api\" \"npm run dev\"",
     "validate:images": "node scripts/validate-image-names.mjs",
     "generate:sitemap": "node scripts/generate-sitemap.mjs",

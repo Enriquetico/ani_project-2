@@ -112,11 +112,19 @@ import { productos, empresaInfo } from '../data/artesanias'
 import ImageModal from '../components/ImageModal.vue'
 import { api } from '../services/api'
 
+const BASE_MAX_ID = Math.max(0, ...productos.map((producto) => Number(producto.id) || 0))
+const CUSTOM_ID_OFFSET = BASE_MAX_ID + 100000
+
 const route = useRoute()
 const mostrarModal = ref(false)
 const imagenModal = ref('')
 const tituloModal = ref('')
 const productosPersonalizados = ref([])
+
+const toPublicCustomProduct = (producto) => ({
+  ...producto,
+  id: CUSTOM_ID_OFFSET + (Number(producto?.id) || 0)
+})
 
 const cargarProductosPersonalizados = async () => {
   try {
@@ -129,7 +137,8 @@ const cargarProductosPersonalizados = async () => {
 const todosLosProductos = computed(() => {
   const mapa = new Map(productos.map(producto => [producto.id, producto]))
   for (const producto of productosPersonalizados.value) {
-    mapa.set(producto.id, producto)
+    const normalized = toPublicCustomProduct(producto)
+    mapa.set(normalized.id, normalized)
   }
   return Array.from(mapa.values())
 })

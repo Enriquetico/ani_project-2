@@ -68,11 +68,11 @@ export const productos = [
     nombre: 'Tres Búhos Grises',
     categoria: 'Aves',
     tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tres buhos grices.',
+    descripcion: 'Pieza cerámica pintada a mano inspirada en tres búhos grises.',
     imagen: '/images/tres-buhos-grices.webp',
     colores: ["Multicolor"],
     tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
+    precioAproximado: 'Contáctese para conocer precio',
     notas: 'Hecho a mano - Único'
   },
   {

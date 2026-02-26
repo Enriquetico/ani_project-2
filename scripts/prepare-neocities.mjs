@@ -50,8 +50,10 @@ if (!existsSync(indexFile)) {
   throw new Error('No se encontró dist/index.html. Ejecuta primero el build de Vite.')
 }
 
-copyFileSync(indexFile, notFoundFile)
+if (!existsSync(notFoundFile)) {
+  copyFileSync(indexFile, notFoundFile)
+}
 writeFileSync(noJekyllFile, '')
 createDirectoryRoutes()
 
-console.log('Neocities listo: creado dist/404.html, dist/.nojekyll y rutas tipo /ruta/index.html')
+console.log('Neocities listo: verificado dist/404.html, creado dist/.nojekyll y rutas tipo /ruta/index.html')

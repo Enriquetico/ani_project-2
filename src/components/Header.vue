@@ -16,7 +16,7 @@
             <router-link to="/admin" class="nav-link admin-btn" @click="scrollToTop">Admin</router-link>
           </nav>
 
-          <button class="menu-toggle" @click="toggleMenu" :class="{ active: mobileMenuOpen }">
+          <button class="menu-toggle" aria-label="Abrir menú" @click="toggleMenu" :class="{ active: mobileMenuOpen }">
             <span></span>
             <span></span>
             <span></span>

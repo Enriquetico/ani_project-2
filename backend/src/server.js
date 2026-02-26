@@ -35,6 +35,7 @@ const AUTH_LOCK_WINDOW_MINUTES = Number(process.env.AUTH_LOCK_WINDOW_MINUTES || 
 const AUTH_LOCK_MAX_FAILURES = Number(process.env.AUTH_LOCK_MAX_FAILURES || 5)
 const AUTH_LOCK_DURATION_MINUTES = Number(process.env.AUTH_LOCK_DURATION_MINUTES || 30)
 const PRODUCT_IMAGES_DIR = process.env.PRODUCT_IMAGES_DIR || path.resolve(process.cwd(), 'public/images')
+const PRODUCT_IMAGES_PUBLIC_BASE_URL = String(process.env.PRODUCT_IMAGES_PUBLIC_BASE_URL || '').trim().replace(/\/+$/, '')
 const PYTHON_BIN = process.env.PYTHON_BIN || 'python3'
 const IMAGE_MAX_SIZE = Number(process.env.IMAGE_MAX_SIZE || 1024)
 const IMAGE_TARGET_SIZE = Number(process.env.IMAGE_TARGET_SIZE || 300)
@@ -70,6 +71,9 @@ if (COOKIE_SAME_SITE === 'none' && !COOKIE_SECURE) {
 await initDb({ adminUsername: ADMIN_USERNAME, adminPassword: ADMIN_PASSWORD })
 
 const app = express()
+
+// Expose optimized product images from the API host when needed (e.g. static frontend on Neocities).
+app.use('/images', express.static(PRODUCT_IMAGES_DIR))
 
 app.use(
   cors({
@@ -357,7 +361,9 @@ app.post('/api/admin/optimize-image', requireAuth, upload.single('image'), async
     }
 
     const normalizedRelPath = String(optimizedRelPath).replace(/\\/g, '/')
-    const imagePath = `/images/${normalizedRelPath}`
+    const imagePath = PRODUCT_IMAGES_PUBLIC_BASE_URL
+      ? `${PRODUCT_IMAGES_PUBLIC_BASE_URL}/images/${normalizedRelPath}`
+      : `/images/${normalizedRelPath}`
 
     res.status(201).json({
       ok: true,
@@ -639,6 +645,11 @@ app.delete('/api/suscriptores/:id', requireAuth, async (req, res) => {
 })
 
 app.use((error, _req, res, _next) => {
+  if (String(error?.message || '').includes('Origen no permitido por CORS')) {
+    res.status(403).json({ error: 'Origen no permitido por CORS' })
+    return
+  }
+
   if (error?.code === 'LIMIT_FILE_SIZE') {
     res.status(413).json({ error: `La imagen excede el límite permitido de ${Math.max(1, IMAGE_UPLOAD_MAX_MB)} MB.` })
     return
