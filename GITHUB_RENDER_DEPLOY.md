@@ -48,6 +48,11 @@ Variables críticas en Render:
 - `FRONTEND_ORIGIN=https://artesaniasani.neocities.org`
 - `COOKIE_SAME_SITE=none`
 - `COOKIE_SECURE=true`
+- `PRODUCT_IMAGES_PUBLIC_BASE_URL=https://artesaniasani-api.onrender.com`
+
+Nota:
+
+- `DB_PATH=/tmp/ani.sqlite` (configurado en `render.yaml`) no es persistente entre reinicios/redeploys.
 
 ## 5) Obtener URL pública
 
@@ -85,6 +90,12 @@ Actualiza `.env.production` con la URL real:
 
 ```dotenv
 VITE_API_BASE_URL=https://TU-URL-REAL.onrender.com/api
+```
+
+Y también actualiza en Render la variable:
+
+```dotenv
+PRODUCT_IMAGES_PUBLIC_BASE_URL=https://TU-URL-REAL.onrender.com
 ```
 
 Y vuelve a ejecutar:
