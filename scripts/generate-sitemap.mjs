@@ -3,7 +3,7 @@ import { resolve } from 'node:path'
 import { productos, articulos } from '../src/data/artesanias.js'
 
 const sitemapPath = resolve(process.cwd(), 'public', 'sitemap.xml')
-const baseUrl = 'https://artesaniasani.neocities.org'
+const baseUrl = String(process.env.SITE_URL || 'https://artesaniasani-web.onrender.com').replace(/\/+$/, '')
 
 const today = new Date().toISOString().slice(0, 10)
 

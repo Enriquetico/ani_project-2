@@ -1,10 +1,11 @@
-# Flujo completo: API local → GitHub → Render → Frontend
+# Flujo completo: GitHub -> Render (Frontend + API)
 
-## 1) Crear / validar API local
+## 1) Validar localmente
 
 ```bash
 npm install
-npm run dev:api
+cp .env.backend.example .env.backend
+npm run dev:full
 curl -sS http://localhost:8787/api/health
 ```
 
@@ -16,90 +17,64 @@ Resultado esperado:
 
 ## 2) Subir código a GitHub
 
-Este proyecto ya está inicializado en Git y con commit en `main`.
-
-Solo falta enlazar tu repositorio y hacer push:
-
 ```bash
-git remote add origin https://github.com/TU_USUARIO/TU_REPO.git
+git add .
+git commit -m "chore: preparar deploy en render"
 git push -u origin main
 ```
 
-## 3) Render descarga código desde GitHub
+## 3) Crear Blueprint en Render
 
-En Render:
-
-1. New + → Blueprint
-2. Selecciona tu repo
+1. En Render: **New +** -> **Blueprint**
+2. Selecciona tu repositorio
 3. Render detecta `render.yaml`
 
-## 4) Render ejecuta servidor
+## 4) Servicios que se crearán
 
-`render.yaml` ya incluye:
+- `artesaniasani-web` (Static Site)
+  - `buildCommand`: `npm install && npm run build`
+  - `staticPublishPath`: `dist`
+- `artesaniasani-api` (Node Web Service)
+  - `buildCommand`: `npm install --omit=dev && python3 -m pip install Pillow`
+  - `startCommand`: `npm run start:api`
+  - `healthCheckPath`: `/api/health`
 
-- `buildCommand`: instala dependencias Node y Pillow
-- `startCommand`: `npm run start:api`
-- `healthCheckPath`: `/api/health`
+## 5) Variables críticas
 
-Variables críticas en Render:
+En `artesaniasani-api` configura como secretos:
 
-- `ADMIN_PASSWORD` (secret)
-- `JWT_SECRET` (secret)
-- `FRONTEND_ORIGIN=https://artesaniasani.neocities.org`
+- `ADMIN_PASSWORD`
+- `JWT_SECRET`
+
+Variables importantes ya definidas en `render.yaml`:
+
+- `FRONTEND_ORIGIN=https://artesaniasani-web.onrender.com`
 - `COOKIE_SAME_SITE=none`
 - `COOKIE_SECURE=true`
 - `PRODUCT_IMAGES_PUBLIC_BASE_URL=https://artesaniasani-api.onrender.com`
 
-Nota:
+## 6) Verificar despliegue
 
-- `DB_PATH=/tmp/ani.sqlite` (configurado en `render.yaml`) no es persistente entre reinicios/redeploys.
-
-## 5) Obtener URL pública
-
-Render te entregará una URL similar a:
-
-`https://artesaniasani-api.onrender.com`
-
-Prueba:
+API:
 
 ```bash
 curl -sS https://artesaniasani-api.onrender.com/api/health
 ```
 
-## 6) Conectar frontend
+Frontend:
 
-`.env.production` ya está configurado con:
+- `https://artesaniasani-web.onrender.com`
 
-```dotenv
-VITE_API_BASE_URL=https://artesaniasani-api.onrender.com/api
-```
+## 7) Si cambian las URLs
 
-Compilar para Neocities:
+Actualiza en Render:
 
-```bash
-npm run build:neocities
-```
+- En `artesaniasani-web`:
+  - `VITE_API_BASE_URL=https://TU-API.onrender.com/api`
+  - `VITE_SITE_URL=https://TU-WEB.onrender.com`
+  - `SITE_URL=https://TU-WEB.onrender.com`
+- En `artesaniasani-api`:
+  - `FRONTEND_ORIGIN=https://TU-WEB.onrender.com`
+  - `PRODUCT_IMAGES_PUBLIC_BASE_URL=https://TU-API.onrender.com`
 
-Luego sube el contenido interno de `dist/` a Neocities.
-
----
-
-## Si tu URL de Render cambia
-
-Actualiza `.env.production` con la URL real:
-
-```dotenv
-VITE_API_BASE_URL=https://TU-URL-REAL.onrender.com/api
-```
-
-Y también actualiza en Render la variable:
-
-```dotenv
-PRODUCT_IMAGES_PUBLIC_BASE_URL=https://TU-URL-REAL.onrender.com
-```
-
-Y vuelve a ejecutar:
-
-```bash
-npm run build:neocities
-```
+Y redeploy de ambos servicios.

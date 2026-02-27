@@ -1,6 +1,11 @@
 import { productos, articulos } from '../data/artesanias.js'
 
-export const baseUrl = 'https://artesaniasani.neocities.org'
+const configuredSiteUrl =
+  (typeof process !== 'undefined' && process?.env?.SITE_URL) ||
+  (typeof import.meta !== 'undefined' && import.meta?.env?.VITE_SITE_URL) ||
+  'https://artesaniasani-web.onrender.com'
+
+export const baseUrl = String(configuredSiteUrl).replace(/\/+$/, '')
 export const defaultImage = `${baseUrl}/images/og-artesanias-1200x630.jpg`
 export const defaultKeywords = 'artesanías, cerámica pintada, velas decorativas, artesanía costarricense'
 

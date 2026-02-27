@@ -72,7 +72,7 @@ await initDb({ adminUsername: ADMIN_USERNAME, adminPassword: ADMIN_PASSWORD })
 
 const app = express()
 
-// Expose optimized product images from the API host when needed (e.g. static frontend on Neocities).
+// Expose optimized product images from the API host for frontend deployments on separate services/domains.
 app.use('/images', express.static(PRODUCT_IMAGES_DIR))
 
 app.use(

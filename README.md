@@ -6,64 +6,43 @@ Sitio web de **ArtesaníasAni** desarrollado con Vue 3 + Vite para mostrar produ
 
 - Vue 3
 - Vue Router
-- Vite
-- CSS
+- Vite + Vite SSG
+- Node.js + Express (API)
+- SQLite
 
 ## Requisitos
 
 - Node.js 18+ (recomendado)
 - npm
 
-## Configuración recomendada de IDE
-
-- [VS Code](https://code.visualstudio.com/)
-- [Vue (Official) - Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
-- Deshabilitar Vetur si está instalado
-
-## Configuración recomendada del navegador
-
-- Chromium (Chrome, Edge, Brave, etc.)
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Activar Custom Object Formatter en Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Activar Custom Object Formatter en Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Personalizar configuración
-
-Consulta la [referencia de configuración de Vite](https://vite.dev/config/)
-
-## Inicio rápido
+## Inicio rápido (local)
 
 ```bash
 npm install
-npm run dev
+cp .env.backend.example .env.backend
+npm run dev:full
 ```
 
-Abre: `http://localhost:5173/`
+- Frontend: `http://localhost:5173`
+- API: `http://localhost:8787/api/health`
 
 ## Scripts disponibles
 
 ```bash
-npm run dev              # Desarrollo local
-npm run dev:api          # Backend API local (auth + datos)
+npm run dev              # Frontend local
+npm run dev:api          # Backend API local
 npm run dev:full         # Backend + frontend en paralelo
 npm run admin:unlock     # Limpia bloqueos por intentos fallidos de login
 npm run validate:images  # Valida nombres SEO-friendly en public/images
-npm run build            # Compilación de producción
-npm run preview          # Vista local de la compilación
-npm run build:neocities  # Compilación + ajustes para Neocities (404 + .nojekyll)
+npm run generate:sitemap # Regenera public/sitemap.xml
+npm run build            # Build producción (SSG + SEO + rutas estáticas)
+npm run build:render     # Alias de build para despliegue en Render
+npm run preview          # Vista local del build
 ```
 
 ## Backend (seguridad)
 
 Existe un backend base en `backend/` con autenticación segura (cookie HttpOnly + bcrypt + JWT) y base de datos SQLite.
-
-```bash
-cp .env.backend.example .env.backend
-npm install
-npm run dev:full
-```
 
 Documentación detallada: `backend/README.md`.
 
@@ -80,73 +59,48 @@ COOKIE_SAME_SITE=lax
 COOKIE_SECURE=false
 ```
 
-## Frontend: URL de API por entorno
+## Variables frontend para producción
 
-El frontend usa `VITE_API_BASE_URL`.
+El frontend usa:
 
-- Desarrollo local: no necesitas definirla (usa `/api` con el proxy de Vite).
-- Producción (frontend y API en dominios distintos): define `VITE_API_BASE_URL` con la URL base del backend, por ejemplo `https://api.tudominio.com/api`.
+- `VITE_API_BASE_URL` (ejemplo: `https://artesaniasani-api.onrender.com/api`)
+- `VITE_SITE_URL` (ejemplo: `https://artesaniasani-web.onrender.com`)
 
-Ejemplo:
+`SITE_URL` también se utiliza en scripts de build para canonical/sitemap.
+
+## Despliegue en Render
+
+Este repo incluye `render.yaml` para desplegar:
+
+- `artesaniasani-web` (Static Site)
+- `artesaniasani-api` (Web Service Node)
+
+Pasos:
+
+1. Sube el repo a GitHub.
+2. En Render: **New +** -> **Blueprint**.
+3. Selecciona el repo.
+4. Define secretos en el servicio API:
+   - `ADMIN_PASSWORD`
+   - `JWT_SECRET`
+5. Espera el deploy de ambos servicios.
+
+## SEO y dominio
+
+- Dominio por defecto de blueprint: `https://artesaniasani-web.onrender.com`
+- Puedes reemplazarlo luego por dominio propio actualizando:
+  - `VITE_SITE_URL` y `SITE_URL` en `artesaniasani-web`
+  - `FRONTEND_ORIGIN` en `artesaniasani-api`
+  - `PRODUCT_IMAGES_PUBLIC_BASE_URL` en `artesaniasani-api` (si cambia la URL del API)
+
+## Verificación rápida post-deploy
 
 ```bash
-echo "VITE_API_BASE_URL=https://api.tudominio.com/api" > .env.production
+curl -sS https://artesaniasani-api.onrender.com/api/health
 ```
 
-## Configuración del proyecto
+Debe responder:
 
-```bash
-npm install
-```
-
-### Compilar y recargar en caliente para desarrollo
-
-```bash
-npm run dev
-```
-
-### Compilar y minificar para producción
-
-```bash
-npm run build
-```
-
-## Despliegue en Neocities
-
-1. Genera archivos para despliegue:
-
-   ```bash
-   npm run build:neocities
-   ```
-
-2. Sube a Neocities el contenido interno de `dist/` (no la carpeta `dist` completa).
-3. Reemplaza al menos: `index.html`, `404.html`, `assets/`, `images/` (si hubo cambios de imágenes).
-
-## SEO y dominio oficial
-
-- Dominio actual: `https://artesaniasani.neocities.org/`
-- `canonical` y metadatos Open Graph/Twitter ya apuntan al dominio nuevo en `index.html`.
-
-## 🔐 Verificación de Google Search Console
-
-Método activo: **meta tag** en `index.html`.
-
-Tag configurado:
-
-```html
-<meta name="google-site-verification" content="gCQs3c7xL2sOIdcaPb2GxrNxCS_qfrXNb0o7GxCsams" />
-```
-
-## Estructura principal
-
-```txt
-src/
-  components/
-  data/
-  router/
-  views/
-public/
-  images/
-scripts/
-dist/
+```json
+{"ok":true}
 ```

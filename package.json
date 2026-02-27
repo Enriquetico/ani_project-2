@@ -13,8 +13,9 @@
     "validate:images": "node scripts/validate-image-names.mjs",
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "inject:meta": "node scripts/inject-dist-metadata.mjs",
-    "build": "npm run validate:images && npm run generate:sitemap && vite-ssg build && npm run inject:meta",
-    "build:neocities": "npm run build && node scripts/prepare-neocities.mjs",
+    "prepare:static": "node scripts/prepare-static.mjs",
+    "build": "npm run validate:images && npm run generate:sitemap && vite-ssg build && npm run inject:meta && npm run prepare:static",
+    "build:render": "npm run build",
     "preview": "vite-ssg preview"
   },
   "dependencies": {

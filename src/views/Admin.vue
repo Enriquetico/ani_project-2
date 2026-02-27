@@ -595,7 +595,7 @@ const getAdminBackendErrorMessage = (error, fallbackMessage) => {
   const isNetworkError = /failed to fetch|networkerror|load failed/i.test(rawMessage)
 
   if (status === 404 || status === 0 || isGenericRequestError || isNetworkError) {
-    return 'El panel Admin necesita un backend API activo. En Neocities (hosting estático) debes conectar una API externa para poder iniciar sesión.'
+    return 'El panel Admin necesita un backend API activo. Verifica que el servicio API en Render esté desplegado y accesible para iniciar sesión.'
   }
 
   return rawMessage || fallbackMessage
