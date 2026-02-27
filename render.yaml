@@ -40,6 +40,8 @@ services:
         value: python3
       - key: PRODUCT_IMAGES_DIR
         value: public/images
+      - key: PRODUCT_IMAGES_PUBLIC_BASE_URL
+        value: https://artesaniasani-api.onrender.com
       - key: IMAGE_TARGET_SIZE
         value: "300"
       - key: IMAGE_MAX_SIZE
