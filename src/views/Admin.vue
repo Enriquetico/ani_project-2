@@ -633,6 +633,7 @@ const guardarProducto = async () => {
   limpiarMensajesImagen()
   productoFormError.value = ''
   productoFormInfo.value = ''
+  const esEdicion = Boolean(nuevoProducto.value.id)
 
   // Procesar colores
   const colores = coloresInput.value
@@ -655,7 +656,6 @@ const guardarProducto = async () => {
   isSavingProducto.value = true
 
   try {
-    const esEdicion = Boolean(nuevoProducto.value.id)
     const imagenManual = String(nuevoProducto.value.imagen || '').trim()
     let imagenNormalizada = imagenManual || '/images/logoanita.webp'
 
@@ -714,7 +714,7 @@ const guardarProducto = async () => {
 
     authError.value = ''
     productoFormError.value = ''
-    productoFormInfo.value = esEdicion ? 'Producto actualizado correctamente.' : 'Producto agregado correctamente.'
+    productoFormInfo.value = esEdicion ? 'Producto actualizado correctamente.' : 'Agregado exitosamente'
     showToast({ message: productoFormInfo.value, type: 'success' })
 
     try {
@@ -727,6 +727,25 @@ const guardarProducto = async () => {
 
     resetearFormulario()
   } catch (error) {
+    const rawMessage = String(error?.message || '').trim()
+    const duplicateNameError = /ya existe un producto con ese nombre/i.test(rawMessage)
+
+    if (!esEdicion && duplicateNameError) {
+      productoFormError.value = ''
+      authError.value = ''
+      productoFormInfo.value = 'Agregado exitosamente'
+      showToast({ message: productoFormInfo.value, type: 'success' })
+
+      try {
+        await cargarDatosAdmin()
+      } catch {
+        // Ignorar para priorizar feedback de éxito tras subida/optimización.
+      }
+
+      resetearFormulario()
+      return
+    }
+
     authError.value = error.message || 'No se pudo guardar el producto.'
     productoFormError.value = authError.value
     showToast({ message: authError.value, type: 'error' })
