@@ -375,11 +375,32 @@ app.post('/api/admin/optimize-image', requireAuth, upload.single('image'), async
           productosBase = eval(productosMatch[1])
         }
 
+        // Normalizar nombre para comparación (sin espacios, tildes, mayúsculas)
+        const normalize = (str) => str
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/\s+/g, '')
+          .trim()
+
+        const nombreNuevo = normalize(String(req.body.productName || req.body.nombre || req.file.originalname))
+        const productoDuplicado = productosBase.find(p => normalize(String(p.nombre)) === nombreNuevo)
+        if (productoDuplicado) {
+          // Producto ya existe, no agregar y mostrar error con el nombre exacto existente
+          res.status(409).json({ error: `El producto con el nombre "${productoDuplicado.nombre}" ya existe en la galería.` })
+          return
+        }
+
         // Crear nuevo producto
+        // Normalizar categoría para velas
+        let categoria = req.body.categoria || ''
+        if (categoria && categoria.trim().toLowerCase() === 'velas') {
+          categoria = 'Velas'
+        }
         const nuevoProducto = {
           id: productosBase.length ? Math.max(...productosBase.map(p => p.id || 0)) + 1 : 1,
           nombre: req.body.productName || req.body.nombre || req.file.originalname,
-          categoria: req.body.categoria || '',
+          categoria,
           tipo: req.body.tipo || '',
           descripcion: req.body.descripcion || '',
           imagen: imagePath,

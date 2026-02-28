@@ -64,1180 +64,1376 @@ export const empresaInfo = {
 // Nota: Las imágenes deben están en public/images/
 export const productos = [
   {
-    id: 1,
-    nombre: 'Tres Búhos Grises',
-    categoria: 'Aves',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza cerámica pintada a mano inspirada en tres búhos grises.',
-    imagen: '/images/tres-buhos-grices.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contáctese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 2,
-    nombre: 'Auto de Juguete Azul',
-    categoria: 'Vehículos',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Auto de juguete azul sobre mesa de madera.',
-    imagen: '/images/auto-de-juguete-azul.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 3,
-    nombre: 'Tazón de Frutas y un Globo con Forma de Corazón',
-    categoria: 'Aves',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tazon de frutas y un globo con forma de corazon.',
-    imagen: '/images/tazon-de-frutas-y-un-globo-con-forma-de-corazon.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 4,
-    nombre: 'Pastel con un Búho Encima',
-    categoria: 'Aves',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Pastel con un buho encima.',
-    imagen: '/images/pastel-con-un-buho-encima.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 5,
-    nombre: 'Gato Acurrucado sobre Almohadón Rojo',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Gato acurrucado sobre almohadon rojo.',
-    imagen: '/images/gato-acurrucado-sobre-almohadon-rojo.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 6,
-    nombre: 'Muestra de Perros',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Estatua de gato con foto de un perro.',
-    imagen: '/images/muestra-de-perros.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 7,
-    nombre: 'Muestra de Pintura Perro',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Coleccion de perros hechos de papel higienico.',
-    imagen: '/images/muestrra-de-pintura-perro.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 8,
-    nombre: 'Figura de Perro Hecha de Arcilla',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Figura de perro hecha de arcilla.',
-    imagen: '/images/figura-de-perro-hecha-de-arcilla.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 9,
-    nombre: 'Perro Sentado en el Pasto Junto a una Foto',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Perro sentado en el pasto junto a una foto.',
-    imagen: '/images/perro-sentado-en-el-pasto-junto-a-una-foto.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 10,
-    nombre: 'Estatua de Perro con Su Foto',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Estatua de perro con su foto.',
-    imagen: '/images/estatua-de-perro-con-su-foto.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 11,
-    nombre: 'Figura con el Niño Jesús y una Mujer',
-    categoria: 'Religioso',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Figura con el nino jesus y una mujer.',
-    imagen: '/images/figura-con-el-nino-jesus-y-una-mujer.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 12,
-    nombre: 'Figura de Gato Gris con Collar Rojo y Lazo Dorado',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Figura de gato gris con collar rojo y lazo dorado.',
-    imagen: '/images/figura-de-gato-gris-con-collar-rojo-y-lazo-dorado.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 13,
-    nombre: 'Figura de Caracol Verde y Rojo con Concha Roja',
-    categoria: 'Insectos',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Figura de caracol verde y rojo con concha roja.',
-    imagen: '/images/figura-de-caracol-verde-y-rojo-con-concha-roja.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 14,
-    nombre: 'Camion Verde con un Cactus Atrás',
-    categoria: 'Vehículos',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Camion verde con un cactus atras.',
-    imagen: '/images/camion-verde-con-un-cactus-atras.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 15,
-    nombre: 'Grupo de Niñas Sentadas sobre una Mesa',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Grupo de ninas sentadas sobre una mesa.',
-    imagen: '/images/grupo-de-ninas-sentadas-sobre-una-mesa.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 16,
-    nombre: 'Super Mario Grupo',
-    categoria: 'Anime',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Grupo de figuras de nintendo sobre un borde.',
-    imagen: '/images/super-mario-grupo.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 17,
-    nombre: 'Pintura de la Virgen y Jesús con una Paloma',
-    categoria: 'Religioso',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Pintura de la virgen y jesus con una paloma.',
-    imagen: '/images/pintura-de-la-virgen-y-jesus-con-una-paloma.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 18,
-    nombre: 'Masetero con Conejo Cafe',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Conejo con una canasta de plantas.',
-    imagen: '/images/masetero-con-conejo-cafe.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 19,
-    nombre: 'Pajarito con un Caramelo en el Pico',
-    categoria: 'Aves',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Pajarito con un caramelo en el pico.',
-    imagen: '/images/pajarito-con-un-caramelo-en-el-pico.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 20,
-    nombre: 'Pequeña Figura de Rana Azul y Blanca',
-    categoria: 'Naturaleza',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Pequena figura de rana azul y blanca.',
-    imagen: '/images/pequena-figura-de-rana-azul-y-blanca.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 21,
-    nombre: 'Juguete Pequeño Azul y Amarillo sobre una Mesa',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Juguete pequeno azul y amarillo sobre una mesa.',
-    imagen: '/images/juguete-pequeno-azul-y-amarillo-sobre-una-mesa.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 22,
-    nombre: 'Figura Pequeña sobre una Mesa',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Figura pequena sobre una mesa.',
-    imagen: '/images/figura-pequena-sobre-una-mesa.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 23,
-    nombre: 'Virgen Negra en Concha',
-    categoria: 'Aves',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Estatua pequena de buda verde en un cuenco gris pequeno.',
-    imagen: '/images/virgen-negra-en-concha.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 24,
-    nombre: 'Figura Pequeña de Panda sobre una Mesa',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Figura pequena de panda sobre una mesa.',
-    imagen: '/images/figura-pequena-de-panda-sobre-una-mesa.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 25,
-    nombre: 'Maceta Pequeña con una Gallina Encima',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Maceta pequena con una gallina encima.',
-    imagen: '/images/maceta-pequena-con-una-gallina-encima.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 26,
-    nombre: 'Masetero con Conejo Gris',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Conejo pequeno sobre una mesa.',
-    imagen: '/images/masetero-con-conejo-gris.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 27,
-    nombre: 'Juguete Pequeño Azul y Amarillo sobre una Mesa',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Juguete pequeno azul y amarillo sobre una mesa.',
-    imagen: '/images/juguete-pequeno-azul-y-amarillo-sobre-una-mesa.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 28,
-    nombre: 'Perro Pequeño Blanco en el Pasto',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Perro pequeno blanco en el pasto.',
-    imagen: '/images/perro-pequeno-blanco-en-el-pasto.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 29,
-    nombre: 'Virgen Negra',
-    categoria: 'Religioso',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Estatua de buda con una flor.',
-    imagen: '/images/virgen-negra.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 30,
-    nombre: 'Macetero Conejo Cafe 2',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Estatua de conejo sosteniendo una planta.',
-    imagen: '/images/macetero-conejo-cafe-2.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 31,
-    nombre: 'Virgen Maria con Niño Jesús',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Estatua de mujer sosteniendo un bebe.',
-    imagen: '/images/virgen-maria-con-nino-jesus.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 32,
-    nombre: 'Elefante y Mujer',
-    categoria: 'Naturaleza',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Estatua de elefante y mujer sobre una roca.',
-    imagen: '/images/elefante-y-mujer.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 33,
-    nombre: 'Sagrada Familia en Burro',
-    categoria: 'Religioso',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Estatua de la virgen y jesus en un burro.',
-    imagen: '/images/sagrada-familia-en-burro.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 34,
-    nombre: 'Estatua de la Virgen y Jesús',
-    categoria: 'Religioso',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Estatua de la virgen y jesus.',
-    imagen: '/images/estatua-de-la-virgen-y-jesus.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 35,
-    nombre: 'Cruz de Madera con Escena de Natividad',
-    categoria: 'Religioso',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Cruz de madera con escena de natividad.',
-    imagen: '/images/cruz-de-madera-con-escena-de-natividad.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 36,
-    nombre: 'Bandeja de Madera con Frutas',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Bandeja de madera con frutas y verduras.',
-    imagen: '/images/bandeja-de-madera-con-frutas.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 37,
-    nombre: 'Mama Elefanre Dos Pequeños',
-    categoria: 'Naturaleza',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Estatua de elefante con las palabras artisans.',
-    imagen: '/images/mama-elefanre-dos-pequenos.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 38,
-    nombre: 'Tres Cactus',
-    categoria: 'Naturaleza',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Cactus1.',
-    imagen: '/images/tres-cactus.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 39,
-    nombre: 'Figuras de Princesas Disney',
-    categoria: 'Anime',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Figuras de princesas disney.',
-    imagen: '/images/figuras-de-princesas-disney.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 40,
-    nombre: 'Hongos1',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Hongos1.',
-    imagen: '/images/hongos1.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 41,
-    nombre: 'Mapriposas1',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Mapriposas1.',
-    imagen: '/images/mapriposas1.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 42,
-    nombre: 'Mariposas1',
-    categoria: 'Insectos',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Mariposas1.',
-    imagen: '/images/mariposas1.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 43,
-    nombre: 'Navida6',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navida6.',
-    imagen: '/images/navida6.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 44,
-    nombre: 'Navidad1',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad1.',
-    imagen: '/images/navidad1.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 45,
-    nombre: 'Navidad10',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad10.',
-    imagen: '/images/navidad10.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 46,
-    nombre: 'Navidad11',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad11.',
-    imagen: '/images/navidad11.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 47,
-    nombre: 'Navidad12',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad12.',
-    imagen: '/images/navidad12.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 48,
-    nombre: 'Navidad13',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad13.',
-    imagen: '/images/navidad13.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 49,
-    nombre: 'Navidad14',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad14.',
-    imagen: '/images/navidad14.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 50,
-    nombre: 'Navidad15',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad15.',
-    imagen: '/images/navidad15.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 51,
-    nombre: 'Navidad16',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad16.',
-    imagen: '/images/navidad16.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 52,
-    nombre: 'Navidad17',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad17.',
-    imagen: '/images/navidad17.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 53,
-    nombre: 'Navidad18',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad18.',
-    imagen: '/images/navidad18.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 54,
-    nombre: 'Navidad2',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad2.',
-    imagen: '/images/navidad2.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 55,
-    nombre: 'Navidad20',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad20.',
-    imagen: '/images/navidad20.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 56,
-    nombre: 'Navidad21',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad21.',
-    imagen: '/images/navidad21.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 57,
-    nombre: 'Navidad3',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad3.',
-    imagen: '/images/navidad3.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 58,
-    nombre: 'Navidad4',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad4.',
-    imagen: '/images/navidad4.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 59,
-    nombre: 'Navidad5',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad5.',
-    imagen: '/images/navidad5.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 60,
-    nombre: 'Navidad7',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad7.',
-    imagen: '/images/navidad7.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 61,
-    nombre: 'Navidad8',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad8.',
-    imagen: '/images/navidad8.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 62,
-    nombre: 'Navidad9',
-    categoria: 'Navidad',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Navidad9.',
-    imagen: '/images/navidad9.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 63,
-    nombre: 'Pintando Vasija',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en PintandoVasija.',
-    imagen: '/images/pintandovasija.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 64,
-    nombre: 'Tres Manzanas con Crema y un Corazón Encima',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tres manzanas con crema y un corazon encima.',
-    imagen: '/images/tres-manzanas-con-crema-y-un-corazon-encima.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 65,
-    nombre: 'Tres Estatuas de Bronce de Mujeres sobre Mesa de Madera',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tres estatuas de bronce de mujeres sobre mesa de madera.',
-    imagen: '/images/tres-estatuas-de-bronce-de-mujeres-sobre-mesa-de-madera.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 66,
-    nombre: 'Tres Mariposas sobre una Mesa',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tres mariposas sobre una mesa.',
-    imagen: '/images/tres-mariposas-sobre-una-mesa.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 67,
-    nombre: 'Tres Mariposas Coloridas sobre una Mesa',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tres mariposas coloridas sobre una mesa.',
-    imagen: '/images/tres-mariposas-coloridas-sobre-una-mesa.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 68,
-    nombre: 'Tres Macetas de Cactus Diferentes con Colores Distintos',
-    categoria: 'Naturaleza',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tres macetas de cactus diferentes con colores distintos.',
-    imagen: '/images/tres-macetas-de-cactus-diferentes-con-colores-distintos.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 69,
-    nombre: 'Familia de Elefantes',
-    categoria: 'Naturaleza',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Familia de elefantes.',
-    imagen: '/images/familia-de-elefantes.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 70,
-    nombre: 'Tres Figuras de Chefs con una Bandeja de Comida',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tres figuras de chefs con una bandeja de comida.',
-    imagen: '/images/tres-figuras-de-chefs-con-una-bandeja-de-comida.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 71,
-    nombre: 'Tres Figuras de Niñas con Flores en la Cabeza',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tres figuras de ninas con flores en la cabeza.',
-    imagen: '/images/tres-figuras-de-ninas-con-flores-en-la-cabeza.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 72,
-    nombre: 'Tres Angelitos sobre una Tabla de Madera',
-    categoria: 'Aves',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tres angelitos sobre una tabla de madera.',
-    imagen: '/images/tres-angelitos-sobre-una-tabla-de-madera.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 73,
-    nombre: 'Mama Búho Dos Pichones',
-    categoria: 'Aves',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Mama buho dos pichones.',
-    imagen: '/images/mama-buho-dos-pichones.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 74,
-    nombre: 'Tres Pokemon',
-    categoria: 'Anime',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tres pokemon.',
-    imagen: '/images/tres-pokemon.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 75,
-    nombre: 'Tres Búhos Blanco y Dorado',
-    categoria: 'Aves',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tres buhos blanco y dorado.',
-    imagen: '/images/tres-buhos-blanco-y-dorado.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 76,
-    nombre: 'Tres Tortugas con Flores en la Cabeza',
-    categoria: 'Naturaleza',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tres tortugas con flores en la cabeza.',
-    imagen: '/images/tres-tortugas-con-flores-en-la-cabeza.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 77,
-    nombre: 'Tres Tortugas Verdes',
-    categoria: 'Naturaleza',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tortugas1.',
-    imagen: '/images/tres-tortugas-verdes.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 78,
-    nombre: 'Dos Gatos Beige y Negro',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos gatos beige y negro.',
-    imagen: '/images/dos-gatos-beige-y-negro.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 79,
-    nombre: 'Tucanes y Lapas',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos loros coloridos sobre un muro de ladrillo.',
-    imagen: '/images/tucanes-y-lapas.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 80,
-    nombre: 'Dos Recipientes con Animales',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos figuras sobre una mesa.',
-    imagen: '/images/dos-recipientes-con-animales.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 81,
-    nombre: 'Dos Figuras sobre un Estante',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos figuras sobre un estante.',
-    imagen: '/images/dos-figuras-sobre-un-estante.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 82,
-    nombre: 'Dos Ángeles Celeste y Amarillo',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos figuras sobre una mesa 2.',
-    imagen: '/images/dos-angeles-celeste-y-amarillo.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 83,
-    nombre: 'Dos Ranas Sentadas',
-    categoria: 'Naturaleza',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos ranas sentadas en una tabla.',
-    imagen: '/images/dos-ranas-sentadas.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 84,
-    nombre: 'Catrina en Blanco y Decorada',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos cuadros de una mujer con cabello azul y una mujer con rosas rojas.',
-    imagen: '/images/catrina-en-blanco-y-decorada.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 85,
-    nombre: 'Dos Bustos de Mujer Negras de Cabello Colorido',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos esculturas de mujeres con flores en la cabeza.',
-    imagen: '/images/dos-bustos-de-mujer-negras-de-cabello-colorido.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 86,
-    nombre: 'Tres Búhos Grises',
-    categoria: 'Aves',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Tres buhos grices.',
-    imagen: '/images/tres-buhos-grices.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 87,
-    nombre: 'Dos Carros Pequeños Verde y Rojo',
-    categoria: 'Vehículos',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos carros pequenos sobre una mesa.',
-    imagen: '/images/dos-carros-pequenos-verde-y-rojo.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 88,
-    nombre: 'Cuilos con Carga',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos animales pequenos de arcilla sobre fondo verde.',
-    imagen: '/images/cuilos-con-carga.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 89,
-    nombre: 'Dos Ángeles Celeste y Amarillo',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos figuras pequenas sobre un soporte de madera.',
-    imagen: '/images/dos-angeles-celeste-y-amarillo.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 90,
-    nombre: 'Dos Macetas Pequeñas',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos macetas pequenas sobre una mesa.',
-    imagen: '/images/dos-macetas-pequenas.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 91,
-    nombre: 'Dos Peluches Pequeños Apilados',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos peluches pequenos apilados.',
-    imagen: '/images/dos-peluches-pequenos-apilados.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 92,
-    nombre: 'Dos Pick Up Antiguas',
-    categoria: 'Vehículos',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Dos pick up antiguas.',
-    imagen: '/images/dos-pick-up-antiguas.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 93,
-    nombre: 'Vasitos',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Vasitos.',
-    imagen: '/images/vasitos.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 94,
-    nombre: 'Perezoso Bebé',
-    categoria: 'Animales',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en un perezoso bebé.',
-    imagen: '/images/peresoso-bebe.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 95,
-    nombre: 'Tres Búhos no Escucho no Veo no Hablo',
-    categoria: 'Aves',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en tres búhos: no escucho, no veo, no hablo.',
-    imagen: '/images/tres-buhos-no-escucho-no-veo-no-hablo.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 96,
-    nombre: 'Foto Anita',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Foto Anita.',
-    imagen: '/images/fotoanita.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 97,
-    nombre: 'La Bella y la Bestia Caricatura',
-    categoria: 'Cartoon',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en La Bella y la Bestia (caricatura).',
-    imagen: '/images/la-bella-y-la-bestia-caricatura.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
-  },
-  {
-    id: 98,
-    nombre: 'Logo Anita',
-    categoria: 'Figuras Personajes',
-    tipo: 'Pieza Cerámica Artesanal',
-    descripcion: 'Pieza ceramica pintada a mano inspirada en Logo Anita.',
-    imagen: '/images/logoanita.webp',
-    colores: ["Multicolor"],
-    tamaño: 'Variado',
-    precioAproximado: 'Contactese para conocer precio',
-    notas: 'Hecho a mano - Único'
+    "id": 1,
+    "nombre": "Tres Búhos Grises",
+    "categoria": "Aves",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza cerámica pintada a mano inspirada en tres búhos grises.",
+    "imagen": "/images/tres-buhos-grices.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contáctese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 2,
+    "nombre": "Auto de Juguete Azul",
+    "categoria": "Vehículos",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Auto de juguete azul sobre mesa de madera.",
+    "imagen": "/images/auto-de-juguete-azul.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 3,
+    "nombre": "Tazón de Frutas y un Globo con Forma de Corazón",
+    "categoria": "Aves",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tazon de frutas y un globo con forma de corazon.",
+    "imagen": "/images/tazon-de-frutas-y-un-globo-con-forma-de-corazon.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 4,
+    "nombre": "Pastel con un Búho Encima",
+    "categoria": "Aves",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Pastel con un buho encima.",
+    "imagen": "/images/pastel-con-un-buho-encima.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 5,
+    "nombre": "Gato Acurrucado sobre Almohadón Rojo",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Gato acurrucado sobre almohadon rojo.",
+    "imagen": "/images/gato-acurrucado-sobre-almohadon-rojo.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 6,
+    "nombre": "Muestra de Perros",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Estatua de gato con foto de un perro.",
+    "imagen": "/images/muestra-de-perros.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 7,
+    "nombre": "Muestra de Pintura Perro",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Coleccion de perros hechos de papel higienico.",
+    "imagen": "/images/muestrra-de-pintura-perro.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 8,
+    "nombre": "Figura de Perro Hecha de Arcilla",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Figura de perro hecha de arcilla.",
+    "imagen": "/images/figura-de-perro-hecha-de-arcilla.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 9,
+    "nombre": "Perro Sentado en el Pasto Junto a una Foto",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Perro sentado en el pasto junto a una foto.",
+    "imagen": "/images/perro-sentado-en-el-pasto-junto-a-una-foto.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 10,
+    "nombre": "Estatua de Perro con Su Foto",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Estatua de perro con su foto.",
+    "imagen": "/images/estatua-de-perro-con-su-foto.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 11,
+    "nombre": "Figura con el Niño Jesús y una Mujer",
+    "categoria": "Religioso",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Figura con el nino jesus y una mujer.",
+    "imagen": "/images/figura-con-el-nino-jesus-y-una-mujer.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 12,
+    "nombre": "Figura de Gato Gris con Collar Rojo y Lazo Dorado",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Figura de gato gris con collar rojo y lazo dorado.",
+    "imagen": "/images/figura-de-gato-gris-con-collar-rojo-y-lazo-dorado.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 13,
+    "nombre": "Figura de Caracol Verde y Rojo con Concha Roja",
+    "categoria": "Insectos",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Figura de caracol verde y rojo con concha roja.",
+    "imagen": "/images/figura-de-caracol-verde-y-rojo-con-concha-roja.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 14,
+    "nombre": "Camion Verde con un Cactus Atrás",
+    "categoria": "Vehículos",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Camion verde con un cactus atras.",
+    "imagen": "/images/camion-verde-con-un-cactus-atras.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 15,
+    "nombre": "Grupo de Niñas Sentadas sobre una Mesa",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Grupo de ninas sentadas sobre una mesa.",
+    "imagen": "/images/grupo-de-ninas-sentadas-sobre-una-mesa.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 16,
+    "nombre": "Super Mario Grupo",
+    "categoria": "Anime",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Grupo de figuras de nintendo sobre un borde.",
+    "imagen": "/images/super-mario-grupo.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 17,
+    "nombre": "Pintura de la Virgen y Jesús con una Paloma",
+    "categoria": "Religioso",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Pintura de la virgen y jesus con una paloma.",
+    "imagen": "/images/pintura-de-la-virgen-y-jesus-con-una-paloma.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 18,
+    "nombre": "Masetero con Conejo Cafe",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Conejo con una canasta de plantas.",
+    "imagen": "/images/masetero-con-conejo-cafe.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 19,
+    "nombre": "Pajarito con un Caramelo en el Pico",
+    "categoria": "Aves",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Pajarito con un caramelo en el pico.",
+    "imagen": "/images/pajarito-con-un-caramelo-en-el-pico.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 20,
+    "nombre": "Pequeña Figura de Rana Azul y Blanca",
+    "categoria": "Naturaleza",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Pequena figura de rana azul y blanca.",
+    "imagen": "/images/pequena-figura-de-rana-azul-y-blanca.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 21,
+    "nombre": "Juguete Pequeño Azul y Amarillo sobre una Mesa",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Juguete pequeno azul y amarillo sobre una mesa.",
+    "imagen": "/images/juguete-pequeno-azul-y-amarillo-sobre-una-mesa.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 22,
+    "nombre": "Figura Pequeña sobre una Mesa",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Figura pequena sobre una mesa.",
+    "imagen": "/images/figura-pequena-sobre-una-mesa.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 23,
+    "nombre": "Virgen Negra en Concha",
+    "categoria": "Aves",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Estatua pequena de buda verde en un cuenco gris pequeno.",
+    "imagen": "/images/virgen-negra-en-concha.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 24,
+    "nombre": "Figura Pequeña de Panda sobre una Mesa",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Figura pequena de panda sobre una mesa.",
+    "imagen": "/images/figura-pequena-de-panda-sobre-una-mesa.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 25,
+    "nombre": "Maceta Pequeña con una Gallina Encima",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Maceta pequena con una gallina encima.",
+    "imagen": "/images/maceta-pequena-con-una-gallina-encima.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 26,
+    "nombre": "Masetero con Conejo Gris",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Conejo pequeno sobre una mesa.",
+    "imagen": "/images/masetero-con-conejo-gris.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 27,
+    "nombre": "Juguete Pequeño Azul y Amarillo sobre una Mesa",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Juguete pequeno azul y amarillo sobre una mesa.",
+    "imagen": "/images/juguete-pequeno-azul-y-amarillo-sobre-una-mesa.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 28,
+    "nombre": "Perro Pequeño Blanco en el Pasto",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Perro pequeno blanco en el pasto.",
+    "imagen": "/images/perro-pequeno-blanco-en-el-pasto.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 29,
+    "nombre": "Virgen Negra",
+    "categoria": "Religioso",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Estatua de buda con una flor.",
+    "imagen": "/images/virgen-negra.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 30,
+    "nombre": "Macetero Conejo Cafe 2",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Estatua de conejo sosteniendo una planta.",
+    "imagen": "/images/macetero-conejo-cafe-2.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 31,
+    "nombre": "Virgen Maria con Niño Jesús",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Estatua de mujer sosteniendo un bebe.",
+    "imagen": "/images/virgen-maria-con-nino-jesus.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 32,
+    "nombre": "Elefante y Mujer",
+    "categoria": "Naturaleza",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Estatua de elefante y mujer sobre una roca.",
+    "imagen": "/images/elefante-y-mujer.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 33,
+    "nombre": "Sagrada Familia en Burro",
+    "categoria": "Religioso",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Estatua de la virgen y jesus en un burro.",
+    "imagen": "/images/sagrada-familia-en-burro.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 34,
+    "nombre": "Estatua de la Virgen y Jesús",
+    "categoria": "Religioso",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Estatua de la virgen y jesus.",
+    "imagen": "/images/estatua-de-la-virgen-y-jesus.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 35,
+    "nombre": "Cruz de Madera con Escena de Natividad",
+    "categoria": "Religioso",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Cruz de madera con escena de natividad.",
+    "imagen": "/images/cruz-de-madera-con-escena-de-natividad.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 36,
+    "nombre": "Bandeja de Madera con Frutas",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Bandeja de madera con frutas y verduras.",
+    "imagen": "/images/bandeja-de-madera-con-frutas.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 37,
+    "nombre": "Mama Elefanre Dos Pequeños",
+    "categoria": "Naturaleza",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Estatua de elefante con las palabras artisans.",
+    "imagen": "/images/mama-elefanre-dos-pequenos.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 38,
+    "nombre": "Tres Cactus",
+    "categoria": "Naturaleza",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Cactus1.",
+    "imagen": "/images/tres-cactus.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 39,
+    "nombre": "Figuras de Princesas Disney",
+    "categoria": "Anime",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Figuras de princesas disney.",
+    "imagen": "/images/figuras-de-princesas-disney.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 40,
+    "nombre": "Hongos1",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Hongos1.",
+    "imagen": "/images/hongos1.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 41,
+    "nombre": "Mapriposas1",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Mapriposas1.",
+    "imagen": "/images/mapriposas1.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 42,
+    "nombre": "Mariposas1",
+    "categoria": "Insectos",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Mariposas1.",
+    "imagen": "/images/mariposas1.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 43,
+    "nombre": "Navida6",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navida6.",
+    "imagen": "/images/navida6.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 44,
+    "nombre": "Navidad1",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad1.",
+    "imagen": "/images/navidad1.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 45,
+    "nombre": "Navidad10",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad10.",
+    "imagen": "/images/navidad10.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 46,
+    "nombre": "Navidad11",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad11.",
+    "imagen": "/images/navidad11.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 47,
+    "nombre": "Navidad12",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad12.",
+    "imagen": "/images/navidad12.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 48,
+    "nombre": "Navidad13",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad13.",
+    "imagen": "/images/navidad13.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 49,
+    "nombre": "Navidad14",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad14.",
+    "imagen": "/images/navidad14.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 50,
+    "nombre": "Navidad15",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad15.",
+    "imagen": "/images/navidad15.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 51,
+    "nombre": "Navidad16",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad16.",
+    "imagen": "/images/navidad16.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 52,
+    "nombre": "Navidad17",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad17.",
+    "imagen": "/images/navidad17.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 53,
+    "nombre": "Navidad18",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad18.",
+    "imagen": "/images/navidad18.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 54,
+    "nombre": "Navidad2",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad2.",
+    "imagen": "/images/navidad2.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 55,
+    "nombre": "Navidad20",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad20.",
+    "imagen": "/images/navidad20.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 56,
+    "nombre": "Navidad21",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad21.",
+    "imagen": "/images/navidad21.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 57,
+    "nombre": "Navidad3",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad3.",
+    "imagen": "/images/navidad3.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 58,
+    "nombre": "Navidad4",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad4.",
+    "imagen": "/images/navidad4.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 59,
+    "nombre": "Navidad5",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad5.",
+    "imagen": "/images/navidad5.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 60,
+    "nombre": "Navidad7",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad7.",
+    "imagen": "/images/navidad7.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 61,
+    "nombre": "Navidad8",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad8.",
+    "imagen": "/images/navidad8.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 62,
+    "nombre": "Navidad9",
+    "categoria": "Navidad",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Navidad9.",
+    "imagen": "/images/navidad9.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 63,
+    "nombre": "Pintando Vasija",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en PintandoVasija.",
+    "imagen": "/images/pintandovasija.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 64,
+    "nombre": "Tres Manzanas con Crema y un Corazón Encima",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tres manzanas con crema y un corazon encima.",
+    "imagen": "/images/tres-manzanas-con-crema-y-un-corazon-encima.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 65,
+    "nombre": "Tres Estatuas de Bronce de Mujeres sobre Mesa de Madera",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tres estatuas de bronce de mujeres sobre mesa de madera.",
+    "imagen": "/images/tres-estatuas-de-bronce-de-mujeres-sobre-mesa-de-madera.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 66,
+    "nombre": "Tres Mariposas sobre una Mesa",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tres mariposas sobre una mesa.",
+    "imagen": "/images/tres-mariposas-sobre-una-mesa.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 67,
+    "nombre": "Tres Mariposas Coloridas sobre una Mesa",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tres mariposas coloridas sobre una mesa.",
+    "imagen": "/images/tres-mariposas-coloridas-sobre-una-mesa.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 68,
+    "nombre": "Tres Macetas de Cactus Diferentes con Colores Distintos",
+    "categoria": "Naturaleza",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tres macetas de cactus diferentes con colores distintos.",
+    "imagen": "/images/tres-macetas-de-cactus-diferentes-con-colores-distintos.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 69,
+    "nombre": "Familia de Elefantes",
+    "categoria": "Naturaleza",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Familia de elefantes.",
+    "imagen": "/images/familia-de-elefantes.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 70,
+    "nombre": "Tres Figuras de Chefs con una Bandeja de Comida",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tres figuras de chefs con una bandeja de comida.",
+    "imagen": "/images/tres-figuras-de-chefs-con-una-bandeja-de-comida.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 71,
+    "nombre": "Tres Figuras de Niñas con Flores en la Cabeza",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tres figuras de ninas con flores en la cabeza.",
+    "imagen": "/images/tres-figuras-de-ninas-con-flores-en-la-cabeza.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 72,
+    "nombre": "Tres Angelitos sobre una Tabla de Madera",
+    "categoria": "Aves",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tres angelitos sobre una tabla de madera.",
+    "imagen": "/images/tres-angelitos-sobre-una-tabla-de-madera.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 73,
+    "nombre": "Mama Búho Dos Pichones",
+    "categoria": "Aves",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Mama buho dos pichones.",
+    "imagen": "/images/mama-buho-dos-pichones.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 74,
+    "nombre": "Tres Pokemon",
+    "categoria": "Anime",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tres pokemon.",
+    "imagen": "/images/tres-pokemon.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 75,
+    "nombre": "Tres Búhos Blanco y Dorado",
+    "categoria": "Aves",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tres buhos blanco y dorado.",
+    "imagen": "/images/tres-buhos-blanco-y-dorado.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 76,
+    "nombre": "Tres Tortugas con Flores en la Cabeza",
+    "categoria": "Naturaleza",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tres tortugas con flores en la cabeza.",
+    "imagen": "/images/tres-tortugas-con-flores-en-la-cabeza.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 77,
+    "nombre": "Tres Tortugas Verdes",
+    "categoria": "Naturaleza",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tortugas1.",
+    "imagen": "/images/tres-tortugas-verdes.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 78,
+    "nombre": "Dos Gatos Beige y Negro",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos gatos beige y negro.",
+    "imagen": "/images/dos-gatos-beige-y-negro.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 79,
+    "nombre": "Tucanes y Lapas",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos loros coloridos sobre un muro de ladrillo.",
+    "imagen": "/images/tucanes-y-lapas.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 80,
+    "nombre": "Dos Recipientes con Animales",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos figuras sobre una mesa.",
+    "imagen": "/images/dos-recipientes-con-animales.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 81,
+    "nombre": "Dos Figuras sobre un Estante",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos figuras sobre un estante.",
+    "imagen": "/images/dos-figuras-sobre-un-estante.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 82,
+    "nombre": "Dos Ángeles Celeste y Amarillo",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos figuras sobre una mesa 2.",
+    "imagen": "/images/dos-angeles-celeste-y-amarillo.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 83,
+    "nombre": "Dos Ranas Sentadas",
+    "categoria": "Naturaleza",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos ranas sentadas en una tabla.",
+    "imagen": "/images/dos-ranas-sentadas.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 84,
+    "nombre": "Catrina en Blanco y Decorada",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos cuadros de una mujer con cabello azul y una mujer con rosas rojas.",
+    "imagen": "/images/catrina-en-blanco-y-decorada.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 85,
+    "nombre": "Dos Bustos de Mujer Negras de Cabello Colorido",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos esculturas de mujeres con flores en la cabeza.",
+    "imagen": "/images/dos-bustos-de-mujer-negras-de-cabello-colorido.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 86,
+    "nombre": "Tres Búhos Grises",
+    "categoria": "Aves",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Tres buhos grices.",
+    "imagen": "/images/tres-buhos-grices.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 87,
+    "nombre": "Dos Carros Pequeños Verde y Rojo",
+    "categoria": "Vehículos",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos carros pequenos sobre una mesa.",
+    "imagen": "/images/dos-carros-pequenos-verde-y-rojo.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 88,
+    "nombre": "Cuilos con Carga",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos animales pequenos de arcilla sobre fondo verde.",
+    "imagen": "/images/cuilos-con-carga.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 89,
+    "nombre": "Dos Ángeles Celeste y Amarillo",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos figuras pequenas sobre un soporte de madera.",
+    "imagen": "/images/dos-angeles-celeste-y-amarillo.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 90,
+    "nombre": "Dos Macetas Pequeñas",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos macetas pequenas sobre una mesa.",
+    "imagen": "/images/dos-macetas-pequenas.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 91,
+    "nombre": "Dos Peluches Pequeños Apilados",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos peluches pequenos apilados.",
+    "imagen": "/images/dos-peluches-pequenos-apilados.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 92,
+    "nombre": "Dos Pick Up Antiguas",
+    "categoria": "Vehículos",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Dos pick up antiguas.",
+    "imagen": "/images/dos-pick-up-antiguas.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 93,
+    "nombre": "Vasitos",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Vasitos.",
+    "imagen": "/images/vasitos.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 94,
+    "nombre": "Perezoso Bebé",
+    "categoria": "Animales",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en un perezoso bebé.",
+    "imagen": "/images/peresoso-bebe.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 95,
+    "nombre": "Tres Búhos no Escucho no Veo no Hablo",
+    "categoria": "Aves",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en tres búhos: no escucho, no veo, no hablo.",
+    "imagen": "/images/tres-buhos-no-escucho-no-veo-no-hablo.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 96,
+    "nombre": "Foto Anita",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Foto Anita.",
+    "imagen": "/images/fotoanita.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 97,
+    "nombre": "La Bella y la Bestia Caricatura",
+    "categoria": "Cartoon",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en La Bella y la Bestia (caricatura).",
+    "imagen": "/images/la-bella-y-la-bestia-caricatura.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 98,
+    "nombre": "Logo Anita",
+    "categoria": "Figuras Personajes",
+    "tipo": "Pieza Cerámica Artesanal",
+    "descripcion": "Pieza ceramica pintada a mano inspirada en Logo Anita.",
+    "imagen": "/images/logoanita.webp",
+    "colores": [
+      "Multicolor"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactese para conocer precio",
+    "notas": "Hecho a mano - Único"
   }
 ];
 

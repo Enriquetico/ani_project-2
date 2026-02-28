@@ -14,7 +14,8 @@
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "inject:meta": "node scripts/inject-dist-metadata.mjs",
     "prepare:static": "node scripts/prepare-static.mjs",
-    "build": "npm run validate:images && npm run generate:sitemap && vite-ssg build && npm run inject:meta && npm run prepare:static",
+    "sync:productos": "node scripts/sync_db_to_artesanias.mjs",
+    "build": "npm run validate:images && npm run sync:productos && npm run generate:sitemap && vite-ssg build && npm run inject:meta && npm run prepare:static",
     "build:render": "npm run build",
     "preview": "vite-ssg preview"
   },
