@@ -8,9 +8,9 @@ services:
       - key: VITE_API_BASE_URL
         value: https://artesaniasani-api.onrender.com/api
       - key: VITE_SITE_URL
-        value: https://artesaniasani-web.onrender.com
+        value: https://artesaniasani.onrender.com
       - key: SITE_URL
-        value: https://artesaniasani-web.onrender.com
+        value: https://artesaniasani.onrender.com
 
   - type: web
     name: artesaniasani-api
@@ -26,7 +26,7 @@ services:
       - key: DB_PATH
         value: /tmp/ani.sqlite
       - key: FRONTEND_ORIGIN
-        value: https://artesaniasani-web.onrender.com
+        value: https://artesaniasani.onrender.com,https://artesaniasani-web.onrender.com
       - key: ADMIN_USERNAME
         value: admin
       - key: ADMIN_PASSWORD

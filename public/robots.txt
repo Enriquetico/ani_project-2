@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://artesaniasani-web.onrender.com/sitemap.xml
+Sitemap: https://artesaniasani.onrender.com/sitemap.xml

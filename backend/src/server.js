@@ -41,9 +41,7 @@ const IMAGE_MAX_SIZE = Number(process.env.IMAGE_MAX_SIZE || 1024)
 const IMAGE_TARGET_SIZE = Number(process.env.IMAGE_TARGET_SIZE || 300)
 const IMAGE_QUALITY = Number(process.env.IMAGE_QUALITY || 80)
 const IMAGE_SOFT_BLOCK_MB = Number(process.env.IMAGE_SOFT_BLOCK_MB || 8)
-const IMAGE_UPLOAD_MAX_MB = Number(process.env.IMAGE_UPLOAD_MAX_MB || 15)
 const IMAGE_SOFT_BLOCK_BYTES = Math.max(1, IMAGE_SOFT_BLOCK_MB) * 1024 * 1024
-const IMAGE_UPLOAD_MAX_BYTES = Math.max(1, IMAGE_UPLOAD_MAX_MB) * 1024 * 1024
 const ARTESANIAS_FILE = path.resolve(process.cwd(), 'src/data/artesanias.js')
 const PRODUCTOS_EXPORT_REGEX = /export const productos = \[[\s\S]*?\n\];/
 const ALLOWED_ORIGINS = FRONTEND_ORIGIN
@@ -260,10 +258,7 @@ app.get('/api/auth/me', authMiddleware(JWT_SECRET), (req, res) => {
 
 const requireAuth = authMiddleware(JWT_SECRET)
 const upload = multer({
-  storage: multer.memoryStorage(),
-  limits: {
-    fileSize: IMAGE_UPLOAD_MAX_BYTES
-  }
+  storage: multer.memoryStorage()
 })
 
 const normalizeName = (value) =>
@@ -370,6 +365,37 @@ app.post('/api/admin/optimize-image', requireAuth, upload.single('image'), async
       imagePath,
       fileName: path.basename(normalizedRelPath)
     })
+      // --- Agregar producto a la galería ---
+      try {
+        // Leer productos actuales
+        const fileContent = await fs.readFile(ARTESANIAS_FILE, 'utf-8')
+        const productosMatch = fileContent.match(/export const productos = (\[[\s\S]*?\n\]);/)
+        let productosBase = []
+        if (productosMatch) {
+          productosBase = eval(productosMatch[1])
+        }
+
+        // Crear nuevo producto
+        const nuevoProducto = {
+          id: productosBase.length ? Math.max(...productosBase.map(p => p.id || 0)) + 1 : 1,
+          nombre: req.body.productName || req.body.nombre || req.file.originalname,
+          categoria: req.body.categoria || '',
+          tipo: req.body.tipo || '',
+          descripcion: req.body.descripcion || '',
+          imagen: imagePath,
+          colores: req.body.colores ? Array.isArray(req.body.colores) ? req.body.colores : [req.body.colores] : [],
+          tamaño: req.body.tamaño || '',
+          precioAproximado: req.body.precioAproximado || '',
+          notas: req.body.notas || ''
+        }
+
+        productosBase.push(nuevoProducto)
+        const replacement = `export const productos = ${JSON.stringify(productosBase, null, 2)};`
+        const updated = fileContent.replace(PRODUCTOS_EXPORT_REGEX, replacement)
+        await fs.writeFile(ARTESANIAS_FILE, updated, 'utf-8')
+      } catch (err) {
+        console.error('Error al agregar producto a la galería:', err)
+      }
   } catch (error) {
     console.error('[upload] Error optimizando imagen', error)
 
@@ -391,9 +417,7 @@ app.post('/api/admin/optimize-image', requireAuth, upload.single('image'), async
 app.get('/api/admin/image-upload-config', requireAuth, (_req, res) => {
   res.json({
     softBlockMb: Math.max(1, IMAGE_SOFT_BLOCK_MB),
-    hardMaxMb: Math.max(1, IMAGE_UPLOAD_MAX_MB),
-    softBlockBytes: IMAGE_SOFT_BLOCK_BYTES,
-    hardMaxBytes: IMAGE_UPLOAD_MAX_BYTES
+    softBlockBytes: IMAGE_SOFT_BLOCK_BYTES
   })
 })
 
@@ -647,11 +671,6 @@ app.delete('/api/suscriptores/:id', requireAuth, async (req, res) => {
 app.use((error, _req, res, _next) => {
   if (String(error?.message || '').includes('Origen no permitido por CORS')) {
     res.status(403).json({ error: 'Origen no permitido por CORS' })
-    return
-  }
-
-  if (error?.code === 'LIMIT_FILE_SIZE') {
-    res.status(413).json({ error: `La imagen excede el límite permitido de ${Math.max(1, IMAGE_UPLOAD_MAX_MB)} MB.` })
     return
   }
 

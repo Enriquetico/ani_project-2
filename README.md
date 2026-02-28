@@ -64,7 +64,7 @@ COOKIE_SECURE=false
 El frontend usa:
 
 - `VITE_API_BASE_URL` (ejemplo: `https://artesaniasani-api.onrender.com/api`)
-- `VITE_SITE_URL` (ejemplo: `https://artesaniasani-web.onrender.com`)
+- `VITE_SITE_URL` (ejemplo: `https://artesaniasani.onrender.com`)
 
 `SITE_URL` también se utiliza en scripts de build para canonical/sitemap.
 
@@ -87,7 +87,7 @@ Pasos:
 
 ## SEO y dominio
 
-- Dominio por defecto de blueprint: `https://artesaniasani-web.onrender.com`
+- Dominio por defecto de blueprint: `https://artesaniasani.onrender.com`
 - Puedes reemplazarlo luego por dominio propio actualizando:
   - `VITE_SITE_URL` y `SITE_URL` en `artesaniasani-web`
   - `FRONTEND_ORIGIN` en `artesaniasani-api`

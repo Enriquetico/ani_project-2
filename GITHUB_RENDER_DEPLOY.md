@@ -48,7 +48,7 @@ En `artesaniasani-api` configura como secretos:
 
 Variables importantes ya definidas en `render.yaml`:
 
-- `FRONTEND_ORIGIN=https://artesaniasani-web.onrender.com`
+- `FRONTEND_ORIGIN=https://artesaniasani.onrender.com`
 - `COOKIE_SAME_SITE=none`
 - `COOKIE_SECURE=true`
 - `PRODUCT_IMAGES_PUBLIC_BASE_URL=https://artesaniasani-api.onrender.com`
@@ -63,7 +63,7 @@ curl -sS https://artesaniasani-api.onrender.com/api/health
 
 Frontend:
 
-- `https://artesaniasani-web.onrender.com`
+- `https://artesaniasani.onrender.com`
 
 ## 7) Si cambian las URLs
 

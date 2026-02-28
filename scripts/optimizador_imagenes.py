@@ -32,6 +32,7 @@ def process_images(
     max_size: int,
     target_size: int,
     quality: int,
+    max_file_size_mb: float,
     process_webp: bool,
     map_file: Path,
     dry_run: bool,
@@ -47,6 +48,8 @@ def process_images(
     errors = 0
     mapping: list[dict[str, str]] = []
     error_details: list[str] = []
+
+    max_file_size_bytes = max(1, int(max_file_size_mb * 1024 * 1024) - 1)
 
     for root, _, files in os.walk(source_dir):
         root_path = Path(root)
@@ -105,7 +108,40 @@ def process_images(
                         image.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
                         image_to_save = image
 
-                    image_to_save.save(out_path, 'WEBP', quality=quality, method=6)
+                    quality_steps = [q for q in range(quality, 0, -5)] or [1]
+                    if quality_steps[-1] != 1:
+                        quality_steps.append(1)
+
+                    working_image = image_to_save.copy()
+                    saved = False
+
+                    while True:
+                        for trial_quality in quality_steps:
+                            working_image.save(out_path, 'WEBP', quality=trial_quality, method=6)
+                            if out_path.stat().st_size <= max_file_size_bytes:
+                                saved = True
+                                break
+
+                        if saved:
+                            break
+
+                        # Reduce dimensions progressively if quality 1 is still not enough.
+                        if min(working_image.size) <= 64:
+                            break
+
+                        next_width = max(64, int(working_image.width * 0.8))
+                        next_height = max(64, int(working_image.height * 0.8))
+                        if next_width == working_image.width and next_height == working_image.height:
+                            break
+
+                        working_image = working_image.resize((next_width, next_height), Image.Resampling.LANCZOS)
+
+                    if not saved:
+                        final_size_mb = out_path.stat().st_size / (1024 * 1024)
+                        raise ValueError(
+                            f"No se pudo dejar la imagen por debajo de {max_file_size_mb:.2f} MB. "
+                            f"Tamaño final: {final_size_mb:.2f} MB"
+                        )
 
                 size_kb = out_path.stat().st_size / 1024
 
@@ -165,6 +201,12 @@ def main() -> None:
     )
     parser.add_argument('--quality', type=int, default=80, help='Calidad WebP (1-100).')
     parser.add_argument(
+        '--max-file-size-mb',
+        type=float,
+        default=5,
+        help='Tamaño máximo de salida por imagen en MB (se fuerza a ser menor a este valor).',
+    )
+    parser.add_argument(
         '--process-webp',
         action='store_true',
         help='Si se define, también procesa .webp existentes.',
@@ -194,6 +236,7 @@ def main() -> None:
         max_size=max(64, args.max_size),
         target_size=max(0, args.target_size),
         quality=quality,
+        max_file_size_mb=max(0.1, args.max_file_size_mb),
         process_webp=args.process_webp,
         map_file=Path(args.map_file).expanduser().resolve(),
         dry_run=args.dry_run,

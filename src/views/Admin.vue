@@ -189,8 +189,8 @@
 
               <p v-if="imageUploadError" class="auth-error">{{ imageUploadError }}</p>
               <p v-if="imageUploadInfo" class="auth-info">{{ imageUploadInfo }}</p>
-              <p v-if="isImageTooLargeToOptimize" class="auth-error">
-                La imagen supera {{ formatSizeThreshold(imageSoftBlockBytes) }}. Usa una imagen más liviana antes de optimizar.
+              <p v-if="isImageTooLargeToOptimize" class="image-size-warning">
+                Esta imagen supera {{ formatSizeThreshold(imageSoftBlockBytes) }}. Se optimizará igualmente, pero puede tardar más.
               </p>
               <small v-if="nuevoProducto.imagen" class="image-current-path">
                 Ruta aplicada: {{ nuevoProducto.imagen }}
@@ -376,7 +376,6 @@ const selectedImageMeta = ref('')
 const selectedImageSizeBytes = ref(0)
 const imageWarningBytes = ref(3 * 1024 * 1024)
 const imageSoftBlockBytes = ref(8 * 1024 * 1024)
-const imageHardMaxBytes = ref(15 * 1024 * 1024)
 const NUEVA_CATEGORIA_VALUE = '__nueva_categoria__'
 const categoriasFormulario = ref(categorias.filter((cat) => cat !== 'Todos'))
 const isSavingProducto = ref(false)
@@ -575,7 +574,6 @@ const cargarDatosAdmin = async () => {
   if (imageConfigApi.status === 'fulfilled') {
     imageWarningBytes.value = Number(imageConfigApi.value?.softBlockBytes || imageWarningBytes.value)
     imageSoftBlockBytes.value = Number(imageConfigApi.value?.softBlockBytes || imageSoftBlockBytes.value)
-    imageHardMaxBytes.value = Number(imageConfigApi.value?.hardMaxBytes || imageHardMaxBytes.value)
   }
 }
 
@@ -662,16 +660,6 @@ const guardarProducto = async () => {
     let imagenNormalizada = imagenManual || '/images/logoanita.webp'
 
     if (selectedImageFile.value) {
-      if (isImageTooLargeToOptimize.value) {
-        if (imagenManual) {
-          imageUploadInfo.value = 'La imagen seleccionada no se optimizó por tamaño. Se usará la ruta manual indicada.'
-          limpiarImagenSeleccionada()
-        } else {
-          imageUploadError.value = `La imagen supera ${formatSizeThreshold(imageSoftBlockBytes.value)}. Usa una imagen más liviana antes de guardar.`
-          throw new Error(imageUploadError.value)
-        }
-      }
-
       const fileToOptimize = selectedImageFile.value
 
       if (fileToOptimize) {
@@ -797,12 +785,6 @@ const asignarArchivoImagen = async (file) => {
 
   if (!String(file.type || '').startsWith('image/')) {
     imageUploadError.value = 'Selecciona un archivo de imagen válido.'
-    limpiarImagenSeleccionada()
-    return
-  }
-
-  if (file.size > imageHardMaxBytes.value) {
-    imageUploadError.value = `La imagen excede el límite de ${formatSizeThreshold(imageHardMaxBytes.value)}.`
     limpiarImagenSeleccionada()
     return
   }
