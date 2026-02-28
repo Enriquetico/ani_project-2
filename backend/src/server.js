@@ -38,7 +38,7 @@ const PRODUCT_IMAGES_DIR = process.env.PRODUCT_IMAGES_DIR || path.resolve(proces
 const PRODUCT_IMAGES_PUBLIC_BASE_URL = String(process.env.PRODUCT_IMAGES_PUBLIC_BASE_URL || '').trim().replace(/\/+$/, '')
 const PYTHON_BIN = process.env.PYTHON_BIN || 'python3'
 const IMAGE_MAX_SIZE = Number(process.env.IMAGE_MAX_SIZE || 1024)
-const IMAGE_TARGET_SIZE = Number(process.env.IMAGE_TARGET_SIZE || 0)
+const IMAGE_TARGET_SIZE = Number(process.env.IMAGE_TARGET_SIZE || 300)
 const IMAGE_QUALITY = Number(process.env.IMAGE_QUALITY || 80)
 const IMAGE_SOFT_BLOCK_MB = Number(process.env.IMAGE_SOFT_BLOCK_MB || 8)
 const IMAGE_SOFT_BLOCK_BYTES = Math.max(1, IMAGE_SOFT_BLOCK_MB) * 1024 * 1024
@@ -322,26 +322,22 @@ app.post('/api/admin/optimize-image', requireAuth, upload.single('image'), async
     await fs.writeFile(tempInput, req.file.buffer)
 
     const scriptPath = path.resolve(process.cwd(), 'scripts/optimizador_imagenes.py')
-    const optimizeArgs = [
+    await execFile(PYTHON_BIN, [
       scriptPath,
       '--source',
       tempDir,
       '--output',
       PRODUCT_IMAGES_DIR,
       '--process-webp',
+      '--target-size',
+      String(Math.max(64, IMAGE_TARGET_SIZE)),
       '--max-size',
       String(IMAGE_MAX_SIZE),
       '--quality',
       String(IMAGE_QUALITY),
       '--map-file',
       mapFile
-    ]
-
-    if (IMAGE_TARGET_SIZE > 0) {
-      optimizeArgs.splice(6, 0, '--target-size', String(Math.max(64, IMAGE_TARGET_SIZE)))
-    }
-
-    await execFile(PYTHON_BIN, optimizeArgs)
+    ])
 
     const mapRaw = await fs.readFile(mapFile, 'utf-8')
     const mapData = JSON.parse(mapRaw)

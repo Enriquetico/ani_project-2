@@ -1434,20 +1434,6 @@ export const productos = [
     "tamaño": "Variado",
     "precioAproximado": "Contactese para conocer precio",
     "notas": "Hecho a mano - Único"
-  },
-  {
-    "id": 99,
-    "nombre": "Vela Varios Colores",
-    "categoria": "Velas",
-    "tipo": "Vela Artesanal",
-    "descripcion": "Vela artesanal multicolor para decoración.",
-    "imagen": "/images/vela-varios-colores.webp",
-    "colores": [
-      "Multicolor"
-    ],
-    "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
-    "notas": "Hecho a mano - Único"
   }
 ];
 

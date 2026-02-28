@@ -222,7 +222,7 @@ const limpiarFiltros = () => {
 
 .productos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
@@ -235,17 +235,22 @@ const limpiarFiltros = () => {
 
 .producto-imagen {
   position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #fff;
+  height: 280px;
+  padding: 0.4rem;
   overflow: hidden;
   cursor: pointer;
 }
 
 .product-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: calc(100% - 0.8rem);
+  height: calc(100% - 0.8rem);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   object-position: center;
   transition: transform 0.3s ease;
 }
@@ -333,7 +338,7 @@ const limpiarFiltros = () => {
   }
 
   .producto-imagen {
-    min-height: 180px;
+    height: 240px;
   }
 }
 </style>
