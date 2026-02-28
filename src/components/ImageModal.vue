@@ -55,8 +55,8 @@ onBeforeUnmount(() => {
 
 .modal-content {
   position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
+  width: min(96vw, 1400px);
+  max-height: 92vh;
   background: white;
   border-radius: 10px;
   overflow: hidden;
@@ -64,11 +64,11 @@ onBeforeUnmount(() => {
 }
 
 .modal-imagen {
+  display: block;
   width: 100%;
-  height: 100%;
+  max-height: 84vh;
+  margin: 0 auto;
   object-fit: contain;
-  max-width: 90vw;
-  max-height: 85vh;
 }
 
 .modal-titulo {
@@ -114,9 +114,12 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 768px) {
+  .modal-content {
+    width: 95vw;
+  }
+
   .modal-imagen {
-    max-width: 95vw;
-    max-height: 80vh;
+    max-height: 78vh;
   }
 
   .modal-close {

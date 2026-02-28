@@ -96,14 +96,18 @@ def process_images(
                         image = image.convert('RGBA')
 
                     if target_size > 0:
-                        normalized = image.copy()
-                        normalized.thumbnail((target_size, target_size), Image.Resampling.LANCZOS)
+                        # "Cover" centered crop: fills 1200x1200 without transparent padding.
+                        source = image.copy()
+                        scale = max(target_size / source.width, target_size / source.height)
+                        resize_w = max(target_size, int(round(source.width * scale)))
+                        resize_h = max(target_size, int(round(source.height * scale)))
+                        resized = source.resize((resize_w, resize_h), Image.Resampling.LANCZOS)
 
-                        canvas = Image.new('RGBA', (target_size, target_size), (255, 255, 255, 0))
-                        offset_x = (target_size - normalized.width) // 2
-                        offset_y = (target_size - normalized.height) // 2
-                        canvas.paste(normalized, (offset_x, offset_y))
-                        image_to_save = canvas
+                        left = max(0, (resize_w - target_size) // 2)
+                        top = max(0, (resize_h - target_size) // 2)
+                        right = left + target_size
+                        bottom = top + target_size
+                        image_to_save = resized.crop((left, top, right, bottom))
                     else:
                         image.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
                         image_to_save = image

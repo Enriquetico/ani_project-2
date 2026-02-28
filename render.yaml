@@ -56,7 +56,7 @@ services:
       - key: PRODUCT_IMAGES_PUBLIC_BASE_URL
         value: https://artesaniasani-api.onrender.com
       - key: IMAGE_TARGET_SIZE
-        value: "300"
+        value: "0"
       - key: IMAGE_MAX_SIZE
         value: "1024"
       - key: IMAGE_QUALITY
