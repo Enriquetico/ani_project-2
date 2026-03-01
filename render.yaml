@@ -23,10 +23,10 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: DB_PATH
-        value: /tmp/ani.sqlite
       - key: FRONTEND_ORIGIN
         value: https://artesaniasani.onrender.com,https://artesaniasani-web.onrender.com
+      - key: DATABASE_URL
+        sync: false
       - key: ADMIN_USERNAME
         value: admin
       - key: ADMIN_PASSWORD

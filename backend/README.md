@@ -1,6 +1,6 @@
 # Backend API (Fase 2)
 
-Backend mínimo en Node.js + Express + SQLite para reemplazar autenticación y persistencia local insegura.
+Backend en Node.js + Express + PostgreSQL (Supabase/Render) para autenticación y persistencia segura.
 
 ## 1) Configuración
 
@@ -11,6 +11,7 @@ cp .env.backend.example .env.backend
 ```
 
 2. Edita `.env.backend` y define valores seguros para:
+- `DATABASE_URL`
 - `ADMIN_PASSWORD`
 - `JWT_SECRET`
 - `FRONTEND_ORIGIN` (uno o varios, separados por coma)
@@ -50,6 +51,9 @@ npm run dev:full
 
 ## Endpoints principales
 
+- `GET /api/health`
+- `GET /test-db` (prueba PostgreSQL con `SELECT NOW()`)
+- `GET /api/test-db` (equivalente)
 - `POST /api/auth/login`
 - `POST /api/auth/logout`
 - `GET /api/auth/me`
@@ -73,7 +77,6 @@ npm run dev:full
 - Validación de payloads con Zod en endpoints críticos.
 - Bloqueo progresivo por combinación usuario+IP.
 - Auditoría de intentos de login en tabla `login_attempts`.
-- Archivo SQLite en `backend/data/ani.sqlite`.
 
 ## Optimización de imágenes desde Admin
 

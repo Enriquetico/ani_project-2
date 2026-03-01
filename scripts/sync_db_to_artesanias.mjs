@@ -1,12 +1,14 @@
+import dotenv from 'dotenv'
+import { Pool } from 'pg'
 import { productos as productosJs } from '../src/data/artesanias.js'
 import { resolve } from 'node:path'
 import { writeFileSync, readFileSync } from 'node:fs'
-import sqlite3 from 'sqlite3'
+
+dotenv.config({ path: '.env.backend' })
+dotenv.config()
 
 const ARTESANIAS_PATH = resolve(process.cwd(), 'src/data/artesanias.js')
-const DB_PATH = resolve(process.cwd(), 'backend/data/ani.sqlite')
-const sqlite = sqlite3.verbose()
-const db = new sqlite.Database(DB_PATH)
+const DATABASE_URL = process.env.DATABASE_URL
 
 function normalizeName(str) {
   return String(str || '')
@@ -17,21 +19,13 @@ function normalizeName(str) {
     .trim()
 }
 
-function getDbProducts() {
-  return new Promise((resolve, reject) => {
-    db.all('SELECT * FROM productos', (err, rows) => {
-      if (err) reject(err)
-      else resolve(rows)
-    })
-  })
-}
-
 function mergeProducts(dbProducts, jsProducts) {
-  const jsNormalized = jsProducts.map(p => ({ ...p, _norm: normalizeName(p.nombre) }))
-  const dbNormalized = dbProducts.map(p => ({ ...p, _norm: normalizeName(p.nombre) }))
+  const jsNormalized = jsProducts.map((p) => ({ ...p, _norm: normalizeName(p.nombre) }))
+  const dbNormalized = dbProducts.map((p) => ({ ...p, _norm: normalizeName(p.nombre) }))
   const merged = [...jsNormalized]
+
   for (const dbProd of dbNormalized) {
-    if (!merged.some(p => p._norm === dbProd._norm)) {
+    if (!merged.some((p) => p._norm === dbProd._norm)) {
       merged.push({
         id: dbProd.id,
         nombre: dbProd.nombre,
@@ -46,28 +40,43 @@ function mergeProducts(dbProducts, jsProducts) {
       })
     }
   }
-  // Remove _norm property
+
   return merged.map(({ _norm, ...rest }) => rest)
 }
 
 async function sync() {
-  const dbProducts = await getDbProducts()
-  const merged = mergeProducts(dbProducts, productosJs)
-  // Leer artesanias.js usando readFileSync directamente
-    const fileContent = readFileSync(ARTESANIAS_PATH, 'utf8')
-  // Reemplazar productos array
-  const productosExportRegex = /export const productos = \[[\s\S]*?\n\];/
-  const replacement = `export const productos = ${JSON.stringify(merged, null, 2)};`
-  if (!productosExportRegex.test(fileContent)) {
-    throw new Error('No se encontró export const productos en artesanias.js')
+  if (!DATABASE_URL) {
+    console.log('[sync:productos] DATABASE_URL no definido. Se omite sincronización con DB.')
+    return
   }
-  const updated = fileContent.replace(productosExportRegex, replacement)
+
+  const pool = new Pool({
+    connectionString: DATABASE_URL,
+    ssl: { rejectUnauthorized: false }
+  })
+
+  try {
+    const dbProductsResult = await pool.query('SELECT * FROM productos')
+    const merged = mergeProducts(dbProductsResult.rows, productosJs)
+    const fileContent = readFileSync(ARTESANIAS_PATH, 'utf8')
+
+    const productosExportRegex = /export const productos = \[[\s\S]*?\n\];/
+    const replacement = `export const productos = ${JSON.stringify(merged, null, 2)};`
+
+    if (!productosExportRegex.test(fileContent)) {
+      throw new Error('No se encontró export const productos en artesanias.js')
+    }
+
+    const updated = fileContent.replace(productosExportRegex, replacement)
     writeFileSync(ARTESANIAS_PATH, updated, 'utf8')
-  console.log(`Sincronización completa: ${merged.length} productos en artesanias.js`)
-  db.close()
+
+    console.log(`Sincronización completa: ${merged.length} productos en artesanias.js`)
+  } finally {
+    await pool.end()
+  }
 }
 
-sync().catch(err => {
+sync().catch((err) => {
   console.error('Error al sincronizar productos:', err)
-  db.close()
+  process.exitCode = 1
 })

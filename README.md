@@ -8,7 +8,7 @@ Sitio web de **ArtesaníasAni** desarrollado con Vue 3 + Vite para mostrar produ
 - Vue Router
 - Vite + Vite SSG
 - Node.js + Express (API)
-- SQLite
+- PostgreSQL (Supabase/Render)
 
 ## Requisitos
 
@@ -42,7 +42,7 @@ npm run preview          # Vista local del build
 
 ## Backend (seguridad)
 
-Existe un backend base en `backend/` con autenticación segura (cookie HttpOnly + bcrypt + JWT) y base de datos SQLite.
+Existe un backend base en `backend/` con autenticación segura (cookie HttpOnly + bcrypt + JWT) y base de datos PostgreSQL.
 
 Documentación detallada: `backend/README.md`.
 
@@ -81,6 +81,7 @@ Pasos:
 2. En Render: **New +** -> **Blueprint**.
 3. Selecciona el repo.
 4. Define secretos en el servicio API:
+   - `DATABASE_URL`
    - `ADMIN_PASSWORD`
    - `JWT_SECRET`
 5. Espera el deploy de ambos servicios.

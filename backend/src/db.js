@@ -1,65 +1,53 @@
-import fs from 'node:fs'
-import path from 'node:path'
-import sqlite3 from 'sqlite3'
+import { Pool } from 'pg'
 import bcrypt from 'bcryptjs'
 
-const DEFAULT_DB_PATH = path.resolve(process.cwd(), 'backend/data/ani.sqlite')
-const DB_PATH = path.resolve(process.cwd(), process.env.DB_PATH || DEFAULT_DB_PATH)
-const DATA_DIR = path.dirname(DB_PATH)
+const DATABASE_URL = process.env.DATABASE_URL
 
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true })
+if (!DATABASE_URL) {
+  throw new Error('Falta DATABASE_URL en variables de entorno')
 }
 
-const sqlite = sqlite3.verbose()
-const db = new sqlite.Database(DB_PATH)
+const pool = new Pool({
+  connectionString: DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+})
 
-const run = (sql, params = []) =>
-  new Promise((resolve, reject) => {
-    db.run(sql, params, function onRun(error) {
-      if (error) {
-        reject(error)
-        return
-      }
-      resolve({ lastID: this.lastID, changes: this.changes })
-    })
-  })
+export const query = async (sql, params = []) => pool.query(sql, params)
 
-const get = (sql, params = []) =>
-  new Promise((resolve, reject) => {
-    db.get(sql, params, (error, row) => {
-      if (error) {
-        reject(error)
-        return
-      }
-      resolve(row)
-    })
-  })
-
-const all = (sql, params = []) =>
-  new Promise((resolve, reject) => {
-    db.all(sql, params, (error, rows) => {
-      if (error) {
-        reject(error)
-        return
-      }
-      resolve(rows)
-    })
-  })
+export const dbOps = {
+  query,
+  all: async (sql, params = []) => {
+    const result = await query(sql, params)
+    return result.rows
+  },
+  get: async (sql, params = []) => {
+    const result = await query(sql, params)
+    return result.rows[0] || null
+  },
+  run: async (sql, params = []) => {
+    const result = await query(sql, params)
+    return {
+      rowCount: result.rowCount,
+      rows: result.rows
+    }
+  }
+}
 
 export const initDb = async ({ adminUsername, adminPassword }) => {
-  await run(`
+  await query(`
     CREATE TABLE IF NOT EXISTS admins (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id SERIAL PRIMARY KEY,
       username TEXT NOT NULL UNIQUE,
       password_hash TEXT NOT NULL,
-      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
   `)
 
-  await run(`
+  await query(`
     CREATE TABLE IF NOT EXISTS productos (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id SERIAL PRIMARY KEY,
       nombre TEXT NOT NULL,
       categoria TEXT,
       tipo TEXT,
@@ -69,61 +57,56 @@ export const initDb = async ({ adminUsername, adminPassword }) => {
       precio_aproximado TEXT,
       notas TEXT,
       imagen TEXT,
-      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
   `)
 
-  await run(`
+  await query(`
     CREATE TABLE IF NOT EXISTS mensajes (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id SERIAL PRIMARY KEY,
       nombre TEXT NOT NULL,
       email TEXT NOT NULL,
       telefono TEXT,
       asunto TEXT NOT NULL,
       mensaje TEXT NOT NULL,
       fecha TEXT,
-      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
   `)
 
-  await run(`
+  await query(`
     CREATE TABLE IF NOT EXISTS suscriptores (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id SERIAL PRIMARY KEY,
       email TEXT NOT NULL UNIQUE,
-      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
   `)
 
-  await run(`
+  await query(`
     CREATE TABLE IF NOT EXISTS login_attempts (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id SERIAL PRIMARY KEY,
       username TEXT NOT NULL,
       ip TEXT NOT NULL,
       user_agent TEXT,
-      success INTEGER NOT NULL,
-      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+      success BOOLEAN NOT NULL,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
   `)
 
-  await run('CREATE INDEX IF NOT EXISTS idx_login_attempts_user_ip_created ON login_attempts (username, ip, created_at)')
+  await query('CREATE INDEX IF NOT EXISTS idx_login_attempts_user_ip_created ON login_attempts (username, ip, created_at)')
 
-  const existingAdmin = await get('SELECT id FROM admins WHERE username = ?', [adminUsername])
+  const adminRow = await dbOps.get('SELECT id, password_hash FROM admins WHERE username = $1', [adminUsername])
 
-  if (!existingAdmin) {
+  if (!adminRow) {
     const hash = await bcrypt.hash(adminPassword, 12)
-    await run('INSERT INTO admins (username, password_hash) VALUES (?, ?)', [adminUsername, hash])
+    await query('INSERT INTO admins (username, password_hash) VALUES ($1, $2)', [adminUsername, hash])
     return
   }
-
-  const adminRow = await get('SELECT id, password_hash FROM admins WHERE username = ?', [adminUsername])
-  if (!adminRow?.password_hash) return
 
   const matchesCurrentPassword = await bcrypt.compare(adminPassword, adminRow.password_hash)
   if (!matchesCurrentPassword) {
     const hash = await bcrypt.hash(adminPassword, 12)
-    await run('UPDATE admins SET password_hash = ? WHERE id = ?', [hash, adminRow.id])
+    await query('UPDATE admins SET password_hash = $1 WHERE id = $2', [hash, adminRow.id])
   }
 }
-
-export const dbOps = { run, get, all }
