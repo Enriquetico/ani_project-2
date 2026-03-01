@@ -140,7 +140,6 @@ const limpiarFiltros = () => {
   busqueda.value = ''
 }
 </script>
-
 <style scoped>
 .galeria {
   min-height: 100vh;
@@ -223,14 +222,22 @@ const limpiarFiltros = () => {
 .productos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .producto-card {
   background: white;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.producto-card:hover {
+  background: var(--secondary-cream);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .producto-imagen {
@@ -238,9 +245,9 @@ const limpiarFiltros = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
-  height: 280px;
-  padding: 0.4rem;
+  background: var(--bg-light);
+  height: 260px;
+  padding: 0.35rem;
   overflow: hidden;
   cursor: pointer;
 }
@@ -252,23 +259,29 @@ const limpiarFiltros = () => {
   max-height: 100%;
   object-fit: contain;
   object-position: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
 .producto-imagen:hover .product-img {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .overlay-zoom {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 20, 147, 0.8);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.35);
   color: white;
+  font-size: 1.8rem;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s ease;
 }
 
 .producto-imagen:hover .overlay-zoom {
@@ -276,29 +289,31 @@ const limpiarFiltros = () => {
 }
 
 .producto-info {
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .categoria-badge {
   display: inline-block;
-  background: var(--bg-light-2);
-  color: var(--secondary-natural);
-  font-size: 0.78rem;
+  background: var(--secondary-terracotta);
+  color: white;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
   font-weight: 600;
-  border-radius: 999px;
-  padding: 0.2rem 0.6rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
 }
 
 .producto-info h3 {
-  margin: 0 0 0.5rem 0;
   color: var(--secondary-natural);
+  margin: 0.5rem 0;
+  font-size: 1.3rem;
 }
 
 .descripcion {
   color: #666;
   font-size: 0.95rem;
-  margin: 0 0 0.75rem 0;
+  margin: 0.75rem 0;
+  line-height: 1.6;
 }
 
 .precio {
@@ -338,7 +353,7 @@ const limpiarFiltros = () => {
   }
 
   .producto-imagen {
-    height: 240px;
+    height: 220px;
   }
 }
 </style>

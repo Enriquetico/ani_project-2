@@ -220,14 +220,19 @@ const contactoEmail = empresaInfo.contacto.email
   cursor: pointer;
   overflow: hidden;
   border-radius: 8px;
+  background: var(--bg-light);
+  min-height: 400px;
+  padding: 0.4rem;
 }
 
-.product-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.detalle-imagen .product-img {
+  width: calc(100% - 0.8rem);
+  height: calc(100% - 0.8rem);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.3s ease;
-  min-height: 400px;
 }
 
 .detalle-imagen:hover .product-img {
@@ -471,8 +476,8 @@ const contactoEmail = empresaInfo.contacto.email
 }
 
 .producto-imagen {
-  height: 150px;
-  background: var(--gradient-placeholder);
+  height: 260px;
+  background: var(--bg-light);
   border-radius: 5px;
   margin-bottom: 1rem;
   display: flex;
@@ -481,12 +486,16 @@ const contactoEmail = empresaInfo.contacto.email
   position: relative;
   cursor: pointer;
   overflow: hidden;
+  padding: 0.4rem;
 }
 
 .producto-imagen .product-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: calc(100% - 0.8rem);
+  height: calc(100% - 0.8rem);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.3s ease;
 }
 
@@ -581,7 +590,7 @@ const contactoEmail = empresaInfo.contacto.email
     margin-bottom: 2rem;
   }
 
-  .product-img {
+  .detalle-imagen {
     min-height: 300px;
   }
 
@@ -623,8 +632,12 @@ const contactoEmail = empresaInfo.contacto.email
     gap: 1rem;
   }
 
-  .product-img {
+  .detalle-imagen {
     min-height: 250px;
+  }
+
+  .producto-imagen {
+    height: 220px;
   }
 
   .detalle-info h1 {

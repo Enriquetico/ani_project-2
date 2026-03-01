@@ -88,7 +88,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -102,7 +102,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -116,7 +116,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -130,7 +130,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -144,7 +144,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -158,7 +158,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -172,7 +172,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -186,7 +186,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -200,7 +200,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -214,7 +214,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -228,7 +228,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -242,7 +242,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -256,7 +256,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -270,7 +270,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -284,7 +284,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -298,7 +298,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -312,7 +312,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -326,7 +326,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -340,7 +340,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -354,7 +354,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -368,7 +368,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -382,7 +382,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -396,7 +396,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -410,7 +410,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -424,7 +424,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -438,7 +438,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -452,7 +452,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -466,7 +466,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -480,7 +480,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -494,7 +494,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -508,7 +508,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -522,7 +522,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -536,7 +536,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -550,7 +550,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -564,7 +564,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -578,7 +578,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -592,7 +592,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -606,7 +606,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -620,7 +620,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -634,7 +634,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -648,7 +648,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -662,7 +662,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -676,7 +676,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -690,7 +690,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -704,7 +704,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -718,7 +718,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -732,7 +732,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -746,7 +746,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -760,7 +760,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -774,7 +774,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -788,7 +788,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -802,7 +802,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -816,7 +816,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -830,7 +830,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -844,7 +844,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -858,7 +858,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -872,7 +872,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -886,7 +886,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -900,7 +900,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -914,7 +914,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -928,7 +928,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -942,7 +942,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -956,7 +956,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -970,7 +970,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -984,7 +984,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -998,7 +998,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1012,7 +1012,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1026,7 +1026,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1040,7 +1040,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1054,7 +1054,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1068,7 +1068,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1082,7 +1082,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1096,7 +1096,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1110,7 +1110,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1124,7 +1124,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1138,7 +1138,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1152,7 +1152,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1166,7 +1166,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1180,7 +1180,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1194,7 +1194,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1208,7 +1208,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1222,7 +1222,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1236,7 +1236,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1250,7 +1250,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1264,7 +1264,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1278,7 +1278,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1292,7 +1292,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1306,7 +1306,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1320,7 +1320,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1334,7 +1334,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1348,7 +1348,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1362,7 +1362,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1376,7 +1376,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1390,7 +1390,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1404,7 +1404,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1418,7 +1418,7 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   },
   {
@@ -1432,7 +1432,21 @@ export const productos = [
       "Multicolor"
     ],
     "tamaño": "Variado",
-    "precioAproximado": "Contactese para conocer precio",
+    "precioAproximado": "Contactenos pora información",
+    "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 99,
+    "nombre": "Vela Conejo Blanco",
+    "categoria": "Velas",
+    "tipo": "Vela Artesanal",
+    "descripcion": "Vela artesanal en forma de conejo blanco, elaborada y decorada a mano.",
+    "imagen": "/images/vela-conejo-blanco.webp",
+    "colores": [
+      "Blanco"
+    ],
+    "tamaño": "Variado",
+    "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
   }
 ];

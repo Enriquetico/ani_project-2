@@ -388,17 +388,24 @@ const abrirModal = (imagen, titulo) => {
 }
 
 .producto-imagen {
-  height: 250px;
+  height: 260px;
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  background: linear-gradient(135deg, #f5e6d3 0%, #e8d4c0 100%);
+  background: var(--bg-light);
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: calc(100% - 0.8rem);
+  height: calc(100% - 0.8rem);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.4s ease;
 }
 
@@ -717,6 +724,10 @@ const abrirModal = (imagen, titulo) => {
   .testimonios-grid,
   .articulos-grid {
     grid-template-columns: 1fr;
+  }
+
+  .producto-imagen {
+    height: 220px;
   }
 }
 
