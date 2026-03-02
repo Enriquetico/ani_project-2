@@ -18,7 +18,9 @@ const toAbsoluteUrl = (url) => {
 export const getSeoForRoute = (path) => {
   let title = 'Artesanías Anita | Cerámica Pintada, Velas Decorativas y Artesanía costarricense'
   let description = 'Artesanías Anita ofrece cerámica pintada a mano, velas decorativas y artesanía costarricense hecha con dedicación y calidad.'
-  let robots = 'index, follow'
+  const robotsIndexable = 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
+  const robotsNoIndex = 'noindex, follow, noarchive'
+  let robots = robotsIndexable
   let image = defaultImage
 
   if (path === '/galeria') {
@@ -45,7 +47,7 @@ export const getSeoForRoute = (path) => {
     } else {
       title = 'Producto no encontrado | Artesanías Anita'
       description = 'No encontramos el producto solicitado. Explora nuestra galería para descubrir más artesanías.'
-      robots = 'noindex, follow'
+      robots = robotsNoIndex
     }
   } else if (path.startsWith('/blog/')) {
     const id = Number(path.split('/').pop())
@@ -58,16 +60,16 @@ export const getSeoForRoute = (path) => {
     } else {
       title = 'Artículo no encontrado | Blog Artesanías Anita'
       description = 'No encontramos el artículo solicitado. Visita nuestro blog para leer más contenido.'
-      robots = 'noindex, follow'
+      robots = robotsNoIndex
     }
   } else if (path === '/admin') {
     title = 'Panel de Administración | Artesanías Anita'
     description = 'Acceso administrativo de Artesanías Anita.'
-    robots = 'noindex, nofollow'
+    robots = 'noindex, nofollow, noarchive'
   } else if (path === '/404' || path === '/:pathMatch(.*)*') {
     title = 'Página no encontrada | Artesanías Anita'
     description = 'La página solicitada no existe. Explora nuestras artesanías y contenido principal.'
-    robots = 'noindex, follow'
+    robots = robotsNoIndex
   }
 
   const canonical = `${baseUrl}${path === '/' ? '/' : path}`

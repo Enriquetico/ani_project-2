@@ -107,6 +107,7 @@ const buildSeoBlock = (seo) => {
     `    <meta name="keywords" content="${defaultKeywords}">`,
     '    <meta name="author" content="Artesanías Anita">',
     `    <meta name="robots" content="${robots}">`,
+    `    <meta name="googlebot" content="${robots}">`,
     `    <link rel="canonical" href="${canonical}">`,
     `    <meta property="og:title" content="${title}">`,
     `    <meta property="og:description" content="${description}">`,
@@ -133,6 +134,7 @@ const cleanExistingSeo = (html) => {
     .replace(/\s*<meta[^>]+name="keywords"[^>]*>\s*/g, '\n')
     .replace(/\s*<meta[^>]+name="author"[^>]*>\s*/g, '\n')
     .replace(/\s*<meta[^>]+name="robots"[^>]*>\s*/g, '\n')
+    .replace(/\s*<meta[^>]+name="googlebot"[^>]*>\s*/g, '\n')
     .replace(/\s*<meta[^>]+name="twitter:[^"]+"[^>]*>\s*/g, '\n')
     .replace(/\s*<meta[^>]+property="og:[^"]+"[^>]*>\s*/g, '\n')
     .replace(/\s*<link[^>]+rel="canonical"[^>]*>\s*/g, '\n')
