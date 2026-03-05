@@ -238,6 +238,12 @@ export const createApiController = (deps) => {
       const baseName = normalizeName(req.body.productName || req.body.nombre || req.file.originalname)
       const ext = path.extname(req.file.originalname || '').toLowerCase() || '.jpg'
       const safeExt = ['.jpg', '.jpeg', '.png', '.webp'].includes(ext) ? ext : '.jpg'
+      const rawRotate = Number(req.body.rotateDegrees || 0)
+      const normalizedRotate = Number.isFinite(rawRotate)
+        ? ((Math.round(rawRotate / 90) * 90) % 360 + 360) % 360
+        : 0
+      const sourceWidth = Number(req.body.sourceWidth || 0)
+      const sourceHeight = Number(req.body.sourceHeight || 0)
 
       let tempDir = ''
       let mapFile = ''
@@ -251,22 +257,35 @@ export const createApiController = (deps) => {
         await fs.writeFile(tempInput, req.file.buffer)
 
         const scriptPath = path.resolve(process.cwd(), 'scripts/optimizador_imagenes.py')
-        await execFile(imageConfig.pythonBin, [
+        const optimizeArgs = [
           scriptPath,
           '--source',
           tempDir,
           '--output',
           imageConfig.productImagesDir,
           '--process-webp',
-          '--target-size',
-          String(Math.max(64, imageConfig.imageTargetSize)),
           '--max-size',
           String(imageConfig.imageMaxSize),
           '--quality',
           String(imageConfig.imageQuality),
           '--map-file',
           mapFile
-        ])
+        ]
+
+        if (Number(imageConfig.imageTargetSize) > 0) {
+          optimizeArgs.push('--target-size', String(Math.max(64, imageConfig.imageTargetSize)))
+        }
+        if (normalizedRotate > 0) {
+          optimizeArgs.push('--rotate-degrees', String(normalizedRotate))
+        }
+        if (Number.isFinite(sourceWidth) && sourceWidth > 0) {
+          optimizeArgs.push('--source-width', String(Math.round(sourceWidth)))
+        }
+        if (Number.isFinite(sourceHeight) && sourceHeight > 0) {
+          optimizeArgs.push('--source-height', String(Math.round(sourceHeight)))
+        }
+
+        await execFile(imageConfig.pythonBin, optimizeArgs)
 
         const mapRaw = await fs.readFile(mapFile, 'utf-8')
         const mapData = JSON.parse(mapRaw)
@@ -296,8 +315,17 @@ export const createApiController = (deps) => {
         })
       } catch (error) {
         console.error('[upload] Error optimizando imagen', error)
+        const rawError = String(error?.message || '').toLowerCase()
 
-        if (String(error?.message || '').toLowerCase().includes('cannot identify image file')) {
+        if (rawError.includes('heic') || rawError.includes('heif') || rawError.includes('pillow-heif')) {
+          res.status(400).json({
+            error:
+              'La imagen HEIC/HEIF no pudo procesarse. Instala "pillow-heif" en el backend o convierte la imagen a JPG/PNG antes de subirla.'
+          })
+          return
+        }
+
+        if (rawError.includes('cannot identify image file')) {
           res.status(400).json({
             error: 'Formato de imagen no compatible. Usa JPG, PNG, WEBP u otro formato soportado por el servidor.'
           })

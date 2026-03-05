@@ -7,7 +7,12 @@
           <h1>Panel de Administración</h1>
           <p>Gestiona tus productos y reseñas</p>
         </div>
-        <button v-if="isAuthenticated" type="button" class="btn btn-secondary" @click="cerrarSesion">
+        <button
+          v-if="isAuthenticated"
+          type="button"
+          class="btn btn-secondary"
+          @click="cerrarSesion"
+        >
           Cerrar sesión
         </button>
       </div>
@@ -16,7 +21,10 @@
     <div v-if="!isAuthenticated" class="container auth-container">
       <div class="auth-card">
         <h2>Acceso de Administrador</h2>
-        <p>Ingresa la contraseña para administrar productos, mensajes y suscriptores.</p>
+        <p>
+          Ingresa la contraseña para administrar productos, mensajes y
+          suscriptores.
+        </p>
 
         <form @submit.prevent="iniciarSesion" class="auth-form">
           <label for="admin-password">Contraseña</label>
@@ -32,10 +40,12 @@
             <button
               type="button"
               class="password-toggle"
-              :aria-label="showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+              :aria-label="
+                showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'
+              "
               @click="showPassword = !showPassword"
             >
-              {{ showPassword ? '🙈' : '👁️' }}
+              {{ showPassword ? "🙈" : "👁️" }}
             </button>
           </div>
 
@@ -83,26 +93,52 @@
 
         <!-- Formulario Agregar Producto -->
         <div class="form-section">
-          <h3>{{ nuevoProducto.id ? 'Editar Producto' : 'Agregar Nuevo Producto' }}</h3>
+          <h3>
+            {{
+              nuevoProducto.id ? "Editar Producto" : "Agregar Nuevo Producto"
+            }}
+          </h3>
           <form @submit.prevent="guardarProducto">
             <div class="form-grid">
               <div class="form-group">
                 <label>Nombre del Producto *</label>
-                <input v-model="nuevoProducto.nombre" type="text" placeholder="Ej: Gato Decorativo" required />
+                <input
+                  v-model="nuevoProducto.nombre"
+                  type="text"
+                  placeholder="Ej: Gato Decorativo"
+                  required
+                />
               </div>
 
               <div class="form-group">
                 <label>Categoría *</label>
-                <select v-model="nuevoProducto.categoria" required @change="manejarCambioCategoria">
+                <select
+                  v-model="nuevoProducto.categoria"
+                  required
+                  @change="manejarCambioCategoria"
+                >
                   <option value="">Seleccionar...</option>
-                  <option v-for="cat in categoriasFormulario" :key="cat" :value="cat">{{ cat }}</option>
-                  <option :value="NUEVA_CATEGORIA_VALUE">+ Crear nueva categoría...</option>
+                  <option
+                    v-for="cat in categoriasFormulario"
+                    :key="cat"
+                    :value="cat"
+                  >
+                    {{ cat }}
+                  </option>
+                  <option :value="NUEVA_CATEGORIA_VALUE">
+                    + Crear nueva categoría...
+                  </option>
                 </select>
               </div>
 
               <div class="form-group">
                 <label>Tipo de Producto *</label>
-                <input v-model="nuevoProducto.tipo" type="text" placeholder="Ej: Figura Cerámica" required />
+                <input
+                  v-model="nuevoProducto.tipo"
+                  type="text"
+                  placeholder="Ej: Figura Cerámica"
+                  required
+                />
               </div>
 
               <div class="form-group">
@@ -118,40 +154,69 @@
 
             <div class="form-group full">
               <label>Descripción *</label>
-              <textarea v-model="nuevoProducto.descripcion" placeholder="Describe el producto..." rows="3" required></textarea>
+              <textarea
+                v-model="nuevoProducto.descripcion"
+                placeholder="Describe el producto..."
+                rows="3"
+                required
+              ></textarea>
             </div>
 
             <div class="form-group full">
               <label>Colores (separados por comas)</label>
-              <input v-model="coloresInput" type="text" placeholder="Blanco, Rojo, Azul" />
+              <input
+                v-model="coloresInput"
+                type="text"
+                placeholder="Blanco, Rojo, Azul"
+              />
             </div>
 
             <div class="form-group full">
               <label>Precio Aproximado *</label>
-              <input v-model="nuevoProducto.precioAproximado" type="text" placeholder="Ej: Desde $15,000" required />
+              <input
+                v-model="nuevoProducto.precioAproximado"
+                type="text"
+                placeholder="Ej: Desde $15,000"
+                required
+              />
             </div>
 
             <div class="form-group full">
               <label>Notas (opcional)</label>
-              <input v-model="nuevoProducto.notas" type="text" placeholder="Ej: Hecho a mano - Único" />
+              <input
+                v-model="nuevoProducto.notas"
+                type="text"
+                placeholder="Ej: Hecho a mano - Único"
+              />
             </div>
 
             <div class="form-group full">
               <label>Ruta de Imagen (opcional)</label>
-              <input v-model="nuevoProducto.imagen" type="text" placeholder="Ej: /images/mi-producto.webp" />
+              <input
+                v-model="nuevoProducto.imagen"
+                type="text"
+                placeholder="Ej: /images/mi-producto.webp"
+              />
             </div>
 
             <div class="form-group full">
               <label>Subir y optimizar imagen</label>
               <div
                 class="image-dropzone"
-                :class="{ 'is-drag-over': isDragOver, 'is-large-file': showImageSizeWarning }"
+                :class="{
+                  'is-drag-over': isDragOver,
+                  'is-large-file': showImageSizeWarning,
+                }"
                 @dragover.prevent="isDragOver = true"
                 @dragleave.prevent="isDragOver = false"
                 @drop.prevent="onImageDrop"
               >
-                <p v-if="!selectedImageName">Arrastra una imagen aquí o selecciónala desde tu dispositivo.</p>
-                <p v-else>Archivo seleccionado: <strong>{{ selectedImageName }}</strong></p>
+                <p v-if="!selectedImageName">
+                  Arrastra una imagen aquí o selecciónala desde tu dispositivo.
+                </p>
+                <p v-else>
+                  Archivo seleccionado: <strong>{{ selectedImageName }}</strong>
+                </p>
                 <input
                   ref="imageInputRef"
                   type="file"
@@ -162,16 +227,41 @@
               </div>
 
               <div v-if="selectedImagePreviewUrl" class="image-preview-wrap">
-                <img :src="selectedImagePreviewUrl" alt="Vista previa de imagen" class="image-preview" />
+                <img
+                  :src="selectedImagePreviewUrl"
+                  alt="Vista previa de imagen"
+                  class="image-preview"
+                  :style="selectedImagePreviewStyle"
+                />
                 <small v-if="selectedImageMeta" class="image-preview-meta">
                   {{ selectedImageMeta }}
                 </small>
                 <p v-if="showImageSizeWarning" class="image-size-warning">
-                  ⚠️ Esta imagen supera {{ formatSizeThreshold(imageWarningBytes) }}. Se recomienda usar archivos más livianos para mejorar la carga.
+                  ⚠️ Esta imagen supera
+                  {{ formatSizeThreshold(imageWarningBytes) }}. Se recomienda
+                  usar archivos más livianos para mejorar la carga.
                 </p>
               </div>
 
               <div class="form-actions inline-actions">
+                <button
+                  v-if="selectedImageFile"
+                  type="button"
+                  class="btn btn-secondary"
+                  :disabled="isOptimizingImage"
+                  @click="rotarImagenSeleccionada(-90)"
+                >
+                  Rotar ⟲
+                </button>
+                <button
+                  v-if="selectedImageFile"
+                  type="button"
+                  class="btn btn-secondary"
+                  :disabled="isOptimizingImage"
+                  @click="rotarImagenSeleccionada(90)"
+                >
+                  Rotar ⟳
+                </button>
                 <button
                   v-if="selectedImageFile"
                   type="button"
@@ -187,10 +277,16 @@
                 La imagen se optimiza automáticamente al guardar el producto.
               </small>
 
-              <p v-if="imageUploadError" class="auth-error">{{ imageUploadError }}</p>
-              <p v-if="imageUploadInfo" class="auth-info">{{ imageUploadInfo }}</p>
+              <p v-if="imageUploadError" class="auth-error">
+                {{ imageUploadError }}
+              </p>
+              <p v-if="imageUploadInfo" class="auth-info">
+                {{ imageUploadInfo }}
+              </p>
               <p v-if="isImageTooLargeToOptimize" class="image-size-warning">
-                Esta imagen supera {{ formatSizeThreshold(imageSoftBlockBytes) }}. Se optimizará igualmente, pero puede tardar más.
+                Esta imagen supera
+                {{ formatSizeThreshold(imageSoftBlockBytes) }}. Se optimizará
+                igualmente, pero puede tardar más.
               </p>
               <small v-if="nuevoProducto.imagen" class="image-current-path">
                 Ruta aplicada: {{ nuevoProducto.imagen }}
@@ -198,28 +294,48 @@
             </div>
 
             <div class="form-actions">
-              <button type="submit" class="btn btn-primary" :disabled="isSavingProducto">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                :disabled="isSavingProducto"
+              >
                 {{
                   isSavingProducto
-                    ? (selectedImageFile ? 'Guardando y optimizando imagen...' : 'Guardando producto...')
-                    : 'Guardar producto'
+                    ? selectedImageFile
+                      ? "Guardando y optimizando imagen..."
+                      : "Guardando producto..."
+                    : "Guardar producto"
                 }}
               </button>
-              <button v-if="nuevoProducto.id" type="button" @click="cancelarEdicion" class="btn btn-secondary">
+              <button
+                v-if="nuevoProducto.id"
+                type="button"
+                @click="cancelarEdicion"
+                class="btn btn-secondary"
+              >
                 Cancelar
               </button>
               <button
                 v-if="nuevoProducto.id"
                 type="button"
                 class="btn btn-secondary"
-                @click="eliminarProducto({ ...nuevoProducto, _origen: nuevoProducto._origen || 'custom' })"
+                @click="
+                  eliminarProducto({
+                    ...nuevoProducto,
+                    _origen: nuevoProducto._origen || 'custom',
+                  })
+                "
               >
                 Eliminar producto
               </button>
             </div>
 
-            <p v-if="productoFormError" class="auth-error">{{ productoFormError }}</p>
-            <p v-if="productoFormInfo" class="auth-info">{{ productoFormInfo }}</p>
+            <p v-if="productoFormError" class="auth-error">
+              {{ productoFormError }}
+            </p>
+            <p v-if="productoFormInfo" class="auth-info">
+              {{ productoFormInfo }}
+            </p>
           </form>
         </div>
 
@@ -242,7 +358,9 @@
                   <td>{{ producto.nombre }}</td>
                   <td>{{ producto.categoria }}</td>
                   <td>{{ producto.precioAproximado }}</td>
-                  <td>{{ producto._origen === 'base' ? 'Base' : 'Personalizado' }}</td>
+                  <td>
+                    {{ producto._origen === "base" ? "Base" : "Personalizado" }}
+                  </td>
                   <td class="acciones">
                     <button
                       v-if="producto._origen === 'custom'"
@@ -252,7 +370,13 @@
                     >
                       ✏️
                     </button>
-                    <button @click="eliminarProducto(producto)" class="btn-accion eliminar" title="Eliminar producto">🗑️</button>
+                    <button
+                      @click="eliminarProducto(producto)"
+                      class="btn-accion eliminar"
+                      title="Eliminar producto"
+                    >
+                      🗑️
+                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -266,13 +390,19 @@
       <div v-if="tabActiva === 'mensajes'" class="admin-content">
         <h2>Mensajes Recibidos</h2>
         <div v-if="mensajes.length > 0" class="mensajes-list">
-          <div v-for="mensaje in mensajes" :key="mensaje.id" class="mensaje-item">
+          <div
+            v-for="mensaje in mensajes"
+            :key="mensaje.id"
+            class="mensaje-item"
+          >
             <div class="mensaje-header">
               <h3>{{ mensaje.nombre }}</h3>
               <p class="fecha">{{ mensaje.fecha }}</p>
             </div>
             <p><strong>Email:</strong> {{ mensaje.email }}</p>
-            <p v-if="mensaje.telefono"><strong>Teléfono:</strong> {{ mensaje.telefono }}</p>
+            <p v-if="mensaje.telefono">
+              <strong>Teléfono:</strong> {{ mensaje.telefono }}
+            </p>
             <p><strong>Asunto:</strong> {{ mensaje.asunto }}</p>
             <p><strong>Mensaje:</strong></p>
             <p class="mensaje-texto">{{ mensaje.mensaje }}</p>
@@ -285,9 +415,18 @@
       <div v-if="tabActiva === 'suscriptores'" class="admin-content">
         <h2>Suscriptores del Newsletter</h2>
         <div v-if="suscriptores.length > 0" class="suscriptores-list">
-          <div v-for="suscriptor in suscriptores" :key="suscriptor.id" class="suscriptor-item">
+          <div
+            v-for="suscriptor in suscriptores"
+            :key="suscriptor.id"
+            class="suscriptor-item"
+          >
             <p>{{ suscriptor.email }}</p>
-            <button @click="eliminarSuscriptor(suscriptor.id)" class="btn-accion eliminar">Eliminar</button>
+            <button
+              @click="eliminarSuscriptor(suscriptor.id)"
+              class="btn-accion eliminar"
+            >
+              Eliminar
+            </button>
           </div>
         </div>
         <p v-else class="sin-datos">No hay suscriptores aún.</p>
@@ -297,7 +436,11 @@
       <div v-if="tabActiva === 'auditoria'" class="admin-content">
         <h2>Auditoría de Accesos</h2>
         <div class="form-actions">
-          <button type="button" class="btn btn-secondary" @click="cargarIntentosLogin">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            @click="cargarIntentosLogin"
+          >
             Actualizar registros
           </button>
         </div>
@@ -317,7 +460,7 @@
                 <td>{{ item.createdAt }}</td>
                 <td>{{ item.username }}</td>
                 <td>{{ item.ip }}</td>
-                <td>{{ item.success ? '✅ Exitoso' : '❌ Fallido' }}</td>
+                <td>{{ item.success ? "✅ Exitoso" : "❌ Fallido" }}</td>
               </tr>
             </tbody>
           </table>
@@ -329,20 +472,26 @@
       <div class="security-section">
         <h3>🔐 Seguridad de Acceso</h3>
         <p>
-          La contraseña del panel se valida en backend y la sesión se maneja con cookie segura.
+          La contraseña del panel se valida en backend y la sesión se maneja con
+          cookie segura.
         </p>
         <p>
-          Por seguridad, no se permite cambiar ni recuperar contraseña desde el navegador.
+          Por seguridad, no se permite cambiar ni recuperar contraseña desde el
+          navegador.
         </p>
       </div>
 
       <div class="ayuda-section">
         <h3>ℹ️ Información de Ayuda</h3>
         <p>
-          <strong>Panel de Administración:</strong> Aquí puedes agregar nuevos productos, ver mensajes de clientes y administrar suscriptores.
+          <strong>Panel de Administración:</strong> Aquí puedes agregar nuevos
+          productos, ver mensajes de clientes y administrar suscriptores.
         </p>
         <ul>
-          <li>Los datos se gestionan desde la API backend con persistencia en base de datos</li>
+          <li>
+            Los datos se gestionan desde la API backend con persistencia en base
+            de datos
+          </li>
           <li>Es importante hacer respaldo de tus datos periódicamente</li>
           <li>Los cambios se reflejan automáticamente en la galería</li>
         </ul>
@@ -352,350 +501,422 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted } from 'vue'
-import { categorias } from '../data/artesanias'
-import { api } from '../services/api'
-import { showToast } from '../services/toast'
+import { computed, ref, onMounted } from "vue";
+import { categorias } from "../data/artesanias";
+import { api } from "../services/api";
+import { showToast } from "../services/toast";
 
-const tabActiva = ref('productos')
-const coloresInput = ref('')
-const isAuthenticated = ref(false)
-const passwordInput = ref('')
-const showPassword = ref(false)
-const authError = ref('')
-const authInfo = ref('')
-const imageInputRef = ref(null)
-const selectedImageFile = ref(null)
-const selectedImageName = ref('')
-const imageUploadError = ref('')
-const imageUploadInfo = ref('')
-const isOptimizingImage = ref(false)
-const isDragOver = ref(false)
-const selectedImagePreviewUrl = ref('')
-const selectedImageMeta = ref('')
-const selectedImageSizeBytes = ref(0)
-const imageWarningBytes = ref(3 * 1024 * 1024)
-const imageSoftBlockBytes = ref(8 * 1024 * 1024)
-const NUEVA_CATEGORIA_VALUE = '__nueva_categoria__'
-const categoriasFormulario = ref(categorias.filter((cat) => cat !== 'Todos'))
-const isSavingProducto = ref(false)
-const productoFormError = ref('')
-const productoFormInfo = ref('')
+const tabActiva = ref("productos");
+const coloresInput = ref("");
+const isAuthenticated = ref(false);
+const passwordInput = ref("");
+const showPassword = ref(false);
+const authError = ref("");
+const authInfo = ref("");
+const imageInputRef = ref(null);
+const selectedImageFile = ref(null);
+const selectedImageName = ref("");
+const imageUploadError = ref("");
+const imageUploadInfo = ref("");
+const isOptimizingImage = ref(false);
+const isDragOver = ref(false);
+const selectedImagePreviewUrl = ref("");
+const selectedImageMeta = ref("");
+const selectedImageSizeBytes = ref(0);
+const selectedImageWidth = ref(0);
+const selectedImageHeight = ref(0);
+const selectedImageRotation = ref(0);
+const imageWarningBytes = ref(3 * 1024 * 1024);
+const imageSoftBlockBytes = ref(8 * 1024 * 1024);
+const NUEVA_CATEGORIA_VALUE = "__nueva_categoria__";
+const categoriasFormulario = ref(categorias.filter((cat) => cat !== "Todos"));
+const isSavingProducto = ref(false);
+const productoFormError = ref("");
+const productoFormInfo = ref("");
 
-const showImageSizeWarning = computed(() => selectedImageSizeBytes.value > imageWarningBytes.value)
-const isImageTooLargeToOptimize = computed(() => selectedImageSizeBytes.value > imageSoftBlockBytes.value)
+const showImageSizeWarning = computed(
+  () => selectedImageSizeBytes.value > imageWarningBytes.value,
+);
+const isImageTooLargeToOptimize = computed(
+  () => selectedImageSizeBytes.value > imageSoftBlockBytes.value,
+);
 
 const formatSizeThreshold = (bytes) => {
-  const mb = bytes / (1024 * 1024)
-  if (mb >= 1) return `${mb.toFixed(mb >= 10 ? 0 : 1)} MB`
-  return `${Math.round(bytes / 1024)} KB`
-}
+  const mb = bytes / (1024 * 1024);
+  if (mb >= 1) return `${mb.toFixed(mb >= 10 ? 0 : 1)} MB`;
+  return `${Math.round(bytes / 1024)} KB`;
+};
 
 const formatFileSize = (bytes) => {
-  if (!bytes || bytes <= 0) return '0 KB'
-  const mb = bytes / (1024 * 1024)
-  if (mb >= 1) return `${mb.toFixed(2)} MB`
-  return `${(bytes / 1024).toFixed(1)} KB`
-}
+  if (!bytes || bytes <= 0) return "0 KB";
+  const mb = bytes / (1024 * 1024);
+  if (mb >= 1) return `${mb.toFixed(2)} MB`;
+  return `${(bytes / 1024).toFixed(1)} KB`;
+};
+
+const selectedImagePreviewStyle = computed(() => ({
+  transform: `rotate(${selectedImageRotation.value}deg)`,
+}));
 
 const normalizarTexto = (value) =>
-  String(value || '')
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
+  String(value || "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
 
 const existeNombreProducto = (nombre, idActual = null) => {
-  const objetivo = normalizarTexto(nombre)
-  if (!objetivo) return false
+  const objetivo = normalizarTexto(nombre);
+  if (!objetivo) return false;
 
   return productosListado.value.some((producto) => {
-    const idProducto = Number(producto?.id)
+    const idProducto = Number(producto?.id);
     if (idActual && idProducto === Number(idActual)) {
-      return false
+      return false;
     }
-    return normalizarTexto(producto?.nombre) === objetivo
-  })
-}
+    return normalizarTexto(producto?.nombre) === objetivo;
+  });
+};
 
 const tituloDesdeNombreArchivo = (fileName) => {
-  const withoutExt = String(fileName || '').replace(/\.[^.]+$/, '')
-  const cleaned = withoutExt
-    .replace(/[_-]+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim()
+  const withoutExt = String(fileName || "").replace(/\.[^.]+$/, "");
+  const cleaned = withoutExt.replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim();
 
-  if (!cleaned) return ''
+  if (!cleaned) return "";
 
   return cleaned
-    .split(' ')
-    .map((word) => (word ? word[0].toUpperCase() + word.slice(1).toLowerCase() : ''))
-    .join(' ')
-}
+    .split(" ")
+    .map((word) =>
+      word ? word[0].toUpperCase() + word.slice(1).toLowerCase() : "",
+    )
+    .join(" ");
+};
 
 const inferirCategoriaDesdeArchivo = (fileName) => {
-  const normalizedName = normalizarTexto(fileName)
-  if (!normalizedName) return ''
+  const normalizedName = normalizarTexto(fileName);
+  if (!normalizedName) return "";
 
-  const categoriasDisponibles = categoriasFormulario.value
-  return categoriasDisponibles.find((cat) => normalizedName.includes(normalizarTexto(cat))) || ''
-}
+  const categoriasDisponibles = categoriasFormulario.value;
+  return (
+    categoriasDisponibles.find((cat) =>
+      normalizedName.includes(normalizarTexto(cat)),
+    ) || ""
+  );
+};
 
 const manejarCambioCategoria = () => {
   if (nuevoProducto.value.categoria !== NUEVA_CATEGORIA_VALUE) {
-    return
+    return;
   }
 
-  const nombreCategoria = prompt('Escribe el nombre de la nueva categoría:')
-  const categoriaLimpia = String(nombreCategoria || '').trim()
+  const nombreCategoria = prompt("Escribe el nombre de la nueva categoría:");
+  const categoriaLimpia = String(nombreCategoria || "").trim();
 
   if (!categoriaLimpia) {
-    nuevoProducto.value.categoria = ''
-    return
+    nuevoProducto.value.categoria = "";
+    return;
   }
 
   const categoriaExistente = categoriasFormulario.value.find(
-    (cat) => normalizarTexto(cat) === normalizarTexto(categoriaLimpia)
-  )
+    (cat) => normalizarTexto(cat) === normalizarTexto(categoriaLimpia),
+  );
 
   if (categoriaExistente) {
-    nuevoProducto.value.categoria = categoriaExistente
-    showToast({ message: `La categoría "${categoriaExistente}" ya existe.`, type: 'success' })
-    return
+    nuevoProducto.value.categoria = categoriaExistente;
+    showToast({
+      message: `La categoría "${categoriaExistente}" ya existe.`,
+      type: "success",
+    });
+    return;
   }
 
-  categoriasFormulario.value = [...categoriasFormulario.value, categoriaLimpia]
-  nuevoProducto.value.categoria = categoriaLimpia
-  showToast({ message: `Categoría "${categoriaLimpia}" agregada al formulario.`, type: 'success' })
-}
+  categoriasFormulario.value = [...categoriasFormulario.value, categoriaLimpia];
+  nuevoProducto.value.categoria = categoriaLimpia;
+  showToast({
+    message: `Categoría "${categoriaLimpia}" agregada al formulario.`,
+    type: "success",
+  });
+};
 
-const autocompletarFormularioDesdeImagen = ({ file, width = 0, height = 0 }) => {
-  if (!file) return
+const autocompletarFormularioDesdeImagen = ({
+  file,
+  width = 0,
+  height = 0,
+}) => {
+  if (!file) return;
 
-  const nombreSugerido = tituloDesdeNombreArchivo(file.name)
-  const categoriaSugerida = inferirCategoriaDesdeArchivo(file.name)
-  const mimeType = String(file.type || '').trim() || 'desconocido'
-  const dimensiones = width > 0 && height > 0 ? `${width} x ${height} px` : ''
+  const nombreSugerido = tituloDesdeNombreArchivo(file.name);
+  const categoriaSugerida = inferirCategoriaDesdeArchivo(file.name);
+  const mimeType = String(file.type || "").trim() || "desconocido";
+  const dimensiones = width > 0 && height > 0 ? `${width} x ${height} px` : "";
 
-  if (!String(nuevoProducto.value.nombre || '').trim() && nombreSugerido) {
-    nuevoProducto.value.nombre = nombreSugerido
+  if (!String(nuevoProducto.value.nombre || "").trim() && nombreSugerido) {
+    nuevoProducto.value.nombre = nombreSugerido;
   }
 
-  if (!String(nuevoProducto.value.categoria || '').trim() && categoriaSugerida) {
-    nuevoProducto.value.categoria = categoriaSugerida
+  if (
+    !String(nuevoProducto.value.categoria || "").trim() &&
+    categoriaSugerida
+  ) {
+    nuevoProducto.value.categoria = categoriaSugerida;
   }
 
-  if (!String(nuevoProducto.value.descripcion || '').trim()) {
-    nuevoProducto.value.descripcion = `Producto basado en imagen: ${file.name}`
+  if (!String(nuevoProducto.value.descripcion || "").trim()) {
+    nuevoProducto.value.descripcion = `Producto basado en imagen: ${file.name}`;
   }
 
-  if (!String(nuevoProducto.value.notas || '').trim()) {
-    const partes = [`Archivo: ${mimeType}`, `Peso: ${formatFileSize(file.size)}`]
-    if (dimensiones) partes.push(`Resolución: ${dimensiones}`)
-    nuevoProducto.value.notas = partes.join(' · ')
+  if (!String(nuevoProducto.value.notas || "").trim()) {
+    const partes = [
+      `Archivo: ${mimeType}`,
+      `Peso: ${formatFileSize(file.size)}`,
+    ];
+    if (dimensiones) partes.push(`Resolución: ${dimensiones}`);
+    nuevoProducto.value.notas = partes.join(" · ");
   }
-}
+};
 
 const getImageDimensions = (url) =>
   new Promise((resolve, reject) => {
-    const image = new Image()
-    image.onload = () => resolve({ width: image.naturalWidth, height: image.naturalHeight })
-    image.onerror = () => reject(new Error('No se pudieron obtener las dimensiones de la imagen.'))
-    image.src = url
-  })
+    const image = new Image();
+    image.onload = () =>
+      resolve({ width: image.naturalWidth, height: image.naturalHeight });
+    image.onerror = () =>
+      reject(new Error("No se pudieron obtener las dimensiones de la imagen."));
+    image.src = url;
+  });
 
 // Estado del formulario
 const nuevoProducto = ref({
   id: null,
-  nombre: '',
-  categoria: '',
-  tipo: '',
-  tamaño: '',
-  descripcion: '',
+  nombre: "",
+  categoria: "",
+  tipo: "",
+  tamaño: "",
+  descripcion: "",
   colores: [],
-  precioAproximado: '',
-  notas: '',
-  imagen: ''
-})
+  precioAproximado: "",
+  notas: "",
+  imagen: "",
+});
 
-const productosGuardados = ref([])
-const productosBase = ref([])
-const mensajes = ref([])
-const suscriptores = ref([])
-const intentosLogin = ref([])
+const productosGuardados = ref([]);
+const productosBase = ref([]);
+const mensajes = ref([]);
+const suscriptores = ref([]);
+const intentosLogin = ref([]);
 
 const productosListado = computed(() => {
   const base = productosBase.value.map((producto) => ({
     ...producto,
-    _origen: 'base',
-    key: `base-${producto.id}`
-  }))
+    _origen: "base",
+    key: `base-${producto.id}`,
+  }));
 
   const personalizados = productosGuardados.value.map((producto) => ({
     ...producto,
-    _origen: 'custom',
-    key: `custom-${producto.id}`
-  }))
+    _origen: "custom",
+    key: `custom-${producto.id}`,
+  }));
 
-  return [...base, ...personalizados]
-})
+  return [...base, ...personalizados];
+});
 
 const cargarDatosAdmin = async () => {
-  const [productosApi, baseProductosApi, mensajesApi, suscriptoresApi, intentosApi, imageConfigApi] = await Promise.allSettled([
+  const [
+    productosApi,
+    baseProductosApi,
+    mensajesApi,
+    suscriptoresApi,
+    intentosApi,
+    imageConfigApi,
+  ] = await Promise.allSettled([
     api.getAdminProductos(),
     api.getAdminBaseProductos(),
     api.getMensajes(),
     api.getSuscriptores(),
     api.getLoginAttempts(100),
-    api.getImageUploadConfig()
-  ])
+    api.getImageUploadConfig(),
+  ]);
 
-  if (productosApi.status === 'fulfilled') {
-    productosGuardados.value = Array.isArray(productosApi.value) ? productosApi.value : []
+  if (productosApi.status === "fulfilled") {
+    productosGuardados.value = Array.isArray(productosApi.value)
+      ? productosApi.value
+      : [];
   }
 
-  if (baseProductosApi.status === 'fulfilled') {
-    productosBase.value = Array.isArray(baseProductosApi.value) ? baseProductosApi.value : []
+  if (baseProductosApi.status === "fulfilled") {
+    productosBase.value = Array.isArray(baseProductosApi.value)
+      ? baseProductosApi.value
+      : [];
   }
 
-  if (mensajesApi.status === 'fulfilled') {
-    mensajes.value = Array.isArray(mensajesApi.value) ? mensajesApi.value : []
+  if (mensajesApi.status === "fulfilled") {
+    mensajes.value = Array.isArray(mensajesApi.value) ? mensajesApi.value : [];
   }
 
-  if (suscriptoresApi.status === 'fulfilled') {
-    suscriptores.value = Array.isArray(suscriptoresApi.value) ? suscriptoresApi.value : []
+  if (suscriptoresApi.status === "fulfilled") {
+    suscriptores.value = Array.isArray(suscriptoresApi.value)
+      ? suscriptoresApi.value
+      : [];
   }
 
-  if (intentosApi.status === 'fulfilled') {
-    intentosLogin.value = Array.isArray(intentosApi.value) ? intentosApi.value : []
+  if (intentosApi.status === "fulfilled") {
+    intentosLogin.value = Array.isArray(intentosApi.value)
+      ? intentosApi.value
+      : [];
   }
 
-  if (imageConfigApi.status === 'fulfilled') {
-    imageWarningBytes.value = Number(imageConfigApi.value?.softBlockBytes || imageWarningBytes.value)
-    imageSoftBlockBytes.value = Number(imageConfigApi.value?.softBlockBytes || imageSoftBlockBytes.value)
+  if (imageConfigApi.status === "fulfilled") {
+    imageWarningBytes.value = Number(
+      imageConfigApi.value?.softBlockBytes || imageWarningBytes.value,
+    );
+    imageSoftBlockBytes.value = Number(
+      imageConfigApi.value?.softBlockBytes || imageSoftBlockBytes.value,
+    );
   }
-}
+};
 
 const cargarIntentosLogin = async () => {
   try {
-    intentosLogin.value = await api.getLoginAttempts(100)
-    authError.value = ''
+    intentosLogin.value = await api.getLoginAttempts(100);
+    authError.value = "";
   } catch (error) {
-    authError.value = error.message || 'No se pudieron cargar los registros de auditoría.'
+    authError.value =
+      error.message || "No se pudieron cargar los registros de auditoría.";
   }
-}
+};
 
 const getAdminBackendErrorMessage = (error, fallbackMessage) => {
-  const rawMessage = String(error?.message || '').trim()
-  const status = Number(error?.status || 0)
-  const isGenericRequestError = rawMessage.toLowerCase() === 'error en la solicitud'
-  const isNetworkError = /failed to fetch|networkerror|load failed/i.test(rawMessage)
+  const rawMessage = String(error?.message || "").trim();
+  const status = Number(error?.status || 0);
+  const isGenericRequestError =
+    rawMessage.toLowerCase() === "error en la solicitud";
+  const isNetworkError = /failed to fetch|networkerror|load failed/i.test(
+    rawMessage,
+  );
 
-  if (status === 404 || status === 0 || isGenericRequestError || isNetworkError) {
-    return 'El panel Admin necesita un backend API activo. Verifica que el servicio API en Render esté desplegado y accesible para iniciar sesión.'
+  if (
+    status === 404 ||
+    status === 0 ||
+    isGenericRequestError ||
+    isNetworkError
+  ) {
+    return "El panel Admin necesita un backend API activo. Verifica que el servicio API en Render esté desplegado y accesible para iniciar sesión.";
   }
 
-  return rawMessage || fallbackMessage
-}
+  return rawMessage || fallbackMessage;
+};
 
 const iniciarSesion = async () => {
-  authInfo.value = ''
+  authInfo.value = "";
 
   try {
-    await api.login(passwordInput.value.trim())
-    isAuthenticated.value = true
-    authError.value = ''
-    passwordInput.value = ''
-    await cargarDatosAdmin()
+    await api.login(passwordInput.value.trim());
+    isAuthenticated.value = true;
+    authError.value = "";
+    passwordInput.value = "";
+    await cargarDatosAdmin();
   } catch (error) {
-    authError.value = getAdminBackendErrorMessage(error, 'Contraseña incorrecta. Intenta de nuevo.')
+    authError.value = getAdminBackendErrorMessage(
+      error,
+      "Contraseña incorrecta. Intenta de nuevo.",
+    );
   }
-}
+};
 
 const cerrarSesion = async () => {
   try {
-    await api.logout()
+    await api.logout();
   } catch {
     // Ignorar error de logout para limpiar estado local
   }
 
-  isAuthenticated.value = false
-  authError.value = ''
-  authInfo.value = ''
-  passwordInput.value = ''
-  showPassword.value = false
-}
+  isAuthenticated.value = false;
+  authError.value = "";
+  authInfo.value = "";
+  passwordInput.value = "";
+  showPassword.value = false;
+};
 
 const guardarProducto = async () => {
-  if (isSavingProducto.value) return
+  if (isSavingProducto.value) return;
 
-  limpiarMensajesImagen()
-  productoFormError.value = ''
-  productoFormInfo.value = ''
-  const esEdicion = Boolean(nuevoProducto.value.id)
+  limpiarMensajesImagen();
+  productoFormError.value = "";
+  productoFormInfo.value = "";
+  const esEdicion = Boolean(nuevoProducto.value.id);
 
   // Procesar colores
   const colores = coloresInput.value
-    .split(',')
-    .map(c => c.trim())
-    .filter(c => c.length > 0)
+    .split(",")
+    .map((c) => c.trim())
+    .filter((c) => c.length > 0);
 
   if (nuevoProducto.value.categoria === NUEVA_CATEGORIA_VALUE) {
-    productoFormError.value = 'Selecciona o crea una categoría válida antes de guardar.'
-    showToast({ message: productoFormError.value, type: 'error' })
-    return
+    productoFormError.value =
+      "Selecciona o crea una categoría válida antes de guardar.";
+    showToast({ message: productoFormError.value, type: "error" });
+    return;
   }
 
-  if (existeNombreProducto(nuevoProducto.value.nombre, nuevoProducto.value.id)) {
-    productoFormError.value = 'Ya existe un producto con ese nombre.'
-    showToast({ message: productoFormError.value, type: 'error' })
-    return
+  if (
+    existeNombreProducto(nuevoProducto.value.nombre, nuevoProducto.value.id)
+  ) {
+    productoFormError.value = "Ya existe un producto con ese nombre.";
+    showToast({ message: productoFormError.value, type: "error" });
+    return;
   }
 
-  isSavingProducto.value = true
+  isSavingProducto.value = true;
 
   try {
-    const imagenManual = String(nuevoProducto.value.imagen || '').trim()
-    let imagenNormalizada = imagenManual || '/images/logoanita.webp'
+    const imagenManual = String(nuevoProducto.value.imagen || "").trim();
+    let imagenNormalizada = imagenManual || "/images/logoanita.webp";
 
     if (selectedImageFile.value) {
-      const fileToOptimize = selectedImageFile.value
+      const fileToOptimize = selectedImageFile.value;
 
       if (fileToOptimize) {
         if (!camposCompletosParaOptimizar()) {
-          imageUploadError.value = 'Completa primero los campos requeridos del producto antes de guardar para optimizar la imagen.'
-          throw new Error(imageUploadError.value)
+          imageUploadError.value =
+            "Completa primero los campos requeridos del producto antes de guardar para optimizar la imagen.";
+          throw new Error(imageUploadError.value);
         }
 
-        isOptimizingImage.value = true
-        imageUploadInfo.value = 'Optimizando imagen antes de guardar...'
+        isOptimizingImage.value = true;
+        imageUploadInfo.value = "Optimizando imagen antes de guardar...";
 
         try {
           const response = await api.optimizeProductImage(fileToOptimize, {
             productName: nuevoProducto.value.nombre,
             categoria: nuevoProducto.value.categoria,
-            tipo: nuevoProducto.value.tipo
-          })
+            tipo: nuevoProducto.value.tipo,
+            sourceWidth: selectedImageWidth.value,
+            sourceHeight: selectedImageHeight.value,
+            rotateDegrees: selectedImageRotation.value,
+          });
 
           if (!response?.imagePath) {
-            throw new Error('No se recibió ruta de imagen optimizada.')
+            throw new Error("No se recibió ruta de imagen optimizada.");
           }
 
-          imagenNormalizada = response.imagePath
-          nuevoProducto.value.imagen = response.imagePath
-          imageUploadInfo.value = `Imagen optimizada y aplicada: ${response.fileName || response.imagePath}`
-          limpiarImagenSeleccionada()
+          imagenNormalizada = response.imagePath;
+          nuevoProducto.value.imagen = response.imagePath;
+          imageUploadInfo.value = `Imagen optimizada y aplicada: ${response.fileName || response.imagePath}`;
+          limpiarImagenSeleccionada();
         } catch (error) {
           if (imagenManual) {
-            imageUploadInfo.value = 'No se pudo optimizar la imagen. Se usará la ruta manual indicada.'
-            limpiarImagenSeleccionada()
+            imageUploadInfo.value =
+              "No se pudo optimizar la imagen. Se usará la ruta manual indicada.";
+            limpiarImagenSeleccionada();
           } else {
-            imageUploadError.value = error.message || 'No se pudo optimizar la imagen.'
-            throw new Error(imageUploadError.value)
+            imageUploadError.value =
+              error.message || "No se pudo optimizar la imagen.";
+            throw new Error(imageUploadError.value);
           }
         } finally {
-          isOptimizingImage.value = false
+          isOptimizingImage.value = false;
         }
       }
     }
@@ -703,242 +924,272 @@ const guardarProducto = async () => {
     const payload = {
       ...nuevoProducto.value,
       imagen: imagenNormalizada,
-      colores
-    }
+      colores,
+    };
 
     if (nuevoProducto.value.id) {
-      await api.updateProducto(nuevoProducto.value.id, payload)
+      await api.updateProducto(nuevoProducto.value.id, payload);
     } else {
-      await api.createProducto(payload)
+      await api.createProducto(payload);
     }
 
-    authError.value = ''
-    productoFormError.value = ''
-    productoFormInfo.value = esEdicion ? 'Producto actualizado correctamente.' : 'Agregado exitosamente'
-    showToast({ message: productoFormInfo.value, type: 'success' })
+    authError.value = "";
+    productoFormError.value = "";
+    productoFormInfo.value = esEdicion
+      ? "Producto actualizado correctamente."
+      : "Agregado exitosamente";
+    showToast({ message: productoFormInfo.value, type: "success" });
 
     try {
-      await cargarDatosAdmin()
+      await cargarDatosAdmin();
     } catch {
-      const mensajeRecarga = 'El producto se guardó, pero no se pudo actualizar la lista automáticamente.'
-      productoFormInfo.value = mensajeRecarga
-      showToast({ message: mensajeRecarga, type: 'error' })
+      const mensajeRecarga =
+        "El producto se guardó, pero no se pudo actualizar la lista automáticamente.";
+      productoFormInfo.value = mensajeRecarga;
+      showToast({ message: mensajeRecarga, type: "error" });
     }
 
-    resetearFormulario()
+    resetearFormulario();
   } catch (error) {
-    const rawMessage = String(error?.message || '').trim()
-    const duplicateNameError = /ya existe un producto con ese nombre/i.test(rawMessage)
+    const rawMessage = String(error?.message || "").trim();
+    const duplicateNameError = /ya existe un producto con ese nombre/i.test(
+      rawMessage,
+    );
 
     if (!esEdicion && duplicateNameError) {
-      productoFormError.value = ''
-      authError.value = ''
-      productoFormInfo.value = 'Agregado exitosamente'
-      showToast({ message: productoFormInfo.value, type: 'success' })
+      productoFormError.value = "";
+      authError.value = "";
+      productoFormInfo.value = "Agregado exitosamente";
+      showToast({ message: productoFormInfo.value, type: "success" });
 
       try {
-        await cargarDatosAdmin()
+        await cargarDatosAdmin();
       } catch {
         // Ignorar para priorizar feedback de éxito tras subida/optimización.
       }
 
-      resetearFormulario()
-      return
+      resetearFormulario();
+      return;
     }
 
-    authError.value = error.message || 'No se pudo guardar el producto.'
-    productoFormError.value = authError.value
-    showToast({ message: authError.value, type: 'error' })
+    authError.value = error.message || "No se pudo guardar el producto.";
+    productoFormError.value = authError.value;
+    showToast({ message: authError.value, type: "error" });
   } finally {
-    isSavingProducto.value = false
-    isOptimizingImage.value = false
+    isSavingProducto.value = false;
+    isOptimizingImage.value = false;
   }
-}
+};
 
 const limpiarMensajesImagen = () => {
-  imageUploadError.value = ''
-  imageUploadInfo.value = ''
-}
+  imageUploadError.value = "";
+  imageUploadInfo.value = "";
+};
 
 const limpiarImagenSeleccionada = () => {
   if (selectedImagePreviewUrl.value) {
-    URL.revokeObjectURL(selectedImagePreviewUrl.value)
-    selectedImagePreviewUrl.value = ''
+    URL.revokeObjectURL(selectedImagePreviewUrl.value);
+    selectedImagePreviewUrl.value = "";
   }
 
-  selectedImageFile.value = null
-  selectedImageName.value = ''
-  selectedImageMeta.value = ''
-  selectedImageSizeBytes.value = 0
+  selectedImageFile.value = null;
+  selectedImageName.value = "";
+  selectedImageMeta.value = "";
+  selectedImageSizeBytes.value = 0;
+  selectedImageWidth.value = 0;
+  selectedImageHeight.value = 0;
+  selectedImageRotation.value = 0;
 
   if (imageInputRef.value) {
-    imageInputRef.value.value = ''
+    imageInputRef.value.value = "";
   }
-}
+};
 
 const limpiarCamposTextoFormulario = () => {
-  nuevoProducto.value.nombre = ''
-  nuevoProducto.value.categoria = ''
-  nuevoProducto.value.tipo = ''
-  nuevoProducto.value.tamaño = ''
-  nuevoProducto.value.descripcion = ''
-  nuevoProducto.value.precioAproximado = ''
-  nuevoProducto.value.notas = ''
-  nuevoProducto.value.imagen = ''
-  coloresInput.value = ''
-}
+  nuevoProducto.value.nombre = "";
+  nuevoProducto.value.categoria = "";
+  nuevoProducto.value.tipo = "";
+  nuevoProducto.value.tamaño = "";
+  nuevoProducto.value.descripcion = "";
+  nuevoProducto.value.precioAproximado = "";
+  nuevoProducto.value.notas = "";
+  nuevoProducto.value.imagen = "";
+  coloresInput.value = "";
+};
 
 const cancelarSeleccionImagen = () => {
-  limpiarCamposTextoFormulario()
-  limpiarImagenSeleccionada()
-  limpiarMensajesImagen()
-}
+  limpiarCamposTextoFormulario();
+  limpiarImagenSeleccionada();
+  limpiarMensajesImagen();
+};
 
 const asignarArchivoImagen = async (file) => {
-  limpiarMensajesImagen()
+  limpiarMensajesImagen();
 
   if (!file) {
-    limpiarImagenSeleccionada()
-    return
+    limpiarImagenSeleccionada();
+    return;
   }
 
-  if (!String(file.type || '').startsWith('image/')) {
-    imageUploadError.value = 'Selecciona un archivo de imagen válido.'
-    limpiarImagenSeleccionada()
-    return
+  if (!String(file.type || "").startsWith("image/")) {
+    imageUploadError.value = "Selecciona un archivo de imagen válido.";
+    limpiarImagenSeleccionada();
+    return;
   }
 
-  selectedImageFile.value = file
-  selectedImageName.value = file.name
-  selectedImageSizeBytes.value = file.size || 0
-  selectedImagePreviewUrl.value = URL.createObjectURL(file)
+  selectedImageFile.value = file;
+  selectedImageName.value = file.name;
+  selectedImageSizeBytes.value = file.size || 0;
+  selectedImageWidth.value = 0;
+  selectedImageHeight.value = 0;
+  selectedImageRotation.value = 0;
+  selectedImagePreviewUrl.value = URL.createObjectURL(file);
 
   try {
-    const { width, height } = await getImageDimensions(selectedImagePreviewUrl.value)
-    selectedImageMeta.value = `${width} x ${height} px · ${formatFileSize(file.size)}`
-    autocompletarFormularioDesdeImagen({ file, width, height })
+    const { width, height } = await getImageDimensions(
+      selectedImagePreviewUrl.value,
+    );
+    selectedImageWidth.value = width;
+    selectedImageHeight.value = height;
+    selectedImageMeta.value = `${width} x ${height} px · ${formatFileSize(file.size)}`;
+    autocompletarFormularioDesdeImagen({ file, width, height });
   } catch {
-    selectedImageMeta.value = formatFileSize(file.size)
-    autocompletarFormularioDesdeImagen({ file })
+    selectedImageWidth.value = 0;
+    selectedImageHeight.value = 0;
+    selectedImageMeta.value = formatFileSize(file.size);
+    autocompletarFormularioDesdeImagen({ file });
   }
-}
+};
+
+const rotarImagenSeleccionada = (step) => {
+  selectedImageRotation.value =
+    ((selectedImageRotation.value + step) % 360 + 360) % 360;
+};
 
 const onImageFileChange = async (event) => {
-  const [file] = event.target.files || []
-  await asignarArchivoImagen(file)
-}
+  const [file] = event.target.files || [];
+  await asignarArchivoImagen(file);
+};
 
 const onImageDrop = async (event) => {
-  isDragOver.value = false
-  const [file] = event.dataTransfer?.files || []
-  await asignarArchivoImagen(file)
-}
+  isDragOver.value = false;
+  const [file] = event.dataTransfer?.files || [];
+  await asignarArchivoImagen(file);
+};
 
 const camposCompletosParaOptimizar = () => {
-  const p = nuevoProducto.value
+  const p = nuevoProducto.value;
 
   return (
-    String(p.nombre || '').trim() &&
-    String(p.categoria || '').trim() &&
-    String(p.tipo || '').trim() &&
-    String(p.tamaño || '').trim() &&
-    String(p.descripcion || '').trim() &&
-    String(p.precioAproximado || '').trim()
-  )
-}
+    String(p.nombre || "").trim() &&
+    String(p.categoria || "").trim() &&
+    String(p.tipo || "").trim() &&
+    String(p.tamaño || "").trim() &&
+    String(p.descripcion || "").trim() &&
+    String(p.precioAproximado || "").trim()
+  );
+};
 
 const editarProducto = (producto) => {
-  nuevoProducto.value = { ...producto }
-  coloresInput.value = Array.isArray(producto.colores) ? producto.colores.join(', ') : ''
-  limpiarImagenSeleccionada()
-  limpiarMensajesImagen()
-}
+  nuevoProducto.value = { ...producto };
+  coloresInput.value = Array.isArray(producto.colores)
+    ? producto.colores.join(", ")
+    : "";
+  limpiarImagenSeleccionada();
+  limpiarMensajesImagen();
+};
 
 const cancelarEdicion = () => {
-  productoFormError.value = ''
-  productoFormInfo.value = ''
-  resetearFormulario()
-}
+  productoFormError.value = "";
+  productoFormInfo.value = "";
+  resetearFormulario();
+};
 
 const resetearFormulario = () => {
   nuevoProducto.value = {
     id: null,
-    nombre: '',
-    categoria: '',
-    tipo: '',
-    tamaño: '',
-    descripcion: '',
+    nombre: "",
+    categoria: "",
+    tipo: "",
+    tamaño: "",
+    descripcion: "",
     colores: [],
-    precioAproximado: '',
-    notas: '',
-    imagen: ''
-  }
-  coloresInput.value = ''
-  limpiarImagenSeleccionada()
-  limpiarMensajesImagen()
-}
+    precioAproximado: "",
+    notas: "",
+    imagen: "",
+  };
+  coloresInput.value = "";
+  limpiarImagenSeleccionada();
+  limpiarMensajesImagen();
+};
 
 const eliminarProducto = async (producto) => {
-  const productoId = Number(producto?.id)
-  const productoNombre = String(producto?.nombre || '').trim()
-  const origen = producto?._origen === 'base' ? 'base' : 'custom'
+  const productoId = Number(producto?.id);
+  const productoNombre = String(producto?.nombre || "").trim();
+  const origen = producto?._origen === "base" ? "base" : "custom";
 
   if (!Number.isInteger(productoId) || productoId <= 0) {
-    showToast({ message: 'ID de producto inválido.', type: 'error' })
-    return
+    showToast({ message: "ID de producto inválido.", type: "error" });
+    return;
   }
 
   const mensaje = productoNombre
     ? `¿Estás seguro de que deseas eliminar "${productoNombre}"?`
-    : '¿Estás seguro de que deseas eliminar este producto?'
+    : "¿Estás seguro de que deseas eliminar este producto?";
 
   if (confirm(mensaje)) {
     try {
-      if (origen === 'base') {
-        await api.deleteBaseProducto(productoId)
-        productosBase.value = productosBase.value.filter((item) => Number(item.id) !== productoId)
+      if (origen === "base") {
+        await api.deleteBaseProducto(productoId);
+        productosBase.value = productosBase.value.filter(
+          (item) => Number(item.id) !== productoId,
+        );
       } else {
-        await api.deleteProducto(productoId)
-        await cargarDatosAdmin()
+        await api.deleteProducto(productoId);
+        await cargarDatosAdmin();
       }
 
       if (nuevoProducto.value.id === productoId) {
-        resetearFormulario()
+        resetearFormulario();
       }
-      productoFormError.value = ''
-      productoFormInfo.value = ''
+      productoFormError.value = "";
+      productoFormInfo.value = "";
       showToast({
-        message: productoNombre ? `Producto "${productoNombre}" eliminado.` : 'Producto eliminado.',
-        type: 'success'
-      })
+        message: productoNombre
+          ? `Producto "${productoNombre}" eliminado.`
+          : "Producto eliminado.",
+        type: "success",
+      });
     } catch (error) {
-      authError.value = error.message || 'No se pudo eliminar el producto.'
-      showToast({ message: authError.value, type: 'error' })
+      authError.value = error.message || "No se pudo eliminar el producto.";
+      showToast({ message: authError.value, type: "error" });
     }
   }
-}
+};
 
 const eliminarSuscriptor = async (id) => {
   try {
-    await api.deleteSuscriptor(id)
-    suscriptores.value = suscriptores.value.filter((suscriptor) => suscriptor.id !== id)
-    showToast({ message: 'Suscriptor eliminado.', type: 'success' })
+    await api.deleteSuscriptor(id);
+    suscriptores.value = suscriptores.value.filter(
+      (suscriptor) => suscriptor.id !== id,
+    );
+    showToast({ message: "Suscriptor eliminado.", type: "success" });
   } catch (error) {
-    authError.value = error.message || 'No se pudo eliminar el suscriptor.'
-    showToast({ message: authError.value, type: 'error' })
+    authError.value = error.message || "No se pudo eliminar el suscriptor.";
+    showToast({ message: authError.value, type: "error" });
   }
-}
+};
 
 onMounted(async () => {
   try {
-    await api.me()
-    isAuthenticated.value = true
-    await cargarDatosAdmin()
+    await api.me();
+    isAuthenticated.value = true;
+    await cargarDatosAdmin();
   } catch (error) {
-    isAuthenticated.value = false
-    authInfo.value = getAdminBackendErrorMessage(error, '')
+    isAuthenticated.value = false;
+    authInfo.value = getAdminBackendErrorMessage(error, "");
   }
-})
+});
 </script>
 
 <style scoped>
@@ -949,7 +1200,11 @@ onMounted(async () => {
 }
 
 .admin-header {
-  background: linear-gradient(135deg, var(--secondary-cream) 0%, var(--bg-light-2) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--secondary-cream) 0%,
+    var(--bg-light-2) 100%
+  );
   padding: 3rem 1rem;
   text-align: center;
   margin-bottom: 2rem;
@@ -1196,7 +1451,9 @@ onMounted(async () => {
   border-radius: 8px;
   background: #fff;
   padding: 1rem;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .image-dropzone p {
@@ -1228,7 +1485,9 @@ onMounted(async () => {
   max-width: 280px;
   border-radius: 8px;
   border: 1px solid #ddd;
-  object-fit: cover;
+  object-fit: contain;
+  transform-origin: center center;
+  transition: transform 0.2s ease;
 }
 
 .image-preview-meta {
@@ -1558,7 +1817,8 @@ td.acciones {
     display: block;
   }
 
-  th, td {
+  th,
+  td {
     padding: 0.75rem 0.5rem;
   }
 
@@ -1614,7 +1874,8 @@ td.acciones {
     font-size: 0.75rem;
   }
 
-  th, td {
+  th,
+  td {
     padding: 0.5rem 0.25rem;
   }
 

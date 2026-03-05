@@ -5,7 +5,15 @@ import os
 import re
 import unicodedata
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageOps
+
+try:
+    import pillow_heif  # type: ignore
+
+    pillow_heif.register_heif_opener()
+    HEIF_SUPPORT = True
+except Exception:
+    HEIF_SUPPORT = False
 
 
 def slugify(text: str) -> str:
@@ -32,6 +40,9 @@ def process_images(
     max_size: int,
     target_size: int,
     quality: int,
+    rotate_degrees: int,
+    source_width: int,
+    source_height: int,
     max_file_size_mb: float,
     process_webp: bool,
     map_file: Path,
@@ -64,6 +75,17 @@ def process_images(
             if not process_webp and ext == '.webp':
                 continue
 
+            if ext in ('.heic', '.heif') and not HEIF_SUPPORT:
+                rel_src = src_path.relative_to(source_dir).as_posix()
+                print(
+                    f"[ERROR] {rel_src}: formato HEIC/HEIF detectado, pero falta la dependencia pillow-heif."
+                )
+                error_details.append(
+                    f"{rel_src}: HEIC/HEIF requiere instalar pillow-heif en el servidor"
+                )
+                errors += 1
+                continue
+
             base_slug = slugify(src_path.stem)
             out_name = unique_name(dest_dir, base_slug)
             out_path = dest_dir / out_name
@@ -92,6 +114,13 @@ def process_images(
                     continue
 
                 with Image.open(src_path) as image:
+                    image = ImageOps.exif_transpose(image)
+                    if rotate_degrees in (90, 180, 270):
+                        image = image.rotate(-rotate_degrees, expand=True)
+
+                    # Keep orientation from EXIF metadata only.
+                    # Manual rotation (if any) is handled via --rotate-degrees.
+
                     if image.mode not in ('RGB', 'RGBA'):
                         image = image.convert('RGBA')
 
@@ -201,6 +230,15 @@ def main() -> None:
     )
     parser.add_argument('--quality', type=int, default=80, help='Calidad WebP (1-100).')
     parser.add_argument(
+        '--rotate-degrees',
+        type=int,
+        default=0,
+        choices=[0, 90, 180, 270],
+        help='Rotación horaria aplicada antes de optimizar.',
+    )
+    parser.add_argument('--source-width', type=int, default=0, help='Ancho original reportado por el navegador.')
+    parser.add_argument('--source-height', type=int, default=0, help='Alto original reportado por el navegador.')
+    parser.add_argument(
         '--max-file-size-mb',
         type=float,
         default=5,
@@ -236,6 +274,9 @@ def main() -> None:
         max_size=max(64, args.max_size),
         target_size=max(0, args.target_size),
         quality=quality,
+        rotate_degrees=args.rotate_degrees,
+        source_width=max(0, args.source_width),
+        source_height=max(0, args.source_height),
         max_file_size_mb=max(0.1, args.max_file_size_mb),
         process_webp=args.process_webp,
         map_file=Path(args.map_file).expanduser().resolve(),

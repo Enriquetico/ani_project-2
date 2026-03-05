@@ -1,5 +1,9 @@
 import { Pool } from 'pg'
 import bcrypt from 'bcryptjs'
+import dotenv from 'dotenv'
+
+dotenv.config({ path: '.env.backend' })
+dotenv.config()
 
 const DATABASE_URL = process.env.DATABASE_URL
 

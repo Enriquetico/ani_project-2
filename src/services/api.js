@@ -101,6 +101,15 @@ export const api = {
     if (payload.productName) formData.append('productName', payload.productName)
     if (payload.categoria) formData.append('categoria', payload.categoria)
     if (payload.tipo) formData.append('tipo', payload.tipo)
+    if (Number.isFinite(payload.sourceWidth) && payload.sourceWidth > 0) {
+      formData.append('sourceWidth', String(payload.sourceWidth))
+    }
+    if (Number.isFinite(payload.sourceHeight) && payload.sourceHeight > 0) {
+      formData.append('sourceHeight', String(payload.sourceHeight))
+    }
+    if (Number.isFinite(payload.rotateDegrees)) {
+      formData.append('rotateDegrees', String(payload.rotateDegrees))
+    }
 
     return apiFetch('/admin/optimize-image', {
       method: 'POST',

@@ -34,7 +34,13 @@
         <div v-if="productosFiltrados.length" class="productos-grid">
           <div v-for="producto in productosFiltrados" :key="producto.id" class="producto-card">
             <div class="producto-imagen" @click="abrirModal(producto.imagen, producto.nombre)">
-              <img :src="producto.imagen" :alt="producto.nombre" class="product-img" />
+              <img
+                :src="producto.imagen"
+                :alt="producto.nombre"
+                class="product-img"
+                loading="lazy"
+                decoding="async"
+              />
               <div class="overlay-zoom">🔍</div>
             </div>
 
@@ -246,24 +252,19 @@ const limpiarFiltros = () => {
   align-items: center;
   justify-content: center;
   background: var(--bg-light);
-  height: 260px;
-  padding: 0.35rem;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   cursor: pointer;
 }
 
 .product-img {
-  width: calc(100% - 0.8rem);
-  height: calc(100% - 0.8rem);
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-orientation: from-image;
   object-position: center;
-  transition: transform 0.4s ease;
-}
-
-.producto-imagen:hover .product-img {
-  transform: scale(1.1);
+  transition: none;
 }
 
 .overlay-zoom {
@@ -353,7 +354,7 @@ const limpiarFiltros = () => {
   }
 
   .producto-imagen {
-    height: 220px;
+    aspect-ratio: 4 / 3;
   }
 }
 </style>

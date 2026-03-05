@@ -1448,6 +1448,78 @@ export const productos = [
     "tamaño": "Variado",
     "precioAproximado": "Contactenos pora información",
     "notas": "Hecho a mano - Único"
+  },
+  {
+    "id": 28,
+    "nombre": "Base pro",
+    "categoria": "Decoracion",
+    "tipo": "Decoracion",
+    "descripcion": "Producto basado en imagen: 1772678580867.png",
+    "imagen": "https://artesaniasani-api.onrender.com/images/base-pro.webp",
+    "colores": [],
+    "tamaño": "Pequeño",
+    "precioAproximado": "20000",
+    "notas": "Archivo: image/png · Peso: 921.0 KB · Resolución: 768 x 1364 px"
+  },
+  {
+    "id": 31,
+    "nombre": "Susi pro",
+    "categoria": "Animales",
+    "tipo": "Perro",
+    "descripcion": "Producto basado en imagen: 1772679351862.png",
+    "imagen": "https://artesaniasani-api.onrender.com/images/susi-pro.webp",
+    "colores": [],
+    "tamaño": "Pequeño",
+    "precioAproximado": "10000",
+    "notas": "Archivo: image/png · Peso: 1.40 MB · Resolución: 768 x 1364 px"
+  },
+  {
+    "id": 32,
+    "nombre": "Tres princess",
+    "categoria": "Cartoon",
+    "tipo": "Ceramic",
+    "descripcion": "Tres princess",
+    "imagen": "https://artesaniasani-api.onrender.com/images/tres-princess.webp",
+    "colores": [],
+    "tamaño": "Pequeño",
+    "precioAproximado": "20000",
+    "notas": "Archivo: image/jpeg · Peso: 69.6 KB · Resolución: 1080 x 561 px"
+  },
+  {
+    "id": 33,
+    "nombre": "Goto buena suerte",
+    "categoria": "Animales",
+    "tipo": "Ceramic",
+    "descripcion": "Gato gris buena suerte",
+    "imagen": "https://artesaniasani-api.onrender.com/images/goto-buena-suerte.webp",
+    "colores": [],
+    "tamaño": "Mediano",
+    "precioAproximado": "1500000",
+    "notas": "Archivo: image/jpeg · Peso: 182.4 KB · Resolución: 1120 x 1567 px"
+  },
+  {
+    "id": 34,
+    "nombre": "Susi cama",
+    "categoria": "Animales",
+    "tipo": "AnimL",
+    "descripcion": "Producto basado en imagen: 20260305_171353.jpg",
+    "imagen": "https://artesaniasani-api.onrender.com/images/susi-cama.webp",
+    "colores": [],
+    "tamaño": "Mediano",
+    "precioAproximado": "20000",
+    "notas": "Archivo: image/jpeg · Peso: 2.55 MB · Resolución: 2268 x 4032 px"
+  },
+  {
+    "id": 35,
+    "nombre": "Cama Susi",
+    "categoria": "Animales",
+    "tipo": "Perro",
+    "descripcion": "Producto basado en imagen: Cama-susi.png",
+    "imagen": "https://artesaniasani-api.onrender.com/images/cama-susi.webp",
+    "colores": [],
+    "tamaño": "Mediano",
+    "precioAproximado": "230090",
+    "notas": "Archivo: image/png · Peso: 1.30 MB · Resolución: 768 x 1364 px"
   }
 ];
 

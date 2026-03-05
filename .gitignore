@@ -26,4 +26,9 @@ dist-ssr
 # Backend local data and secrets
 backend/data/
 .env
-.env.backend
+.env.*
+!.env*.example
+
+# Python cache artifacts
+__pycache__/
+*.py[cod]

@@ -86,6 +86,7 @@ Requisitos del servidor:
 
 - `python3` disponible (o configurar `PYTHON_BIN`)
 - Paquete Python `Pillow` instalado (`python3 -m pip install Pillow`)
+- Para fotos HEIC/HEIF (iPhone): `pillow-heif` (`python3 -m pip install pillow-heif`)
 
 Variables opcionales:
 

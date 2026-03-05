@@ -55,8 +55,7 @@ onBeforeUnmount(() => {
 
 .modal-content {
   position: relative;
-  width: auto;
-  max-width: 92vw;
+  width: min(92vw, 1200px);
   max-height: 90vh;
   background: transparent;
   border-radius: 0;
@@ -66,10 +65,11 @@ onBeforeUnmount(() => {
 
 .modal-imagen {
   display: block;
-  width: auto;
-  max-width: 92vw;
+  width: 100%;
+  max-width: 100%;
   height: auto;
   object-fit: contain;
+  image-orientation: from-image;
   max-height: 85vh;
   margin: 0 auto;
 }
