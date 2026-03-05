@@ -66,7 +66,6 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { articulos } from '../data/artesanias'
-import { api } from '../services/api'
 
 const busqueda = ref('')
 const email = ref('')
@@ -87,7 +86,19 @@ const articulosFiltrados = computed(() => {
 
 const suscribirse = async () => {
   try {
-    await api.subscribeNewsletter(email.value)
+    const key = 'artesaniasani_newsletter_solicitudes'
+    const current = JSON.parse(localStorage.getItem(key) || '[]')
+    const normalizedEmail = String(email.value || '').trim().toLowerCase()
+
+    if (!normalizedEmail) {
+      throw new Error('Email invalido')
+    }
+
+    if (!current.includes(normalizedEmail)) {
+      current.push(normalizedEmail)
+      localStorage.setItem(key, JSON.stringify(current))
+    }
+
     mensajeNewsletter.value = true
     email.value = ''
   } catch (error) {

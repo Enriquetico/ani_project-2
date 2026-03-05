@@ -118,41 +118,18 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { productos, empresaInfo } from '../data/artesanias'
 import ImageModal from '../components/ImageModal.vue'
-import { api } from '../services/api'
-
-const BASE_MAX_ID = Math.max(0, ...productos.map((producto) => Number(producto.id) || 0))
-const CUSTOM_ID_OFFSET = BASE_MAX_ID + 100000
 
 const route = useRoute()
 const mostrarModal = ref(false)
 const imagenModal = ref('')
 const tituloModal = ref('')
-const productosPersonalizados = ref([])
-
-const toPublicCustomProduct = (producto) => ({
-  ...producto,
-  id: CUSTOM_ID_OFFSET + (Number(producto?.id) || 0)
-})
-
-const cargarProductosPersonalizados = async () => {
-  try {
-    productosPersonalizados.value = await api.getPublicProductos()
-  } catch {
-    productosPersonalizados.value = []
-  }
-}
 
 const todosLosProductos = computed(() => {
-  const mapa = new Map(productos.map(producto => [producto.id, producto]))
-  for (const producto of productosPersonalizados.value) {
-    const normalized = toPublicCustomProduct(producto)
-    mapa.set(normalized.id, normalized)
-  }
-  return Array.from(mapa.values())
+  return productos
 })
 
 const producto = computed(() => {
@@ -164,10 +141,6 @@ const productosRelacionados = computed(() => {
   return todosLosProductos.value
     .filter(p => p.categoria === producto.value.categoria && p.id !== producto.value.id)
     .slice(0, 4)
-})
-
-onMounted(async () => {
-  await cargarProductosPersonalizados()
 })
 
 const abrirModal = (imagen, titulo) => {

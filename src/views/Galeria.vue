@@ -71,44 +71,16 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref } from 'vue'
 import { categorias, productos } from '../data/artesanias'
 import ImageModal from '../components/ImageModal.vue'
-import { api } from '../services/api'
-
-const BASE_MAX_ID = Math.max(0, ...productos.map((producto) => Number(producto.id) || 0))
-const CUSTOM_ID_OFFSET = BASE_MAX_ID + 100000
 
 const categoriaActiva = ref('Todos')
 const busqueda = ref('')
 const mostrarModal = ref(false)
 const imagenModal = ref('')
 const tituloModal = ref('')
-const productosPersonalizados = ref([])
-
-const toPublicCustomProduct = (producto) => ({
-  ...producto,
-  id: CUSTOM_ID_OFFSET + (Number(producto?.id) || 0)
-})
-
-const cargarProductosPersonalizados = async () => {
-  try {
-    productosPersonalizados.value = await api.getPublicProductos()
-  } catch {
-    productosPersonalizados.value = []
-  }
-}
-
-const productosDisponibles = computed(() => {
-  const mapa = new Map(productos.map((producto) => [producto.id, producto]))
-
-  for (const producto of productosPersonalizados.value) {
-    const normalized = toPublicCustomProduct(producto)
-    mapa.set(normalized.id, normalized)
-  }
-
-  return Array.from(mapa.values())
-})
+const productosDisponibles = computed(() => productos)
 
 const productosFiltrados = computed(() => {
   let resultado = productosDisponibles.value
@@ -129,10 +101,6 @@ const productosFiltrados = computed(() => {
   }
 
   return resultado
-})
-
-onMounted(async () => {
-  await cargarProductosPersonalizados()
 })
 
 const abrirModal = (imagen, titulo) => {

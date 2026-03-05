@@ -174,7 +174,6 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { empresaInfo } from '../data/artesanias'
-import { api } from '../services/api'
 
 const formulario = reactive({
   nombre: '',
@@ -194,19 +193,28 @@ const enviarMensaje = async () => {
   mensajeError.value = false
 
   try {
-    await api.sendContacto(formulario)
+    const subject = encodeURIComponent(`[ArtesaniasAni] ${formulario.asunto}`)
+    const body = encodeURIComponent(
+      [
+        `Nombre: ${formulario.nombre}`,
+        `Email: ${formulario.email}`,
+        `Telefono: ${formulario.telefono || 'No indicado'}`,
+        '',
+        'Mensaje:',
+        formulario.mensaje
+      ].join('\n')
+    )
 
-    // Mostrar éxito
+    window.location.href = `mailto:${empresaInfo.contacto.email}?subject=${subject}&body=${body}`
+
     mensajeExito.value = true
-    
-    // Limpiar formulario
+
     formulario.nombre = ''
     formulario.email = ''
     formulario.telefono = ''
     formulario.asunto = ''
     formulario.mensaje = ''
 
-    // Después de 3 segundos, ocultar el mensaje
     setTimeout(() => {
       mensajeExito.value = false
     }, 3000)

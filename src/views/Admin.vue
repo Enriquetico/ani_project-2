@@ -472,12 +472,11 @@
       <div class="security-section">
         <h3>🔐 Seguridad de Acceso</h3>
         <p>
-          La contraseña del panel se valida en backend y la sesión se maneja con
-          cookie segura.
+          Este panel requiere un backend API para autenticación y gestión.
         </p>
         <p>
-          Por seguridad, no se permite cambiar ni recuperar contraseña desde el
-          navegador.
+          En Neocities (hosting estático) el backend no está activo por
+          defecto.
         </p>
       </div>
 
@@ -489,11 +488,11 @@
         </p>
         <ul>
           <li>
-            Los datos se gestionan desde la API backend con persistencia en base
-            de datos
+            En producción estática, administra productos editando
+            `src/data/artesanias.js`
           </li>
-          <li>Es importante hacer respaldo de tus datos periódicamente</li>
-          <li>Los cambios se reflejan automáticamente en la galería</li>
+          <li>Si usas backend local, haz respaldos periódicos</li>
+          <li>Tras cambios locales, ejecuta build y vuelve a subir `dist/`</li>
         </ul>
       </div>
     </div>
@@ -802,7 +801,7 @@ const getAdminBackendErrorMessage = (error, fallbackMessage) => {
     isGenericRequestError ||
     isNetworkError
   ) {
-    return "El panel Admin necesita un backend API activo. Verifica que el servicio API en Render esté desplegado y accesible para iniciar sesión.";
+    return "El panel Admin necesita un backend API activo. En Neocities sin backend este acceso se mantiene deshabilitado.";
   }
 
   return rawMessage || fallbackMessage;
