@@ -1,6 +1,6 @@
 # Backend API (Fase 2)
 
-Backend en Node.js + Express + PostgreSQL (Supabase/Render) para autenticación y persistencia segura.
+Backend en Node.js + Express + PostgreSQL para autenticación y persistencia segura.
 
 ## 1) Configuración
 
@@ -91,7 +91,7 @@ Requisitos del servidor:
 Variables opcionales:
 
 - `PRODUCT_IMAGES_DIR` (default: `public/images`)
-- `PRODUCT_IMAGES_PUBLIC_BASE_URL` (ej: `https://artesaniasani-api.onrender.com`)
+- `PRODUCT_IMAGES_PUBLIC_BASE_URL` (ej: `https://artesaniasani.neocities.org`)
 - `IMAGE_MAX_SIZE` (default: `1024`)
 - `IMAGE_QUALITY` (default: `80`)
 - `IMAGE_SOFT_BLOCK_MB` (default: `8`, límite recomendado en UI)

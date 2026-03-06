@@ -3,6 +3,7 @@ import './style.css'
 import App from './App.vue'
 import routerOptions from './router/index.js'
 import { getSeoForRoute } from './seo/route-seo.js'
+import { getStructuredDataForRoute, toJsonLdString } from './seo/structured-data.js'
 
 const upsertMetaTag = (selector, attributes) => {
 	let element = document.head.querySelector(selector)
@@ -29,16 +30,38 @@ const upsertCanonical = (href) => {
 	link.setAttribute('href', href)
 }
 
+const upsertStructuredData = (entries) => {
+	const jsonLd = toJsonLdString(entries)
+	const scriptId = 'structured-data-jsonld'
+	let script = document.head.querySelector(`#${scriptId}`)
+
+	if (!jsonLd) {
+		if (script) script.remove()
+		return
+	}
+
+	if (!script) {
+		script = document.createElement('script')
+		script.type = 'application/ld+json'
+		script.id = scriptId
+		document.head.appendChild(script)
+	}
+
+	script.textContent = jsonLd
+}
+
 export const createApp = ViteSSG(App, routerOptions, ({ router, isClient }) => {
 	if (!isClient) return
 
 	const applySeo = (path) => {
 		const seo = getSeoForRoute(path)
+		const structuredData = getStructuredDataForRoute(path)
 
 		document.title = seo.title
 		upsertMetaTag('meta[name="description"]', { name: 'description', content: seo.description })
 		upsertMetaTag('meta[name="robots"]', { name: 'robots', content: seo.robots })
 		upsertCanonical(seo.canonical)
+		upsertStructuredData(structuredData)
 	}
 
 	applySeo(router.currentRoute.value.path)

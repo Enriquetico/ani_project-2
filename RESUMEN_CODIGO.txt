@@ -1,0 +1,103 @@
+ArtesaniasAni - Resumen Principal del Codigo
+===========================================
+
+1) Objetivo del proyecto
+------------------------
+Sitio web estatico de ArtesaniasAni construido con Vue 3 + Vite SSG.
+Se publica como sitio estatico (Neocities), sin dependencia obligatoria de backend en produccion.
+
+2) Tecnologias base
+-------------------
+- Vue 3
+- Vue Router
+- Vite + Vite SSG
+- CSS propio por componente
+- Datos locales en src/data/artesanias.js
+
+3) Estructura principal
+-----------------------
+- index.html
+  Entrada HTML principal del proyecto.
+
+- src/main.js
+  Inicializa la app con ViteSSG y aplica SEO dinamico por ruta.
+
+- src/App.vue
+  Layout general: header/nav, router-view, footer y contenedor global.
+
+- src/router/index.js
+  Define rutas principales del sitio:
+  /, /galeria, /producto/:id, /sobre, /blog, /blog/:id, /contacto, /admin, 404.
+
+- src/data/artesanias.js
+  Fuente de datos local principal:
+  productos, categorias, articulos, testimonios, informacion de empresa.
+
+- src/views/
+  Vistas de cada pagina:
+  - Inicio.vue: portada principal y secciones destacadas.
+  - Galeria.vue: listado de productos con filtros por categoria y busqueda.
+  - DetalleProducto.vue: detalle por producto usando id de la URL.
+  - Sobre.vue: historia/proceso de la marca.
+  - Blog.vue: listado de articulos + formulario newsletter local.
+  - ArticuloDetalle.vue: detalle de articulo.
+  - Contacto.vue: formulario que abre mailto al correo de la marca.
+  - Admin.vue: panel pensado para backend (en Neocities sin backend queda deshabilitado).
+  - NotFound.vue: pagina 404.
+
+- src/components/
+  Componentes reutilizables (ej: modal de imagen para ampliar fotos).
+
+- src/seo/route-seo.js
+  Reglas SEO por ruta (title, description, canonical, robots, imagen OG).
+  Base URL actual orientada a: https://artesaniasani.neocities.org
+
+- public/images/
+  Imagenes estaticas del sitio.
+
+4) Flujo del sitio publico
+--------------------------
+1. El usuario entra a Home.
+2. Navega a Galeria para filtrar productos.
+3. Abre DetalleProducto con informacion completa.
+4. Puede contactar por WhatsApp, email o formulario (mailto).
+5. Blog y articulos se sirven desde datos locales.
+
+5) Scripts importantes (package.json)
+--------------------------------------
+- npm run dev
+  Levanta entorno de desarrollo frontend.
+
+- npm run build
+  Build estatico completo:
+  validate:images -> generate:sitemap -> vite-ssg build -> inject:meta -> prepare:static
+
+- npm run build:neocities
+  Alias para build estatico orientado a Neocities.
+
+- npm run preview
+  Previsualiza build local.
+
+6) Archivos de apoyo para despliegue
+------------------------------------
+- README.md
+  Documentacion principal actualizada a Neocities.
+
+- GITHUB_NEOCITIES_DEPLOY.md
+  Guia corta para:
+  1) push a GitHub
+  2) build estatico
+  3) subida manual de dist/ a Neocities
+
+7) Punto clave actual de arquitectura
+-------------------------------------
+Produccion publica = estatico + datos locales.
+El sitio publico funciona de forma estatica con datos locales.
+
+8) Recomendacion operativa
+--------------------------
+Cuando cambies contenido (productos, textos o imagenes):
+1) Editar archivos en src/data y/o src/views.
+2) Ejecutar: npm run build:neocities
+3) Subir contenido de dist/ a Neocities.
+

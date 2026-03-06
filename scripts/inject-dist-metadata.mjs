@@ -2,6 +2,7 @@ import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from '
 import { resolve, relative } from 'node:path'
 import { imageSize } from 'image-size'
 import { defaultKeywords, getSeoForRoute } from '../src/seo/route-seo.js'
+import { getStructuredDataForRoute, toJsonLdString } from '../src/seo/structured-data.js'
 
 const distDir = resolve(process.cwd(), 'dist')
 const defaultImageWidth = 1200
@@ -126,6 +127,21 @@ const buildSeoBlock = (seo) => {
   ].join('\n')
 }
 
+const buildJsonLdBlock = (path) => {
+  const entries = getStructuredDataForRoute(path)
+  const payload = toJsonLdString(entries)
+
+  if (!payload) return ''
+
+  return [
+    '    <!-- JSONLD:BEGIN -->',
+    '    <script type="application/ld+json" id="structured-data-jsonld">',
+    `      ${payload}`,
+    '    </script>',
+    '    <!-- JSONLD:END -->'
+  ].join('\n')
+}
+
 const cleanExistingSeo = (html) => {
   return html
     .replace(/\s*<!-- SEO:BEGIN -->[\s\S]*?<!-- SEO:END -->\s*/g, '\n')
@@ -138,6 +154,8 @@ const cleanExistingSeo = (html) => {
     .replace(/\s*<meta[^>]+name="twitter:[^"]+"[^>]*>\s*/g, '\n')
     .replace(/\s*<meta[^>]+property="og:[^"]+"[^>]*>\s*/g, '\n')
     .replace(/\s*<link[^>]+rel="canonical"[^>]*>\s*/g, '\n')
+    .replace(/\s*<!-- JSONLD:BEGIN -->[\s\S]*?<!-- JSONLD:END -->\s*/g, '\n')
+    .replace(/\s*<script[^>]+id="structured-data-jsonld"[^>]*>[\s\S]*?<\/script>\s*/g, '\n')
 }
 
 const getHtmlFiles = (dir) => {
@@ -167,10 +185,12 @@ for (const filePath of files) {
   const route = routeFromFile(filePath)
   const seo = getSeoForRouteForDist(route)
   const seoBlock = buildSeoBlock(seo)
+  const jsonLdBlock = buildJsonLdBlock(route)
 
   const raw = readFileSync(filePath, 'utf8')
   const withoutSeo = cleanExistingSeo(raw)
-  const updated = withoutSeo.replace(/<\/head>/i, `${seoBlock}\n  </head>`)
+  const mergedBlocks = jsonLdBlock ? `${seoBlock}\n${jsonLdBlock}` : seoBlock
+  const updated = withoutSeo.replace(/<\/head>/i, `${mergedBlocks}\n  </head>`)
 
   writeFileSync(filePath, updated, 'utf8')
 }

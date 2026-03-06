@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api
 
-Sitemap: https://artesaniasani.onrender.com/sitemap.xml
+Sitemap: https://artesaniasani.neocities.org/sitemap.xml

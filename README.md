@@ -6,7 +6,7 @@ Sitio web de **ArtesaniasAni** hecho con Vue 3 + Vite SSG, preparado para hostin
 
 - Produccion orientada a hosting estatico (Neocities).
 - El frontend publico usa datos locales desde `src/data/artesanias.js`.
-- No se requiere Render ni Supabase para publicar el sitio.
+- No se requiere infraestructura externa para publicar el sitio en Neocities.
 - El panel `/admin` queda como herramienta opcional para entorno local con backend.
 
 ## Requisitos

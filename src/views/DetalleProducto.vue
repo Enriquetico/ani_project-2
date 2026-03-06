@@ -118,18 +118,51 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { productos, empresaInfo } from '../data/artesanias'
 import ImageModal from '../components/ImageModal.vue'
+import { api } from '../services/api'
+import { getHiddenBaseProductIds } from '../services/catalogClientState'
+
+const BASE_MAX_ID = Math.max(0, ...productos.map((producto) => Number(producto.id) || 0))
+const CUSTOM_ID_OFFSET = BASE_MAX_ID + 100000
 
 const route = useRoute()
 const mostrarModal = ref(false)
 const imagenModal = ref('')
 const tituloModal = ref('')
+const productosPersonalizados = ref([])
+const hiddenBaseIds = ref(new Set())
+
+const toPublicCustomProduct = (producto) => ({
+  ...producto,
+  id: CUSTOM_ID_OFFSET + (Number(producto?.id) || 0)
+})
+
+const loadHiddenBaseIds = () => {
+  hiddenBaseIds.value = new Set(getHiddenBaseProductIds())
+}
+
+const cargarProductosPersonalizados = async () => {
+  try {
+    const response = await api.getPublicProductos()
+    productosPersonalizados.value = Array.isArray(response) ? response : []
+  } catch {
+    productosPersonalizados.value = []
+  }
+}
 
 const todosLosProductos = computed(() => {
-  return productos
+  const visiblesBase = productos.filter((producto) => !hiddenBaseIds.value.has(Number(producto.id)))
+  const mapa = new Map(visiblesBase.map((producto) => [producto.id, producto]))
+
+  for (const producto of productosPersonalizados.value) {
+    const normalized = toPublicCustomProduct(producto)
+    mapa.set(normalized.id, normalized)
+  }
+
+  return Array.from(mapa.values())
 })
 
 const producto = computed(() => {
@@ -151,6 +184,11 @@ const abrirModal = (imagen, titulo) => {
 
 const contactoWhatsapp = empresaInfo.contacto.whatsapp
 const contactoEmail = empresaInfo.contacto.email
+
+onMounted(async () => {
+  loadHiddenBaseIds()
+  await cargarProductosPersonalizados()
+})
 </script>
 
 <style scoped>

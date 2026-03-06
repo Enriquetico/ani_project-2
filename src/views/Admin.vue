@@ -131,6 +131,40 @@
                 </select>
               </div>
 
+              <div class="form-group full categoria-manager">
+                <details class="categoria-details">
+                  <summary class="categoria-summary">
+                    Categorías disponibles ({{ categoriasResumen.length }})
+                  </summary>
+
+                  <div class="categoria-chip-list">
+                    <div
+                      v-for="categoriaItem in categoriasResumen"
+                      :key="categoriaItem.nombre"
+                      class="categoria-chip"
+                    >
+                      <span class="categoria-chip-name">
+                        {{ categoriaItem.nombre }} ({{ categoriaItem.uso }})
+                      </span>
+                      <button
+                        type="button"
+                        class="btn-accion eliminar"
+                        :disabled="
+                          categoriaItem.protegida || categoriaItem.uso > 0
+                        "
+                        @click="eliminarCategoria(categoriaItem.nombre)"
+                      >
+                        Eliminar
+                      </button>
+                    </div>
+                  </div>
+                  <small class="categoria-ayuda">
+                    Solo se pueden eliminar categorías personalizadas sin
+                    productos asociados.
+                  </small>
+                </details>
+              </div>
+
               <div class="form-group">
                 <label>Tipo de Producto *</label>
                 <input
@@ -503,6 +537,7 @@
 import { computed, ref, onMounted } from "vue";
 import { categorias } from "../data/artesanias";
 import { api } from "../services/api";
+import { hideBaseProductId } from "../services/catalogClientState";
 import { showToast } from "../services/toast";
 
 const tabActiva = ref("productos");
@@ -528,7 +563,9 @@ const selectedImageRotation = ref(0);
 const imageWarningBytes = ref(3 * 1024 * 1024);
 const imageSoftBlockBytes = ref(8 * 1024 * 1024);
 const NUEVA_CATEGORIA_VALUE = "__nueva_categoria__";
-const categoriasFormulario = ref(categorias.filter((cat) => cat !== "Todos"));
+const CATEGORIAS_STORAGE_KEY = "ani_admin_custom_categories_v1";
+const categoriasBase = categorias.filter((cat) => cat !== "Todos");
+const categoriasFormulario = ref(categoriasBase);
 const isSavingProducto = ref(false);
 const productoFormError = ref("");
 const productoFormInfo = ref("");
@@ -564,6 +601,80 @@ const normalizarTexto = (value) =>
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
+
+const dedupeCategorias = (items = []) => {
+  const result = [];
+  const seen = new Set();
+
+  for (const item of items) {
+    const categoria = String(item || "").trim();
+    if (!categoria) continue;
+    const key = normalizarTexto(categoria);
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    result.push(categoria);
+  }
+
+  return result;
+};
+
+const getStoredCategorias = () => {
+  if (typeof window === "undefined") return [];
+
+  try {
+    const parsed = JSON.parse(
+      window.localStorage.getItem(CATEGORIAS_STORAGE_KEY) || "[]",
+    );
+    return Array.isArray(parsed) ? dedupeCategorias(parsed) : [];
+  } catch {
+    return [];
+  }
+};
+
+const saveStoredCategorias = (items = []) => {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(
+    CATEGORIAS_STORAGE_KEY,
+    JSON.stringify(dedupeCategorias(items)),
+  );
+};
+
+const buildCategoriasFormulario = (customCategorias = []) => {
+  const categoriasDesdeProductos = productosListado.value
+    .map((producto) => String(producto?.categoria || "").trim())
+    .filter(Boolean);
+
+  categoriasFormulario.value = dedupeCategorias([
+    ...categoriasBase,
+    ...categoriasDesdeProductos,
+    ...customCategorias,
+  ]);
+};
+
+const isCategoriaBase = (categoria) =>
+  categoriasBase.some(
+    (item) => normalizarTexto(item) === normalizarTexto(categoria),
+  );
+
+const getCategoriaUso = (categoria) =>
+  productosListado.value.filter(
+    (producto) =>
+      normalizarTexto(producto?.categoria) === normalizarTexto(categoria),
+  ).length;
+
+const categoriasResumen = computed(() =>
+  categoriasFormulario.value
+    .map((nombre) => ({
+      nombre,
+      uso: getCategoriaUso(nombre),
+      protegida: isCategoriaBase(nombre),
+    }))
+    .sort((a, b) =>
+      String(a.nombre).localeCompare(String(b.nombre), "es", {
+        sensitivity: "base",
+      }),
+    ),
+);
 
 const existeNombreProducto = (nombre, idActual = null) => {
   const objetivo = normalizarTexto(nombre);
@@ -630,10 +741,63 @@ const manejarCambioCategoria = () => {
     return;
   }
 
-  categoriasFormulario.value = [...categoriasFormulario.value, categoriaLimpia];
+  const stored = getStoredCategorias();
+  const nextStored = dedupeCategorias([...stored, categoriaLimpia]);
+  saveStoredCategorias(nextStored);
+  buildCategoriasFormulario(nextStored);
   nuevoProducto.value.categoria = categoriaLimpia;
   showToast({
     message: `Categoría "${categoriaLimpia}" agregada al formulario.`,
+    type: "success",
+  });
+};
+
+const eliminarCategoria = (categoria) => {
+  const categoriaLimpia = String(categoria || "").trim();
+  if (!categoriaLimpia) return;
+
+  if (isCategoriaBase(categoriaLimpia)) {
+    showToast({
+      message: "No se puede eliminar una categoría base.",
+      type: "error",
+    });
+    return;
+  }
+
+  const uso = getCategoriaUso(categoriaLimpia);
+  if (uso > 0) {
+    showToast({
+      message: `No se puede eliminar "${categoriaLimpia}" porque tiene ${uso} producto(s) asociado(s).`,
+      type: "error",
+    });
+    return;
+  }
+
+  const stored = getStoredCategorias();
+  const nextStored = stored.filter(
+    (item) => normalizarTexto(item) !== normalizarTexto(categoriaLimpia),
+  );
+
+  if (nextStored.length === stored.length) {
+    showToast({
+      message: `La categoría "${categoriaLimpia}" no es eliminable desde aquí.`,
+      type: "error",
+    });
+    return;
+  }
+
+  saveStoredCategorias(nextStored);
+  buildCategoriasFormulario(nextStored);
+
+  if (
+    normalizarTexto(nuevoProducto.value.categoria) ===
+    normalizarTexto(categoriaLimpia)
+  ) {
+    nuevoProducto.value.categoria = "";
+  }
+
+  showToast({
+    message: `Categoría "${categoriaLimpia}" eliminada.`,
     type: "success",
   });
 };
@@ -774,6 +938,8 @@ const cargarDatosAdmin = async () => {
       imageConfigApi.value?.softBlockBytes || imageSoftBlockBytes.value,
     );
   }
+
+  buildCategoriasFormulario(getStoredCategorias());
 };
 
 const cargarIntentosLogin = async () => {
@@ -1143,6 +1309,7 @@ const eliminarProducto = async (producto) => {
         productosBase.value = productosBase.value.filter(
           (item) => Number(item.id) !== productoId,
         );
+        hideBaseProductId(productoId);
       } else {
         await api.deleteProducto(productoId);
         await cargarDatosAdmin();
@@ -1180,6 +1347,8 @@ const eliminarSuscriptor = async (id) => {
 };
 
 onMounted(async () => {
+  buildCategoriasFormulario(getStoredCategorias());
+
   try {
     await api.me();
     isAuthenticated.value = true;
@@ -1434,6 +1603,50 @@ onMounted(async () => {
   border-color: var(--secondary-terracotta);
 }
 
+.categoria-manager {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.categoria-details {
+  width: 100%;
+}
+
+.categoria-summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--secondary-natural);
+}
+
+.categoria-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.7rem;
+}
+
+.categoria-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #e1e1e1;
+  border-radius: 999px;
+  padding: 0.3rem 0.35rem 0.3rem 0.7rem;
+  background: #fff;
+}
+
+.categoria-chip-name {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.categoria-ayuda {
+  margin-top: 0.55rem;
+  color: #666;
+}
+
 .form-actions {
   display: flex;
   gap: 1rem;
@@ -1583,6 +1796,11 @@ td.acciones {
   font-size: 1rem;
   background: none;
   transition: all 0.3s;
+}
+
+.btn-accion:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .btn-accion.editar {

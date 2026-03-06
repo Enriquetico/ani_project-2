@@ -42,7 +42,13 @@
         <div class="productos-grid">
           <div v-for="producto in productosAleatorios" :key="producto.id" class="producto-card">
             <div class="producto-imagen" @click="abrirModal(producto.imagen, producto.nombre)">
-              <img :src="producto.imagen" :alt="producto.nombre" class="product-img" />
+              <img
+                :src="producto.imagen"
+                :alt="producto.nombre"
+                class="product-img"
+                loading="lazy"
+                decoding="async"
+              />
               <div class="overlay-zoom">🔍</div>
             </div>
             <div class="producto-info">
@@ -388,29 +394,24 @@ const abrirModal = (imagen, titulo) => {
 }
 
 .producto-imagen {
-  height: 260px;
   position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  background: var(--bg-light);
-  padding: 0.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--bg-light);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .product-img {
-  width: calc(100% - 0.8rem);
-  height: calc(100% - 0.8rem);
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-orientation: from-image;
   object-position: center;
-  transition: transform 0.4s ease;
-}
-
-.producto-imagen:hover .product-img {
-  transform: scale(1.1);
+  transition: none;
 }
 
 .overlay-zoom {
@@ -727,7 +728,7 @@ const abrirModal = (imagen, titulo) => {
   }
 
   .producto-imagen {
-    height: 220px;
+    aspect-ratio: 4 / 3;
   }
 }
 
