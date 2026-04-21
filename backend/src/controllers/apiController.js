@@ -43,13 +43,8 @@ const normalizeDateToMs = (value) => {
   return Number.isNaN(timestamp) ? null : timestamp
 }
 
-const getClientIp = (req) => {
-  const forwarded = req.headers['x-forwarded-for']
-  if (typeof forwarded === 'string' && forwarded.trim()) {
-    return forwarded.split(',')[0].trim()
-  }
-  return req.ip || 'unknown'
-}
+// req.ip is set correctly by Express when trust proxy is configured in server.js
+const getClientIp = (req) => req.ip || 'unknown'
 
 const normalizeName = (value) =>
   String(value || '')
@@ -92,7 +87,10 @@ export const createApiController = (deps) => {
     artifactsConfig
   } = deps
 
-  const upload = multer({ storage: multer.memoryStorage() })
+  const upload = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: Math.max(1, imageConfig.imageUploadMaxMb) * 1024 * 1024 }
+  })
   const execFile = promisify(execFileCallback)
 
   const loadBaseProductos = async () => {
@@ -230,14 +228,18 @@ export const createApiController = (deps) => {
         return
       }
 
-      if (!String(req.file.mimetype || '').startsWith('image/')) {
-        res.status(400).json({ error: 'El archivo debe ser una imagen válida.' })
+      const ALLOWED_MIME_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/heic', 'image/heif'])
+      const ALLOWED_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.heic', '.heif'])
+
+      const fileMime = String(req.file.mimetype || '').toLowerCase()
+      if (!ALLOWED_MIME_TYPES.has(fileMime) && !fileMime.startsWith('image/')) {
+        res.status(400).json({ error: 'Tipo de archivo no permitido. Usa JPG, PNG, WEBP, GIF o HEIC.' })
         return
       }
 
       const baseName = normalizeName(req.body.productName || req.body.nombre || req.file.originalname)
       const ext = path.extname(req.file.originalname || '').toLowerCase() || '.jpg'
-      const safeExt = ['.jpg', '.jpeg', '.png', '.webp'].includes(ext) ? ext : '.jpg'
+      const safeExt = ALLOWED_EXTENSIONS.has(ext) ? ext : '.jpg'
       const rawRotate = Number(req.body.rotateDegrees || 0)
       const normalizedRotate = Number.isFinite(rawRotate)
         ? ((Math.round(rawRotate / 90) * 90) % 360 + 360) % 360
@@ -569,6 +571,22 @@ export const createApiController = (deps) => {
       const result = await dbOps.run('DELETE FROM suscriptores WHERE id = $1', [id])
       if (!result.rowCount) {
         res.status(404).json({ error: 'Suscriptor no encontrado' })
+        return
+      }
+
+      res.json({ ok: true })
+    },
+
+    deleteMensaje: async (req, res) => {
+      const id = Number(req.params.id)
+      if (!Number.isInteger(id) || id <= 0) {
+        res.status(400).json({ error: 'ID inválido' })
+        return
+      }
+
+      const result = await dbOps.run('DELETE FROM mensajes WHERE id = $1', [id])
+      if (!result.rowCount) {
+        res.status(404).json({ error: 'Mensaje no encontrado' })
         return
       }
 

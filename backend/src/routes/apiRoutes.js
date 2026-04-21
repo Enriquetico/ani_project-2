@@ -16,6 +16,8 @@ export const createApiRouter = ({
   controller,
   requireAuth,
   loginRateLimit,
+  publicContactRateLimit,
+  publicSubscribeRateLimit,
   schemas
 }) => {
   const router = express.Router()
@@ -40,10 +42,11 @@ export const createApiRouter = ({
   router.delete('/productos/:id', requireAuth, controller.deleteProducto)
 
   router.get('/public/productos', controller.getPublicProductos)
-  router.post('/public/contacto', validateBody(schemas.contactoSchema), controller.sendContacto)
-  router.post('/public/suscriptores', validateBody(schemas.suscriptorSchema), controller.subscribeNewsletter)
+  router.post('/public/contacto', publicContactRateLimit, validateBody(schemas.contactoSchema), controller.sendContacto)
+  router.post('/public/suscriptores', publicSubscribeRateLimit, validateBody(schemas.suscriptorSchema), controller.subscribeNewsletter)
 
   router.get('/mensajes', requireAuth, controller.getMensajes)
+  router.delete('/mensajes/:id', requireAuth, controller.deleteMensaje)
   router.get('/suscriptores', requireAuth, controller.getSuscriptores)
   router.delete('/suscriptores/:id', requireAuth, controller.deleteSuscriptor)
 

@@ -50,10 +50,20 @@
           </div>
 
           <p v-if="authError" class="auth-error">{{ authError }}</p>
+          <p v-if="lockoutSeconds > 0" class="auth-error">
+            Demasiados intentos fallidos. Espera
+            <strong>{{ formatCountdown(lockoutSeconds) }}</strong> para intentar nuevamente.
+          </p>
           <p v-if="authInfo" class="auth-info">{{ authInfo }}</p>
 
           <div class="auth-actions">
-            <button type="submit" class="btn btn-primary">Ingresar</button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              :disabled="lockoutSeconds > 0"
+            >
+              {{ lockoutSeconds > 0 ? `Bloqueado (${formatCountdown(lockoutSeconds)})` : "Ingresar" }}
+            </button>
           </div>
         </form>
       </div>
@@ -431,7 +441,16 @@
           >
             <div class="mensaje-header">
               <h3>{{ mensaje.nombre }}</h3>
-              <p class="fecha">{{ mensaje.fecha }}</p>
+              <div class="mensaje-header-right">
+                <p class="fecha">{{ mensaje.fecha }}</p>
+                <button
+                  @click="eliminarMensaje(mensaje.id)"
+                  class="btn-accion eliminar"
+                  title="Eliminar mensaje"
+                >
+                  🗑️
+                </button>
+              </div>
             </div>
             <p><strong>Email:</strong> {{ mensaje.email }}</p>
             <p v-if="mensaje.telefono">
@@ -534,7 +553,7 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted } from "vue";
+import { computed, ref, onMounted, onUnmounted } from "vue";
 import { categorias } from "../data/artesanias";
 import { api } from "../services/api";
 import { hideBaseProductId } from "../services/catalogClientState";
@@ -547,6 +566,8 @@ const passwordInput = ref("");
 const showPassword = ref(false);
 const authError = ref("");
 const authInfo = ref("");
+const lockoutSeconds = ref(0);
+let lockoutInterval = null;
 const imageInputRef = ref(null);
 const selectedImageFile = ref(null);
 const selectedImageName = ref("");
@@ -588,6 +609,13 @@ const formatFileSize = (bytes) => {
   const mb = bytes / (1024 * 1024);
   if (mb >= 1) return `${mb.toFixed(2)} MB`;
   return `${(bytes / 1024).toFixed(1)} KB`;
+};
+
+const formatCountdown = (secs) => {
+  if (secs <= 0) return "0s";
+  const m = Math.floor(secs / 60);
+  const s = secs % 60;
+  return m > 0 ? `${m}m ${s}s` : `${s}s`;
 };
 
 const selectedImagePreviewStyle = computed(() => ({
@@ -973,20 +1001,38 @@ const getAdminBackendErrorMessage = (error, fallbackMessage) => {
   return rawMessage || fallbackMessage;
 };
 
+const startLockoutCountdown = (seconds) => {
+  clearInterval(lockoutInterval);
+  lockoutSeconds.value = Math.max(0, seconds);
+  lockoutInterval = setInterval(() => {
+    lockoutSeconds.value--;
+    if (lockoutSeconds.value <= 0) {
+      clearInterval(lockoutInterval);
+      lockoutSeconds.value = 0;
+    }
+  }, 1000);
+};
+
 const iniciarSesion = async () => {
   authInfo.value = "";
+  authError.value = "";
 
   try {
     await api.login(passwordInput.value.trim());
     isAuthenticated.value = true;
-    authError.value = "";
     passwordInput.value = "";
+    clearInterval(lockoutInterval);
+    lockoutSeconds.value = 0;
     await cargarDatosAdmin();
   } catch (error) {
-    authError.value = getAdminBackendErrorMessage(
-      error,
-      "Contraseña incorrecta. Intenta de nuevo.",
-    );
+    if (error.status === 429 && error.retryAfter > 0) {
+      startLockoutCountdown(error.retryAfter);
+    } else {
+      authError.value = getAdminBackendErrorMessage(
+        error,
+        "Contraseña incorrecta. Intenta de nuevo.",
+      );
+    }
   }
 };
 
@@ -1346,6 +1392,20 @@ const eliminarSuscriptor = async (id) => {
   }
 };
 
+const eliminarMensaje = async (id) => {
+  if (!confirm("¿Eliminar este mensaje? Esta acción no se puede deshacer.")) return;
+  try {
+    await api.deleteMensaje(id);
+    mensajes.value = mensajes.value.filter((m) => m.id !== id);
+    showToast({ message: "Mensaje eliminado.", type: "success" });
+  } catch (error) {
+    showToast({
+      message: error.message || "No se pudo eliminar el mensaje.",
+      type: "error",
+    });
+  }
+};
+
 onMounted(async () => {
   buildCategoriasFormulario(getStoredCategorias());
 
@@ -1357,6 +1417,10 @@ onMounted(async () => {
     isAuthenticated.value = false;
     authInfo.value = getAdminBackendErrorMessage(error, "");
   }
+});
+
+onUnmounted(() => {
+  clearInterval(lockoutInterval);
 });
 </script>
 
@@ -1840,11 +1904,19 @@ td.acciones {
   margin-bottom: 1rem;
   border-bottom: 1px solid #eee;
   padding-bottom: 0.75rem;
+  gap: 0.75rem;
 }
 
 .mensaje-header h3 {
   color: var(--secondary-natural);
   margin: 0;
+}
+
+.mensaje-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
 
 .fecha {
@@ -2019,7 +2091,13 @@ td.acciones {
   .mensaje-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .mensaje-header-right {
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: flex-end;
   }
 
   input,

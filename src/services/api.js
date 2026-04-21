@@ -18,6 +18,8 @@ const parseResponse = async (response) => {
     const message = payload?.error || 'Error en la solicitud'
     const error = new Error(message)
     error.status = response.status
+    const retryAfterHeader = response.headers.get('retry-after')
+    if (retryAfterHeader) error.retryAfter = Number(retryAfterHeader)
     throw error
   }
 
@@ -118,6 +120,11 @@ export const api = {
   },
   deleteSuscriptor: (id) =>
     apiFetch(`/suscriptores/${id}`, {
+      method: 'DELETE'
+    }),
+
+  deleteMensaje: (id) =>
+    apiFetch(`/mensajes/${id}`, {
       method: 'DELETE'
     })
 }

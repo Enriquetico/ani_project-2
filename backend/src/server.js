@@ -44,6 +44,7 @@ const IMAGE_TARGET_SIZE = Number(process.env.IMAGE_TARGET_SIZE || 0)
 const IMAGE_QUALITY = Number(process.env.IMAGE_QUALITY || 80)
 const IMAGE_SOFT_BLOCK_MB = Number(process.env.IMAGE_SOFT_BLOCK_MB || 8)
 const IMAGE_SOFT_BLOCK_BYTES = Math.max(1, IMAGE_SOFT_BLOCK_MB) * 1024 * 1024
+const IMAGE_UPLOAD_MAX_MB = Number(process.env.IMAGE_UPLOAD_MAX_MB || 12)
 
 const ARTESANIAS_FILE = path.resolve(process.cwd(), 'src/data/artesanias.js')
 const PRODUCTOS_EXPORT_REGEX = /export const productos = \[[\s\S]*?\n\];/
@@ -61,6 +62,10 @@ if (!JWT_SECRET) {
   throw new Error('Falta JWT_SECRET en variables de entorno')
 }
 
+if (JWT_SECRET.length < 32) {
+  throw new Error('JWT_SECRET debe tener al menos 32 caracteres para ser seguro')
+}
+
 if (!['lax', 'strict', 'none'].includes(COOKIE_SAME_SITE)) {
   throw new Error('COOKIE_SAME_SITE inválido. Usa: lax, strict o none')
 }
@@ -72,6 +77,9 @@ if (COOKIE_SAME_SITE === 'none' && !COOKIE_SECURE) {
 await initDb({ adminUsername: ADMIN_USERNAME, adminPassword: ADMIN_PASSWORD })
 
 const app = express()
+
+// Trust Render's reverse proxy so req.ip reflects the real client IP
+app.set('trust proxy', 1)
 
 app.use('/images', express.static(PRODUCT_IMAGES_DIR))
 
@@ -85,11 +93,24 @@ app.use(
 
       callback(new Error('Origen no permitido por CORS'))
     },
-    credentials: true
+    credentials: true,
+    exposedHeaders: ['Retry-After']
   })
 )
 
-app.use(express.json())
+app.use((_, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff')
+  res.setHeader('X-Frame-Options', 'DENY')
+  res.setHeader('X-XSS-Protection', '0')
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin')
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
+  if (NODE_ENV === 'production') {
+    res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload')
+  }
+  next()
+})
+
+app.use(express.json({ limit: '100kb' }))
 app.use(cookieParser())
 
 const loginRateLimit = rateLimit({
@@ -98,6 +119,22 @@ const loginRateLimit = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: 'Demasiados intentos de login. Intenta nuevamente más tarde.' }
+})
+
+const publicContactRateLimit = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Demasiadas solicitudes. Intenta nuevamente más tarde.' }
+})
+
+const publicSubscribeRateLimit = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Demasiadas solicitudes. Intenta nuevamente más tarde.' }
 })
 
 const requireAuth = authMiddleware(JWT_SECRET)
@@ -127,7 +164,8 @@ const controller = createApiController({
     imageMaxSize: IMAGE_MAX_SIZE,
     imageQuality: IMAGE_QUALITY,
     imageSoftBlockMb: IMAGE_SOFT_BLOCK_MB,
-    imageSoftBlockBytes: IMAGE_SOFT_BLOCK_BYTES
+    imageSoftBlockBytes: IMAGE_SOFT_BLOCK_BYTES,
+    imageUploadMaxMb: IMAGE_UPLOAD_MAX_MB
   },
   artifactsConfig: {
     artesaniasFile: ARTESANIAS_FILE,
@@ -143,6 +181,8 @@ app.use(
     controller,
     requireAuth,
     loginRateLimit,
+    publicContactRateLimit,
+    publicSubscribeRateLimit,
     schemas: {
       loginSchema,
       productoSchema,
