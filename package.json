@@ -17,6 +17,8 @@
     "sync:productos": "node scripts/sync_db_to_artesanias.mjs",
     "build": "npm run validate:images && npm run generate:sitemap && vite-ssg build && npm run inject:meta && npm run prepare:static",
     "build:neocities": "npm run build",
+    "deploy:neocities": "node scripts/neocities-upload.mjs",
+    "build:deploy": "npm run build:neocities && npm run deploy:neocities",
     "preview": "vite-ssg preview"
   },
   "dependencies": {
