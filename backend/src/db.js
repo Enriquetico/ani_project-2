@@ -11,8 +11,8 @@ if (!DATABASE_URL) {
   throw new Error('Falta DATABASE_URL en variables de entorno')
 }
 
-// rejectUnauthorized: Render's managed PostgreSQL uses self-signed certs → defaults to false.
-// Set DB_SSL_REJECT_UNAUTHORIZED=true if your provider has a CA-verifiable certificate.
+// Algunos proveedores PostgreSQL usan certificados propios → defaults to false.
+// Usa DB_SSL_REJECT_UNAUTHORIZED=true si tu proveedor tiene un certificado CA verificable.
 const DB_SSL_REJECT_UNAUTHORIZED = String(process.env.DB_SSL_REJECT_UNAUTHORIZED || 'false').toLowerCase() !== 'false'
 
 const pool = new Pool({

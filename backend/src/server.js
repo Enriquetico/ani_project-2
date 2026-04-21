@@ -78,7 +78,7 @@ await initDb({ adminUsername: ADMIN_USERNAME, adminPassword: ADMIN_PASSWORD })
 
 const app = express()
 
-// Trust Render's reverse proxy so req.ip reflects the real client IP
+// Confiar en el reverse proxy del host para que req.ip refleje la IP real del cliente
 app.set('trust proxy', 1)
 
 app.use('/images', express.static(PRODUCT_IMAGES_DIR))
